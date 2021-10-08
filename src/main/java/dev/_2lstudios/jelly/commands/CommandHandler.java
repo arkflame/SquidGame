@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 
 import dev._2lstudios.jelly.JellyPlugin;
 import dev._2lstudios.jelly.annotations.Command;
+import dev._2lstudios.jelly.utils.ArrayUtils;
 
 public class CommandHandler implements CommandExecutor {
 
@@ -31,9 +32,20 @@ public class CommandHandler implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, org.bukkit.command.Command cmdInfo, String label, String[] args) {
-        final String name = cmdInfo.getName().toLowerCase();
-        final CommandListener listener = this.commands.get(name);
-        final Command command = listener.getClass().getAnnotation(Command.class);
+        String name = cmdInfo.getName().toLowerCase();
+        CommandListener listener = this.commands.get(name);
+
+        while (args.length > 0) {
+            CommandListener subCommand = listener.getSubcommand(args[0]);
+            if (subCommand != null) {
+                listener = subCommand;
+                args = ArrayUtils.shift(args, 0);
+            } else {
+                break;
+            }
+        }
+
+        Command command = listener.getClass().getAnnotation(Command.class);
 
         if (command.target() != null) {
             if (sender instanceof Player && command.target() == CommandExecutionTarget.ONLY_CONSOLE) {

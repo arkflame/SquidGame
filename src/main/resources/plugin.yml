@@ -5,6 +5,6 @@ main: ${mainClass}
 version: ${version}
 url: ${url}
 commands:
-  example:
-    aliases: ["ex"]
+  squidgame:
+    aliases: ["sg"]
     description: "This is an example plugin."

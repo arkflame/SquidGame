@@ -7,9 +7,13 @@ import dev._2lstudios.jelly.commands.CommandContext;
 import dev._2lstudios.jelly.commands.CommandExecutionTarget;
 import dev._2lstudios.jelly.commands.CommandListener;
 
-@Command(name = "squidgame", target = CommandExecutionTarget.ONLY_PLAYER, permission = "squidgame.use", usage = "usage: /sg", arguments = {
+@Command(name = "squidgame", target = CommandExecutionTarget.ONLY_PLAYER, permission = "squidgame.use", usage = "usage: /sg [player] [string] [number] [bool]", arguments = {
         Player.class, String.class, Integer.class, Boolean.class })
 public class SquidGameCommand extends CommandListener {
+
+    public SquidGameCommand() {
+        this.addSubcommand(new SquidGameSubCommand());
+    }
 
     @Override
     public void handle(CommandContext context) {
