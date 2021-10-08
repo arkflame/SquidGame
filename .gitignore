@@ -1,0 +1,10 @@
+# Compilation output directory
+/target
+
+# IDE settings directory
+/.settings
+/.vscode
+
+# IDE java settings
+/.classpath
+/.project

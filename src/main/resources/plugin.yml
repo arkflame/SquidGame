@@ -1,0 +1,10 @@
+name: ${name}
+description: ${description}
+author: ${author}
+main: ${mainClass}
+version: ${version}
+url: ${url}
+commands:
+  example:
+    aliases: ["ex"]
+    description: "This is an example plugin."
