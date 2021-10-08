@@ -12,11 +12,15 @@ import dev._2lstudios.jelly.commands.CommandExecutionTarget;
 public @interface Command {
     public String name();
 
-    public String permission();
+    public String description() default "";
 
-    public String usage();
+    public String permission() default "";
 
-    public Class<?>[] arguments();
+    public String usage() default "";
 
-    public CommandExecutionTarget target();
+    public Class<?>[] arguments() default {};
+
+    public int minArguments() default Integer.MIN_VALUE;
+
+    public CommandExecutionTarget target() default CommandExecutionTarget.BOTH;
 }

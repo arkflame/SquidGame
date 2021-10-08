@@ -6,5 +6,5 @@ version: ${version}
 url: ${url}
 commands:
   squidgame:
-    aliases: ["sg"]
+    aliases: ["sg", "sq", "squid"]
     description: "This is an example plugin."

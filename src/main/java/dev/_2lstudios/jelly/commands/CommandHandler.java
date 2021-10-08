@@ -46,41 +46,53 @@ public class CommandHandler implements CommandExecutor {
         }
 
         Command command = listener.getClass().getAnnotation(Command.class);
+        System.out.print(listener.getClass().getName() + " - " + command.name());
 
-        if (command.target() != null) {
-            if (sender instanceof Player && command.target() == CommandExecutionTarget.ONLY_CONSOLE) {
-                sender.sendMessage("§cThis command can run only in console.");
-                return true;
-            } else if (sender instanceof ConsoleCommandSender
-                    && command.target() == CommandExecutionTarget.ONLY_PLAYER) {
-                sender.sendMessage("§cThis command can run only by a player.");
-                return true;
-            }
+        // Check execution target
+        if (sender instanceof Player && command.target() == CommandExecutionTarget.ONLY_CONSOLE) {
+            sender.sendMessage("§cThis command can run only in console.");
+            return true;
+        } else if (sender instanceof ConsoleCommandSender && command.target() == CommandExecutionTarget.ONLY_PLAYER) {
+            sender.sendMessage("§cThis command can run only by a player.");
+            return true;
         }
 
-        else if (command.permission() != null && !sender.hasPermission(command.permission())) {
+        // Check for permission
+        if (!command.permission().isEmpty() && !sender.hasPermission(command.permission())) {
             sender.sendMessage("§cMissing permission " + command.permission());
             return true;
         }
 
-        if (command.arguments() != null && args.length < command.arguments().length) {
+        // Check for min arguments
+        int minArguments = command.minArguments() == Integer.MIN_VALUE ? command.arguments().length
+                : command.minArguments();
+
+        if (args.length < minArguments) {
             sender.sendMessage(command.usage());
             return true;
         }
 
+        // Parse arguments
         final Object[] argList = new Object[args.length];
+        final int argumentDefinedLength = command.arguments().length;
 
         for (int i = 0; i < args.length; i++) {
-            final Class<?> clazz = command.arguments()[i];
-            try {
-                final Object arg = CommandArgumentParser.parse(clazz, i + 1, args[i]);
-                argList[i] = arg;
-            } catch (Exception e) {
-                sender.sendMessage(e.getMessage());
-                return true;
+            if (argumentDefinedLength >= (i + 1)) {
+                final Class<?> clazz = command.arguments()[i];
+                try {
+                    final Object arg = CommandArgumentParser.parse(clazz, i + 1, args[i]);
+                    argList[i] = arg;
+                } catch (Exception e) {
+                    sender.sendMessage("§cUsage: " + command.usage());
+                    sender.sendMessage("§c" + e.getMessage());
+                    return true;
+                }
+            } else {
+                argList[i] = args[i];
             }
         }
 
+        // Execute command
         final CommandArguments arguments = new CommandArguments(argList);
         final CommandContext context = new CommandContext(this.plugin, sender, arguments);
         listener.handle(context);

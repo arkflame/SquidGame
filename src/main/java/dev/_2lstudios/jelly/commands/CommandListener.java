@@ -24,5 +24,23 @@ public abstract class CommandListener {
         return null;
     }
 
+    public String mapCommandListToString(final String format, final String separator) {
+        String output = null;
+
+        for (final CommandListener cmd : this.subcommands) {
+            final Command cmdInfo = cmd.getClass().getAnnotation(Command.class);
+            final String entry = format.replace("{name}", cmdInfo.name()).replace("{permission}", cmdInfo.permission())
+                    .replace("{usage}", cmdInfo.usage()).replace("{description}", cmdInfo.description());
+
+            if (output == null) {
+                output = entry;
+            } else {
+                output += separator + entry;
+            }
+        }
+
+        return output;
+    }
+
     public abstract void handle(final CommandContext context);
 }
