@@ -42,5 +42,5 @@ public abstract class CommandListener {
         return output;
     }
 
-    public abstract void handle(final CommandContext context);
+    public abstract void handle(final CommandContext context) throws Exception;
 }

@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 
 import dev._2lstudios.jelly.JellyPlugin;
 import dev._2lstudios.jelly.annotations.Command;
+import dev._2lstudios.jelly.errors.CommandException;
 import dev._2lstudios.jelly.utils.ArrayUtils;
 
 public class CommandHandler implements CommandExecutor {
@@ -95,7 +96,17 @@ public class CommandHandler implements CommandExecutor {
         // Execute command
         final CommandArguments arguments = new CommandArguments(argList);
         final CommandContext context = new CommandContext(this.plugin, sender, arguments);
-        listener.handle(context);
+
+        try {
+            listener.handle(context);
+        } catch (Exception e) {
+            if (e instanceof CommandException) {
+                sender.sendMessage("§c" + e.getMessage());
+            } else {
+                sender.sendMessage("§cFatal exception ocurred while executing command. See console for more details.");
+                e.printStackTrace();
+            }
+        }
 
         return true;
     }

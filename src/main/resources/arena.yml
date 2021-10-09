@@ -1,0 +1,50 @@
+arena:
+  enabled: false
+
+waiting_room:
+  x: 0
+  y: 0
+  z: 0
+  pitch: 0
+  yaw: 0
+
+# First game zones
+game_1:
+  # Teleport point when game starts
+  spawn:
+    x: 0
+    y: 0
+    z: 0
+    pitch: 0
+    yaw: 0
+  # Barrier generation zone
+  barrier_zone:
+    first_point:
+      x: 0
+      y: 0
+      z: 0
+    second_point:
+      x: 0
+      y: 0
+      z: 0
+  # Safe zone (For win)
+  goal_zone:
+    first_point:
+      x: 0
+      y: 0
+      z: 0
+    second_point:
+      x: 0
+      y: 0
+      z: 0
+  # Kill zone (Where if you move, you die)
+  kill_zone:
+    first_point:
+        x: 0
+        y: 0
+        z: 0
+    second_point:
+      x: 0
+      y: 0
+      z: 0
+    

@@ -1,4 +1,4 @@
-package dev._2lstudios.temp.player;
+package dev._2lstudios.squidgame.player;
 
 import org.bukkit.Location;
 

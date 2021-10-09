@@ -4,6 +4,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import dev._2lstudios.jelly.JellyPlugin;
+import dev._2lstudios.jelly.player.PluginPlayer;
 
 public class CommandContext {
 
@@ -13,12 +14,18 @@ public class CommandContext {
 
     private final boolean isPlayer;
 
+    private PluginPlayer pluginPlayer;
+
     public CommandContext(final JellyPlugin plugin, final CommandSender sender, final CommandArguments arguments) {
         this.arguments = arguments;
         this.plugin = plugin;
         this.sender = sender;
 
         this.isPlayer = sender instanceof Player;
+
+        if (plugin.getPluginPlayerManager() != null && this.isExecutedByPlayer()) {
+            this.pluginPlayer = plugin.getPluginPlayerManager().getPlayer(this.getPlayer());
+        }
     }
 
     public CommandArguments getArguments() {
@@ -35,6 +42,10 @@ public class CommandContext {
         } else {
             return null;
         }
+    }
+
+    public PluginPlayer getPluginPlayer() {
+        return this.pluginPlayer;
     }
 
     public JellyPlugin getPlugin() {

@@ -1,6 +1,5 @@
-messages:
-  from-command: "&eHello world from Command."
-  from-listener: "&aHello world from Listener."
-  from-task: "&dHello world from Task."
+concurrent-max-games: 10
 
-task-repeat-every: 3
+game:
+  min_players: 2
+  max_players: 100
