@@ -45,7 +45,7 @@ public class ArenaManager {
                 } catch (Exception e) {
                 }
 
-                final String name = fileEntry.getName().split(".")[0];
+                final String name = fileEntry.getName().split("[.]")[0];
 
                 World world = Bukkit.getWorld(arenaConfig.getString("arena.world"));
                 if (world == null) {

@@ -2,12 +2,15 @@ package dev._2lstudios.squidgame;
 
 import java.util.logging.Level;
 
+import org.bukkit.Bukkit;
+
 import dev._2lstudios.jelly.JellyPlugin;
 import dev._2lstudios.jelly.config.Configuration;
 import dev._2lstudios.squidgame.arena.ArenaManager;
 import dev._2lstudios.squidgame.commands.SquidGameCommand;
 import dev._2lstudios.squidgame.listeners.PlayerInteractListener;
 import dev._2lstudios.squidgame.player.PlayerManager;
+import dev._2lstudios.squidgame.tasks.ArenaTickTask;
 
 public class SquidGame extends JellyPlugin {
 
@@ -31,6 +34,9 @@ public class SquidGame extends JellyPlugin {
 
         // Register player manager
         this.setPluginPlayerManager(this.playerManager);
+
+        // Register tasks
+        Bukkit.getScheduler().runTaskTimer(this, new ArenaTickTask(this), 20L, 20L);
 
         // Enable inventory API
         this.useInventoryAPI();

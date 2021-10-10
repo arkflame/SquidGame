@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -42,13 +44,14 @@ public class Configuration extends YamlConfiguration {
     }
 
     public Location getLocation(final String key) {
+        final World world = Bukkit.getWorld(key);
         final double x = this.getDouble(key + ".x");
-        final double y = this.getDouble(key + ".x");
-        final double z = this.getDouble(key + ".x");
+        final double y = this.getDouble(key + ".y");
+        final double z = this.getDouble(key + ".z");
         final float pitch = (float) this.getDouble(key + ".pitch");
         final float yaw = (float) this.getDouble(key + ".yaw");
 
-        return new Location(null, x, y, z, pitch, yaw);
+        return new Location(world, x, y, z, yaw, pitch);
     }
 
     public void setVector3(final String key, final Vector3 vector) {
