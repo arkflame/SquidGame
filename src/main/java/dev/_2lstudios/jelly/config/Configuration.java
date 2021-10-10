@@ -4,8 +4,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import org.bukkit.Location;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
+
+import dev._2lstudios.jelly.math.Cuboid;
+import dev._2lstudios.jelly.math.Vector3;
 
 public class Configuration extends YamlConfiguration {
 
@@ -21,5 +25,56 @@ public class Configuration extends YamlConfiguration {
 
     public void save() throws IOException {
         this.save(this.file);
+    }
+
+    public Vector3 getVector3(final String key) {
+        final double x = this.getDouble(key + ".x");
+        final double y = this.getDouble(key + ".x");
+        final double z = this.getDouble(key + ".x");
+
+        return new Vector3(x, y, z);
+    }
+
+    public Cuboid getCuboid(final String key) {
+        final Vector3 firstPoint = this.getVector3(key + ".first_point");
+        final Vector3 secondPoint = this.getVector3(key + ".second_point");
+        return new Cuboid(firstPoint, secondPoint);
+    }
+
+    public Location getLocation(final String key) {
+        final double x = this.getDouble(key + ".x");
+        final double y = this.getDouble(key + ".x");
+        final double z = this.getDouble(key + ".x");
+        final float pitch = (float) this.getDouble(key + ".pitch");
+        final float yaw = (float) this.getDouble(key + ".yaw");
+
+        return new Location(null, x, y, z, pitch, yaw);
+    }
+
+    public void setVector3(final String key, final Vector3 vector) {
+        this.set(key + ".x", vector.getX());
+        this.set(key + ".y", vector.getY());
+        this.set(key + ".z", vector.getZ());
+    }
+
+    public void setCuboid(final String key, final Cuboid cuboid) {
+        this.setVector3(key + ".first_point", cuboid.getFirstPoint());
+        this.setVector3(key + ".second_point", cuboid.getSecondPoint());
+    }
+
+    public void setLocation(final String key, final Location location, final boolean includeWorld) {
+        if (includeWorld) {
+            this.set(key + ".world", location.getWorld().getName());
+        }
+
+        this.set(key + ".x", location.getX());
+        this.set(key + ".y", location.getY());
+        this.set(key + ".z", location.getZ());
+        this.set(key + ".pitch", location.getPitch());
+        this.set(key + ".yaw", location.getYaw());
+    }
+
+    public void setLocation(final String key, final Location location) {
+        this.setLocation(key, location, true);
     }
 }

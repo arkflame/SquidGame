@@ -1,4 +1,12 @@
-concurrent-max-games: 10
+concurrent-max-games: 5
+
+lobby:
+  world: ""
+  x: 0
+  y: 0
+  z: 0
+  yaw: 0
+  pitch: 0
 
 game:
   min_players: 2

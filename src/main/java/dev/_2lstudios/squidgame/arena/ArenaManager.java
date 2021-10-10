@@ -1,61 +1,86 @@
 package dev._2lstudios.squidgame.arena;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.WorldCreator;
 
-import dev._2lstudios.jelly.utils.FileUtils;
+import dev._2lstudios.jelly.config.Configuration;
 import dev._2lstudios.squidgame.SquidGame;
+import dev._2lstudios.squidgame.errors.ArenaAlreadyExistException;
 import dev._2lstudios.squidgame.errors.ArenaMisconfiguredException;
 import dev._2lstudios.squidgame.errors.NoAvailableArenaException;
 
 public class ArenaManager {
 
     private final List<Arena> arenas;
-
-    private final File serverPath;
-    private final File templatePath;
-
-    private final SquidGame plugin;
-    private boolean readyToPlay;
+    private final File arenasPath;
 
     public ArenaManager(final SquidGame plugin) {
         this.arenas = new ArrayList<>();
-        this.serverPath = plugin.getServer().getWorldContainer();
-        this.templatePath = new File(plugin.getDataFolder(), "map");
-        this.plugin = plugin;
+        this.arenasPath = new File(plugin.getDataFolder(), "arenas");
 
-        this.initArenas();
-    }
-
-    public void clear() {
-        this.arenas.clear();
-    }
-
-    public void initArenas() {
-        if (!this.templatePath.exists()) {
-            this.readyToPlay = false;
-            return;
+        if (!this.arenasPath.exists()) {
+            this.arenasPath.mkdirs();
         }
 
-        for (int i = 0; i < plugin.getMainConfig().getInt("concurrent-max-games"); i++) {
-            final String id = "game-" + i;
-            FileUtils.copyFolder(this.templatePath, new File(this.serverPath, id));
-            final World world = new WorldCreator(id).createWorld();
-            this.arenas.add(new Arena(world, this.plugin.getArenaConfig()));
+        try {
+            this.scanForArenas();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void scanForArenas() throws IOException {
+        for (final File fileEntry : this.arenasPath.listFiles()) {
+            if (!fileEntry.isDirectory() && fileEntry.getName().endsWith(".yml")) {
+                final Configuration arenaConfig = new Configuration(fileEntry);
+
+                try {
+                    arenaConfig.load();
+                } catch (Exception e) {
+                }
+
+                final String name = fileEntry.getName().split(".")[0];
+
+                World world = Bukkit.getWorld(arenaConfig.getString("arena.world"));
+                if (world == null) {
+                    world = new WorldCreator(arenaConfig.getString("arena.world")).createWorld();
+                }
+
+                final Arena arena = new Arena(world, name, arenaConfig);
+                this.arenas.add(arena);
+            }
+        }
+    }
+
+    public Arena getArena(final String name) {
+        for (final Arena arena : this.arenas) {
+            if (arena.getName().equalsIgnoreCase(name)) {
+                return arena;
+            }
         }
 
-        this.readyToPlay = true;
+        return null;
+    }
+
+    public Arena createArena(final String name, final World world) throws ArenaAlreadyExistException, IOException {
+        if (this.getArena(name) != null) {
+            throw new ArenaAlreadyExistException(name);
+        }
+
+        final Configuration arenaConfig = new Configuration(new File(this.arenasPath, name + ".yml"));
+        final Arena arena = new Arena(world, name, arenaConfig);
+        arenaConfig.save();
+        this.arenas.add(arena);
+        return arena;
     }
 
     public Arena getFirstAvailableArena() throws NoAvailableArenaException, ArenaMisconfiguredException {
-        if (!this.readyToPlay) {
-            throw new ArenaMisconfiguredException();
-        }
-
         for (final Arena arena : arenas) {
             if (arena.getState() == ArenaState.WAITING || arena.getState() == ArenaState.STARTING) {
                 return arena;

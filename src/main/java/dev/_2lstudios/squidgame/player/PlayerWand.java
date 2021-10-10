@@ -37,4 +37,8 @@ public class PlayerWand {
     public void setSecondPoint(final Location loc) {
         this.secondPoint = new Vector3(loc.getX(), loc.getY(), loc.getZ());
     }
+
+    public boolean isComplete() {
+        return this.firstPoint != null && this.secondPoint != null;
+    }
 }

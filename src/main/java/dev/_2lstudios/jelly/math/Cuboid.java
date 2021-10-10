@@ -12,4 +12,12 @@ public class Cuboid {
     public boolean isBetween(final Vector3 target) {
         return target.isBetweenPoints(firstPoint, secondPoint);
     }
+
+    public Vector3 getFirstPoint() {
+        return this.firstPoint;
+    }
+
+    public Vector3 getSecondPoint() {
+        return this.secondPoint;
+    }
 }

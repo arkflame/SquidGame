@@ -17,10 +17,11 @@ public class SquidPlayer extends PluginPlayer {
     }
 
     public PlayerWand getWand() {
-        if (this.wand == null) {
-            this.wand = new PlayerWand();
-        }
+        return this.wand;
+    }
 
+    public PlayerWand createWand(final PlayerWand wand) {
+        this.wand = wand;
         return this.wand;
     }
 
@@ -29,8 +30,13 @@ public class SquidPlayer extends PluginPlayer {
     }
 
     public void setArena(final Arena arena) {
-        this.arena = arena;
-        arena.addPlayer(this);
+        if (arena == null && this.arena != null) {
+            this.arena.removePlayer(this);
+            this.arena = null;
+        } else if (arena != null && this.arena == null) {
+            this.arena = arena;
+            arena.addPlayer(this);
+        }
     }
 
     public boolean isSpectator() {

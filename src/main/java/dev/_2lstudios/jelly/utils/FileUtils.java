@@ -22,6 +22,12 @@ public class FileUtils {
         return contentBuilder.toString();
     }
 
+    public static void deleteFolder(File source) {
+    }
+
+    public static void deleteFile(File file) {
+    }
+
     public static void copyFolder(File source, File destination) {
         if (source.isDirectory()) {
             if (!destination.exists()) {

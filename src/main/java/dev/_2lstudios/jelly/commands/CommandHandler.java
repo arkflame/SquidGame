@@ -47,7 +47,6 @@ public class CommandHandler implements CommandExecutor {
         }
 
         Command command = listener.getClass().getAnnotation(Command.class);
-        System.out.print(listener.getClass().getName() + " - " + command.name());
 
         // Check execution target
         if (sender instanceof Player && command.target() == CommandExecutionTarget.ONLY_CONSOLE) {

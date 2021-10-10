@@ -7,6 +7,7 @@ import org.bukkit.Location;
 import org.bukkit.World;
 
 import dev._2lstudios.jelly.config.Configuration;
+import dev._2lstudios.squidgame.SquidGame;
 import dev._2lstudios.squidgame.player.SquidPlayer;
 
 public class Arena {
@@ -14,28 +15,28 @@ public class Arena {
     private final List<SquidPlayer> players;
     private final List<SquidPlayer> spectators;
 
-    private final Configuration config;
     private final World world;
+    private final String name;
+    private final Configuration config;
 
     private ArenaState state = ArenaState.WAITING;
     private ArenaGame game = ArenaGame.WAITING_ROOM;
 
-    public Arena(final World world, final Configuration config) {
+    public Arena(final World world, final String name, final Configuration config) {
         this.players = new ArrayList<>();
         this.spectators = new ArrayList<>();
 
-        this.config = config;
         this.world = world;
+        this.name = name;
+        this.config = config;
+    }
+
+    public Configuration getConfig() {
+        return this.config;
     }
 
     public Location getSpawnPosition() {
-        String configSection = "";
-
-        if (this.game == ArenaGame.WAITING_ROOM) {
-            configSection = "waiting_room";
-        } else {
-            configSection = this.game.toString().toLowerCase() + ".spawn";
-        }
+        String configSection = "games." + this.game.toString().toLowerCase() + ".spawn";
 
         final double x = this.config.getDouble(configSection + ".x");
         final double y = this.config.getDouble(configSection + ".y");
@@ -70,6 +71,20 @@ public class Arena {
         return this;
     }
 
+    public void removePlayer(final SquidPlayer player) {
+        if (this.players.contains(player)) {
+            this.players.remove(player);
+        } else if (this.spectators.contains(player)) {
+            this.spectators.remove(player);
+            player.setSpectator(false);
+        } else {
+            return;
+        }
+
+        player.getBukkitPlayer().teleport(SquidGame.getInstance().getMainConfig().getLocation("lobby"));
+        player.setArena(null);
+    }
+
     public ArenaGame getGame() {
         return this.game;
     }
@@ -86,7 +101,7 @@ public class Arena {
         return this.world;
     }
 
-    public String getID() {
-        return this.world.getName();
+    public String getName() {
+        return this.name;
     }
 }

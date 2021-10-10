@@ -50,4 +50,8 @@ public class Vector3 {
         return (Maths.inRange(this.x, firstPoint.x, secondPoint.x) && Maths.inRange(this.y, firstPoint.y, secondPoint.y)
                 && Maths.inRange(this.z, firstPoint.z, secondPoint.z));
     }
+
+    public String toString() {
+        return this.x + ", " + this.y + ", " + this.z;
+    }
 }
