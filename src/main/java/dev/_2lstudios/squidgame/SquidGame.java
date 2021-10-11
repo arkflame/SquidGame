@@ -9,6 +9,7 @@ import dev._2lstudios.jelly.config.Configuration;
 import dev._2lstudios.squidgame.arena.ArenaManager;
 import dev._2lstudios.squidgame.commands.SquidGameCommand;
 import dev._2lstudios.squidgame.listeners.PlayerInteractListener;
+import dev._2lstudios.squidgame.listeners.PlayerMoveListener;
 import dev._2lstudios.squidgame.player.PlayerManager;
 import dev._2lstudios.squidgame.tasks.ArenaTickTask;
 
@@ -31,6 +32,7 @@ public class SquidGame extends JellyPlugin {
 
         // Register listeners
         this.addEventListener(new PlayerInteractListener(this));
+        this.addEventListener(new PlayerMoveListener(this));
 
         // Register player manager
         this.setPluginPlayerManager(this.playerManager);
@@ -47,7 +49,7 @@ public class SquidGame extends JellyPlugin {
         // Banner
         this.getLogger().log(Level.INFO, "§7§m===================================================");
         this.getLogger().log(Level.INFO,
-                "                §d&lSquid§f§lGame§r §a(v" + this.getDescription().getVersion() + ")");
+                "                §d§lSquid§f§lGame§r §a(v" + this.getDescription().getVersion() + ")");
         this.getLogger().log(Level.INFO, "§r");
         this.getLogger().log(Level.INFO, "§7- §dArena loaded: §7" + this.arenaManger.getArenas().size());
         this.getLogger().log(Level.INFO, "§r");

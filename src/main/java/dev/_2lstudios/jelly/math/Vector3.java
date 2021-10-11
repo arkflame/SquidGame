@@ -41,16 +41,6 @@ public class Vector3 {
         return this;
     }
 
-    public double distanceTo(Vector3 point) {
-        return Math.sqrt(
-                Math.pow(this.x - point.getX(), 2) + Math.pow(y - point.getY(), 2) + Math.pow(z - point.getZ(), 2));
-    }
-
-    public boolean isBetweenPoints(Vector3 firstPoint, Vector3 secondPoint) {
-        return (Maths.inRange(this.x, firstPoint.x, secondPoint.x) && Maths.inRange(this.y, firstPoint.y, secondPoint.y)
-                && Maths.inRange(this.z, firstPoint.z, secondPoint.z));
-    }
-
     public String toString() {
         return this.x + ", " + this.y + ", " + this.z;
     }

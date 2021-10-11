@@ -14,7 +14,7 @@ public class ArenaTickTask implements Runnable {
     @Override
     public void run() {
         for (final Arena arena : this.plugin.getArenaManager().getArenas()) {
-            arena.setInternalTime(arena.getInternalTime() - 1);
+            arena.doArenaTick();
         }
     }
 }

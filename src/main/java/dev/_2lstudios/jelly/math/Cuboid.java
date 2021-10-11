@@ -10,7 +10,20 @@ public class Cuboid {
     }
 
     public boolean isBetween(final Vector3 target) {
-        return target.isBetweenPoints(firstPoint, secondPoint);
+        double x1 = this.firstPoint.getX();
+        double z1 = this.firstPoint.getZ();
+
+        double x2 = this.secondPoint.getX();
+        double z2 = this.secondPoint.getZ();
+
+        double xP = target.getX();
+        double zP = target.getZ();
+
+        if (((x1 < xP && xP < x2) || (x1 > xP && xP > x2)) && ((z1 < zP && zP < z2) || (z1 > zP && zP > z2))) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public Vector3 getFirstPoint() {

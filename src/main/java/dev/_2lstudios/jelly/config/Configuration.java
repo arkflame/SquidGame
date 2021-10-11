@@ -31,8 +31,8 @@ public class Configuration extends YamlConfiguration {
 
     public Vector3 getVector3(final String key) {
         final double x = this.getDouble(key + ".x");
-        final double y = this.getDouble(key + ".x");
-        final double z = this.getDouble(key + ".x");
+        final double y = this.getDouble(key + ".y");
+        final double z = this.getDouble(key + ".z");
 
         return new Vector3(x, y, z);
     }
