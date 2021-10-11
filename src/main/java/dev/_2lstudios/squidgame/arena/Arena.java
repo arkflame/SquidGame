@@ -107,6 +107,12 @@ public class Arena {
         return this;
     }
 
+    public void killPlayer(final SquidPlayer player) {
+        this.addSpectator(player);
+        this.broadcastSound(Sound.ENTITY_GENERIC_EXPLODE);
+        this.broadcastMessage("§c" + player.getBukkitPlayer().getName() + " §eha sido eliminado.");
+    }
+
     public Arena addSpectator(final SquidPlayer player) {
         if (!this.spectators.contains(player)) {
             if (this.players.contains(player)) {

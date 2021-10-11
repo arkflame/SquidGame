@@ -1,7 +1,18 @@
 package dev._2lstudios.squidgame.arena.games;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.Sound;
+import org.bukkit.entity.Player;
+
 import dev._2lstudios.jelly.math.Cuboid;
+import dev._2lstudios.jelly.math.Vector3;
+import dev._2lstudios.squidgame.SquidGame;
 import dev._2lstudios.squidgame.arena.Arena;
+import dev._2lstudios.squidgame.player.SquidPlayer;
 
 public class G1RedGreenLightGame extends ArenaGameBase {
 
@@ -45,6 +56,41 @@ public class G1RedGreenLightGame extends ArenaGameBase {
     @Override
     public void onTimeUp() {
         this.getArena().broadcastTitle("§c¡Se acabó!", "§eEl tiempo se ha agotado");
+
+        final List<SquidPlayer> death = new ArrayList<>();
+        final List<SquidPlayer> alive = new ArrayList<>();
+
+        for (final SquidPlayer squidPlayer : this.getArena().getPlayers()) {
+            final Player player = squidPlayer.getBukkitPlayer();
+            final Location location = player.getLocation();
+            final Vector3 position = new Vector3(location.getX(), location.getY(), location.getZ());
+
+            if (this.getGoalZone().isBetween(position)) {
+                alive.add(squidPlayer);
+            } else {
+                death.add(squidPlayer);
+            }
+        }
+
+        Bukkit.getScheduler().runTaskLater(SquidGame.getInstance(), () -> {
+            for (final SquidPlayer squidPlayer : death) {
+                final Player player = squidPlayer.getBukkitPlayer();
+                player.sendTitle("§4Has muerto", "§cNo has llegado a tiempo", 2, 60, 2);
+                player.playSound(player.getLocation(), Sound.ENTITY_CAT_HURT, 1, 1);
+            }
+
+            for (final SquidPlayer squidPlayer : alive) {
+                final Player player = squidPlayer.getBukkitPlayer();
+                player.sendTitle("§2¡Has pasado!", "§aAvanzas a la siguiente ronda", 2, 60, 2);
+                player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 1);
+            }
+        }, 40L);
+
+        Bukkit.getScheduler().runTaskLater(SquidGame.getInstance(), () -> {
+            for (final SquidPlayer squidPlayer : death) {
+                this.getArena().killPlayer(squidPlayer);
+            }
+        }, 80L);
     }
 
 }

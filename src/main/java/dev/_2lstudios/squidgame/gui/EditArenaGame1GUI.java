@@ -53,10 +53,10 @@ public class EditArenaGame1GUI extends InventoryGUI {
                     key += ".barrier";
                     break;
                 case 2:
-                    key += ".goal";
+                    key += ".killzone";
                     break;
                 case 3:
-                    key += ".killzone";
+                    key += ".goal";
                     break;
             }
 

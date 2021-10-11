@@ -24,7 +24,7 @@ public class PlayerMoveListener implements Listener {
         final SquidPlayer player = (SquidPlayer) this.plugin.getPlayerManager().getPlayer(e.getPlayer());
         final Arena arena = player.getArena();
 
-        if (arena == null) {
+        if (arena == null || player.isSpectator()) {
             return;
         }
 
@@ -37,11 +37,6 @@ public class PlayerMoveListener implements Listener {
                     e.setCancelled(true);
                     e.setTo(e.getFrom());
                 }
-            }
-
-            else if (arena.getState() == ArenaState.FINISHING_GAME) {
-                e.setCancelled(true);
-                e.setTo(e.getFrom());
             }
         }
     }
