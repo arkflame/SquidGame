@@ -152,12 +152,16 @@ public class Arena {
         }
 
         player.getBukkitPlayer().teleport(SquidGame.getInstance().getMainConfig().getLocation("lobby"));
-        scoreboardHook.request(player, SquidGame.getInstance().getMainConfig().getStringList("scoreboard.lobby"));
+        scoreboardHook.request(player, SquidGame.getInstance().getScoreboardConfig().getStringList("lobby"));
         player.setArena(null);
     }
 
     public List<SquidPlayer> getPlayers() {
         return this.players;
+    }
+
+    public List<SquidPlayer> getSpectators() {
+        return this.spectators;
     }
 
     public ArenaState getState() {
@@ -182,6 +186,7 @@ public class Arena {
 
     public void setState(final ArenaState newState) {
         this.state = newState;
+        this.handler.handleArenaSwitchState();
     }
 
     public void setInternalTime(final int time) {
@@ -200,12 +205,13 @@ public class Arena {
     public void nextGame() {
         round++;
 
-        final ArenaGameBase nextGame = this.games.get(0);
+        final ArenaGameBase nextGame = this.games.size() > 0 ? this.games.get(0) : null;
+
         if (nextGame != null) {
             this.games.remove(nextGame);
             this.currentGame = nextGame;
             this.teleportAllPlayers(this.getSpawnPosition());
-            this.state = ArenaState.EXPLAIN_GAME;
+            this.setState(ArenaState.EXPLAIN_GAME);
             this.currentGame.onExplainStart();
             this.internalTime = nextGame.getExplainTime();
             if (this.round != 0) {
@@ -214,7 +220,7 @@ public class Arena {
                 this.broadcastTitle("§6" + this.players.size(), "§eAlive players");
             }
         } else {
-            this.state = ArenaState.FINISHING_GAME;
+            this.setState(ArenaState.FINISHING_ARENA);
             this.broadcastMessage("§cArena finished.");
         }
     }

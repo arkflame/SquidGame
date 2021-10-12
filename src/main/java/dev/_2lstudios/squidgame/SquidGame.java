@@ -87,6 +87,10 @@ public class SquidGame extends JellyPlugin {
         return this.getConfig("config.yml");
     }
 
+    public Configuration getScoreboardConfig() {
+        return this.getConfig("scoreboard.yml");
+    }
+
     /* Managers */
     public ArenaManager getArenaManager() {
         return this.arenaManger;

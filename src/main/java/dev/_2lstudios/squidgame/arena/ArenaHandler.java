@@ -9,11 +9,36 @@ import dev._2lstudios.squidgame.SquidGame;
 public class ArenaHandler {
 
     private final Arena arena;
-    private final Configuration mainConfig;
+    private final Configuration scoreboardConfig;
 
     public ArenaHandler(final Arena arena) {
         this.arena = arena;
-        this.mainConfig = SquidGame.getInstance().getMainConfig();
+        this.scoreboardConfig = SquidGame.getInstance().getScoreboardConfig();
+    }
+
+    public void handleArenaSwitchState() {
+        final ArenaState state = this.arena.getState();
+        this.arena.broadcastMessage(state.toString());
+        switch (state) {
+            case WAITING:
+                arena.broadcastScoreboard(this.scoreboardConfig.getStringList("waiting"));
+                break;
+            case EXPLAIN_GAME:
+                arena.broadcastScoreboard(this.scoreboardConfig.getStringList("explaining_game"));
+                break;
+            case FINISHING_GAME:
+                arena.broadcastScoreboard(this.scoreboardConfig.getStringList("finishing_game"));
+                break;
+            case FINISHING_ARENA:
+                arena.broadcastScoreboard(this.scoreboardConfig.getStringList("finishing"));
+                break;
+            case IN_GAME:
+                arena.broadcastScoreboard(this.scoreboardConfig.getStringList("in_game"));
+                break;
+            case STARTING:
+                arena.broadcastScoreboard(this.scoreboardConfig.getStringList("starting"));
+                break;
+        }
     }
 
     public void handlePlayerJoin(final Player bukkitPlayer) {
@@ -21,13 +46,9 @@ public class ArenaHandler {
                 + "/" + arena.getMaxPlayers() + ")");
 
         if (arena.getPlayers().size() >= arena.getMinPlayers() && arena.getState() == ArenaState.WAITING) {
+            arena.setInternalTime(30);
             arena.setState(ArenaState.STARTING);
-            arena.setInternalTime(10);
             arena.broadcastMessage("§aStarting the game in " + arena.getInternalTime() + " seconds.");
-
-            arena.broadcastScoreboard(this.mainConfig.getStringList("scoreboard.starting"));
-        } else {
-            arena.broadcastScoreboard(this.mainConfig.getStringList("scoreboard.prelobby"));
         }
     }
 
@@ -38,16 +59,14 @@ public class ArenaHandler {
         if (arena.getPlayers().size() < arena.getMinPlayers() && arena.getState() == ArenaState.STARTING) {
             arena.setState(ArenaState.WAITING);
             arena.broadcastMessage("§cNo enough players to start the game, required: " + arena.getMinPlayers());
-            arena.broadcastScoreboard(this.mainConfig.getStringList("scoreboard.prelobby"));
+            arena.setInternalTime(30);
         }
     }
 
     public void handleArenaStart() {
-        arena.setState(ArenaState.EXPLAIN_GAME);
         arena.broadcastMessage("§aGame started, good luck!");
         arena.nextGame();
         arena.broadcastSound(Sound.ENTITY_EXPERIENCE_ORB_PICKUP);
-        arena.broadcastScoreboard(this.mainConfig.getStringList("scoreboard.in_game"));
     }
 
     public void handleArenaTick() {

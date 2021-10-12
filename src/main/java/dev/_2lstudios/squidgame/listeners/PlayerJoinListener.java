@@ -21,8 +21,8 @@ public class PlayerJoinListener implements Listener {
     @EventHandler
     public void onPlayerJoin(final PlayerJoinEvent e) {
         final SquidPlayer squidPlayer = (SquidPlayer) this.plugin.getPlayerManager().getPlayer(e.getPlayer());
-        final Configuration config = this.plugin.getMainConfig();
+        final Configuration scoreboardConfig = this.plugin.getScoreboardConfig();
 
-        scoreboardHook.request(squidPlayer, config.getStringList("scoreboard.lobby"));
+        scoreboardHook.request(squidPlayer, scoreboardConfig.getStringList("lobby"));
     }
 }
