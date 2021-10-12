@@ -3,6 +3,9 @@ description: ${description}
 author: ${author}
 main: ${mainClass}
 version: ${version}
+softdepend:
+  - "PlaceholderAPI"
+  - "SwiftBoard"
 url: ${url}
 commands:
   squidgame:

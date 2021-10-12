@@ -13,6 +13,7 @@ import dev._2lstudios.squidgame.SquidGame;
 import dev._2lstudios.squidgame.arena.games.ArenaGameBase;
 import dev._2lstudios.squidgame.arena.games.G0WaitLobby;
 import dev._2lstudios.squidgame.arena.games.G1RedGreenLightGame;
+import dev._2lstudios.squidgame.hooks.ScoreboardHook;
 import dev._2lstudios.squidgame.player.SquidPlayer;
 
 public class Arena {
@@ -21,6 +22,7 @@ public class Arena {
     private final List<SquidPlayer> spectators;
     private final List<ArenaGameBase> games;
 
+    private final ScoreboardHook scoreboardHook;
     private final Configuration arenaConfig;
     private final ArenaHandler handler;
     private final World world;
@@ -32,11 +34,13 @@ public class Arena {
     private int internalTime;
     private int round = -1;
 
-    public Arena(final World world, final String name, final Configuration arenaConfig) {
+    public Arena(final World world, final String name, final ScoreboardHook scoreboardHook,
+            final Configuration arenaConfig) {
         this.players = new ArrayList<>();
         this.spectators = new ArrayList<>();
         this.games = new ArrayList<>();
 
+        this.scoreboardHook = scoreboardHook;
         this.arenaConfig = arenaConfig;
         this.handler = new ArenaHandler(this);
         this.world = world;
@@ -61,6 +65,16 @@ public class Arena {
     public void broadcastTitle(final String title, final String subtitle) {
         for (final Player player : this.world.getPlayers()) {
             player.sendTitle(title, subtitle, 2, 40, 2);
+        }
+    }
+
+    public void broadcastScoreboard(final List<String> lines) {
+        for (final SquidPlayer player : this.players) {
+            scoreboardHook.request(player, lines);
+        }
+
+        for (final SquidPlayer player : this.spectators) {
+            scoreboardHook.request(player, lines);
         }
     }
 
@@ -138,6 +152,7 @@ public class Arena {
         }
 
         player.getBukkitPlayer().teleport(SquidGame.getInstance().getMainConfig().getLocation("lobby"));
+        scoreboardHook.request(player, SquidGame.getInstance().getMainConfig().getStringList("scoreboard.lobby"));
         player.setArena(null);
     }
 

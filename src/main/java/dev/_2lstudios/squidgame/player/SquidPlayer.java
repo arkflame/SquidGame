@@ -7,6 +7,7 @@ import dev._2lstudios.jelly.player.PluginPlayer;
 import dev._2lstudios.squidgame.arena.Arena;
 
 public class SquidPlayer extends PluginPlayer {
+
     private Arena arena = null;
     private PlayerWand wand = null;
 

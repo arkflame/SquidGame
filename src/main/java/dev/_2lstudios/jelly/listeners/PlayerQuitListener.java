@@ -1,6 +1,7 @@
 package dev._2lstudios.jelly.listeners;
 
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 
@@ -13,7 +14,7 @@ public class PlayerQuitListener implements Listener {
         this.plugin = plugin;
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.MONITOR)
     public void onPlayerQuit(final PlayerQuitEvent e) {
         if (this.plugin.getPluginPlayerManager() != null) {
             this.plugin.getPluginPlayerManager().removePlayer(e.getPlayer());

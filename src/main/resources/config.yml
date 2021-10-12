@@ -1,4 +1,45 @@
-concurrent-max-games: 5
+game:
+  min_players: 2
+  max_players: 100
+
+scoreboard:
+  lobby:
+    - "&e&lSQUIDGAME"
+    - ""
+    - "&eWins: &a%squidgame_player_wins%"
+    - "&eDeaths: &c%squidgame_player_deaths%"
+    - ""
+    - "&ePlayers in game: &a%squidgame_players_ingame%"
+    - "&ePlayers in lobby: &a%squidgame_players_inlobby%"
+    - ""
+    - "&eplay.arkflame.com"
+  waiting:
+    - "&e&lSQUIDGAME"
+    - "&7%squidgame_arena_name%"
+    - ""
+    - "&ePlayers: &a%squidgame_arena_players%/%squidgame_arena_maxplayers%"
+    - "&eRequired to start: &c%squidgame_arena_requiredplayers%"
+    - ""
+    - "&eplay.arkflame.com"
+  starting:
+    - "&e&lSQUIDGAME"
+    - "&7%squidgame_arena_name%"
+    - ""
+    - "&ePlayers: &a%squidgame_arena_players%/%squidgame_arena_maxplayers%"
+    - "&eStarting in: &c%squidgame_arena_time%"
+    - ""
+    - "&eplay.arkflame.com"
+  in_game:
+    - "&e&lSQUIDGAME"
+    - "&7%squidgame_arena_name%"
+    - ""
+    - "&ePlayers alive: &a%squidgame_arena_players%"
+    - "&eSpectators: &c%squidgame_arena_spectators%"
+    - ""
+    - "&eGame: &d%squidgame_arena_game%"
+    - "&eNext in: &b%squidgame_arena_time%"
+    - ""
+    - "&eplay.arkflame.com"
 
 lobby:
   world: ""
@@ -8,6 +49,3 @@ lobby:
   yaw: 0
   pitch: 0
 
-game:
-  min_players: 2
-  max_players: 100

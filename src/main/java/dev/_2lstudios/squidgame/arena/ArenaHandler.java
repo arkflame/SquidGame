@@ -3,12 +3,17 @@ package dev._2lstudios.squidgame.arena;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
+import dev._2lstudios.jelly.config.Configuration;
+import dev._2lstudios.squidgame.SquidGame;
+
 public class ArenaHandler {
 
     private final Arena arena;
+    private final Configuration mainConfig;
 
     public ArenaHandler(final Arena arena) {
         this.arena = arena;
+        this.mainConfig = SquidGame.getInstance().getMainConfig();
     }
 
     public void handlePlayerJoin(final Player bukkitPlayer) {
@@ -19,6 +24,10 @@ public class ArenaHandler {
             arena.setState(ArenaState.STARTING);
             arena.setInternalTime(10);
             arena.broadcastMessage("§aStarting the game in " + arena.getInternalTime() + " seconds.");
+
+            arena.broadcastScoreboard(this.mainConfig.getStringList("scoreboard.starting"));
+        } else {
+            arena.broadcastScoreboard(this.mainConfig.getStringList("scoreboard.prelobby"));
         }
     }
 
@@ -29,6 +38,7 @@ public class ArenaHandler {
         if (arena.getPlayers().size() < arena.getMinPlayers() && arena.getState() == ArenaState.STARTING) {
             arena.setState(ArenaState.WAITING);
             arena.broadcastMessage("§cNo enough players to start the game, required: " + arena.getMinPlayers());
+            arena.broadcastScoreboard(this.mainConfig.getStringList("scoreboard.prelobby"));
         }
     }
 
@@ -37,6 +47,7 @@ public class ArenaHandler {
         arena.broadcastMessage("§aGame started, good luck!");
         arena.nextGame();
         arena.broadcastSound(Sound.ENTITY_EXPERIENCE_ORB_PICKUP);
+        arena.broadcastScoreboard(this.mainConfig.getStringList("scoreboard.in_game"));
     }
 
     public void handleArenaTick() {
