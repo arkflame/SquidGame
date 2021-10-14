@@ -49,7 +49,7 @@ public class ArenaHandler {
                 + "/" + arena.getMaxPlayers() + ")");
 
         if (arena.getPlayers().size() >= arena.getMinPlayers() && arena.getState() == ArenaState.WAITING) {
-            arena.setInternalTime(30);
+            arena.setInternalTime(5);
             arena.setState(ArenaState.STARTING);
             arena.broadcastMessage("§aStarting the game in " + arena.getInternalTime() + " seconds.");
         }

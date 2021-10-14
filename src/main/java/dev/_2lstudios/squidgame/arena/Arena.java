@@ -12,6 +12,7 @@ import dev._2lstudios.jelly.config.Configuration;
 import dev._2lstudios.squidgame.SquidGame;
 import dev._2lstudios.squidgame.arena.games.ArenaGameBase;
 import dev._2lstudios.squidgame.arena.games.G1RedGreenLightGame;
+import dev._2lstudios.squidgame.arena.games.G7SquidGame;
 import dev._2lstudios.squidgame.hooks.ScoreboardHook;
 import dev._2lstudios.squidgame.player.SquidPlayer;
 
@@ -43,6 +44,23 @@ public class Arena {
         this.name = name;
 
         this.resetArena();
+    }
+
+    public void resetArena() {
+        for (final SquidPlayer player : this.getAllPlayers()) {
+            this.removePlayer(player);
+        }
+
+        this.state = ArenaState.WAITING;
+        this.currentGame = null;
+        this.internalTime = -1;
+
+        this.players.clear();
+        this.spectators.clear();
+        this.games.clear();
+
+        this.games.add(new G7SquidGame(this));
+        this.games.add(new G1RedGreenLightGame(this));
     }
 
     public void broadcastMessage(final String message) {
@@ -169,24 +187,6 @@ public class Arena {
         final List<SquidPlayer> result = new ArrayList<>(this.getPlayers());
         result.addAll(this.getSpectators());
         return result;
-    }
-
-    public void resetArena() {
-        for (final SquidPlayer player : this.getAllPlayers()) {
-            this.removePlayer(player);
-        }
-
-        this.state = ArenaState.WAITING;
-        this.currentGame = null;
-        this.internalTime = -1;
-
-        this.players.clear();
-        this.spectators.clear();
-        this.games.clear();
-
-        this.games.add(new G1RedGreenLightGame(this));
-        this.games.add(new G1RedGreenLightGame(this));
-        this.games.add(new G1RedGreenLightGame(this));
     }
 
     public List<SquidPlayer> getPlayers() {

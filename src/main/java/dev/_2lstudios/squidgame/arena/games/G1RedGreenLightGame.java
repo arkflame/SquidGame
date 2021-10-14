@@ -25,7 +25,7 @@ public class G1RedGreenLightGame extends ArenaGameBase {
     private boolean playing = false;
 
     public G1RedGreenLightGame(final Arena arena) {
-        super("§cRed Light §7| §aGreen Light", "first", 15, 90, 5, arena);
+        super("§cRed Light §7| §aGreen Light", "first", 15, 60, 5, arena);
 
         this.barrier = arena.getConfig().getCuboid("games.first.barrier");
         this.killZone = arena.getConfig().getCuboid("games.first.killzone");
