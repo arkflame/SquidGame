@@ -21,6 +21,14 @@ starting:
   - "&eStarting in: &c%squidgame_arena_time%"
   - ""
   - "&eplay.arkflame.com"
+intermission:
+  - "&e&lSQUIDGAME"
+  - "&7%squidgame_arena_name%"
+  - ""
+  - "&ePlayers alive: &a%squidgame_arena_players%"
+  - "&eNext game in: &b%squidgame_arena_time%"
+  - ""
+  - "&eplay.arkflame.com"
 explaining_game:
   - "&e&lSQUIDGAME"
   - "&7%squidgame_arena_name%"
@@ -28,7 +36,7 @@ explaining_game:
   - "&ePlayers alive: &a%squidgame_arena_players%"
   - "&eSpectators: &c%squidgame_arena_spectators%"
   - ""
-  - "&eGame: &d%squidgame_arena_game%"
+  - "&eGame starts in: &b%squidgame_arena_time%"
   - ""
   - "&eplay.arkflame.com"
 in_game:
@@ -48,8 +56,10 @@ finishing_game:
   - "&ePlayers alive: &a%squidgame_arena_players%"
   - "&eSpectators: &c%squidgame_arena_spectators%"
   - ""
+  - "&eBack to lobby in: &b%squidgame_arena_time%"
+  - ""
   - "&eplay.arkflame.com"
-arena_end:
+finishing:
   - "&e&lSQUIDGAME"
   - "&7%squidgame_arena_name%"
   - ""

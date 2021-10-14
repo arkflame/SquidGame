@@ -11,13 +11,11 @@ import org.bukkit.entity.Player;
 import dev._2lstudios.jelly.config.Configuration;
 import dev._2lstudios.squidgame.SquidGame;
 import dev._2lstudios.squidgame.arena.games.ArenaGameBase;
-import dev._2lstudios.squidgame.arena.games.G0WaitLobby;
 import dev._2lstudios.squidgame.arena.games.G1RedGreenLightGame;
 import dev._2lstudios.squidgame.hooks.ScoreboardHook;
 import dev._2lstudios.squidgame.player.SquidPlayer;
 
 public class Arena {
-
     private final List<SquidPlayer> players;
     private final List<SquidPlayer> spectators;
     private final List<ArenaGameBase> games;
@@ -30,9 +28,7 @@ public class Arena {
 
     private ArenaState state = ArenaState.WAITING;
     private ArenaGameBase currentGame;
-
     private int internalTime;
-    private int round = -1;
 
     public Arena(final World world, final String name, final ScoreboardHook scoreboardHook,
             final Configuration arenaConfig) {
@@ -46,7 +42,8 @@ public class Arena {
         this.world = world;
         this.name = name;
 
-        this.games.add(new G0WaitLobby(this));
+        this.games.add(new G1RedGreenLightGame(this));
+        this.games.add(new G1RedGreenLightGame(this));
         this.games.add(new G1RedGreenLightGame(this));
     }
 
@@ -91,7 +88,11 @@ public class Arena {
     }
 
     public Location getSpawnPosition() {
-        if (this.getCurrentGame() != null) {
+        if (this.getState() == ArenaState.INTERMISSION) {
+            final Location loc = this.arenaConfig.getLocation("arena.waiting_room");
+            loc.setWorld(this.world);
+            return loc;
+        } else if (this.getCurrentGame() != null) {
             return this.getCurrentGame().getSpawnPosition();
         } else {
             final Location loc = this.arenaConfig.getLocation("arena.prelobby");
@@ -203,22 +204,16 @@ public class Arena {
     }
 
     public void nextGame() {
-        round++;
-
         final ArenaGameBase nextGame = this.games.size() > 0 ? this.games.get(0) : null;
-
         if (nextGame != null) {
-            this.games.remove(nextGame);
             this.currentGame = nextGame;
+            this.games.remove(nextGame);
+
+            this.setState(ArenaState.INTERMISSION);
             this.teleportAllPlayers(this.getSpawnPosition());
-            this.setState(ArenaState.EXPLAIN_GAME);
-            this.currentGame.onExplainStart();
-            this.internalTime = nextGame.getExplainTime();
-            if (this.round != 0) {
-                this.broadcastTitle("§6Round " + this.round, this.currentGame.getName());
-            } else {
-                this.broadcastTitle("§6" + this.players.size(), "§eAlive players");
-            }
+
+            this.setInternalTime(5);
+            this.broadcastTitle("Intermission", "Next game in 5 seconds");
         } else {
             this.setState(ArenaState.FINISHING_ARENA);
             this.broadcastMessage("§cArena finished.");

@@ -22,20 +22,23 @@ public class ArenaHandler {
             case WAITING:
                 arena.broadcastScoreboard(this.scoreboardConfig.getStringList("waiting"));
                 break;
+            case STARTING:
+                arena.broadcastScoreboard(this.scoreboardConfig.getStringList("starting"));
+                break;
+            case INTERMISSION:
+                arena.broadcastScoreboard(this.scoreboardConfig.getStringList("intermission"));
+                break;
             case EXPLAIN_GAME:
                 arena.broadcastScoreboard(this.scoreboardConfig.getStringList("explaining_game"));
+                break;
+            case IN_GAME:
+                arena.broadcastScoreboard(this.scoreboardConfig.getStringList("in_game"));
                 break;
             case FINISHING_GAME:
                 arena.broadcastScoreboard(this.scoreboardConfig.getStringList("finishing_game"));
                 break;
             case FINISHING_ARENA:
                 arena.broadcastScoreboard(this.scoreboardConfig.getStringList("finishing"));
-                break;
-            case IN_GAME:
-                arena.broadcastScoreboard(this.scoreboardConfig.getStringList("in_game"));
-                break;
-            case STARTING:
-                arena.broadcastScoreboard(this.scoreboardConfig.getStringList("starting"));
                 break;
         }
     }
@@ -104,6 +107,15 @@ public class ArenaHandler {
         else if (arena.getState() == ArenaState.FINISHING_GAME) {
             if (arena.getInternalTime() == 0) {
                 this.arena.nextGame();
+            }
+        }
+
+        else if (arena.getState() == ArenaState.INTERMISSION) {
+            if (arena.getInternalTime() == 0) {
+                arena.setState(ArenaState.EXPLAIN_GAME);
+                arena.teleportAllPlayers(arena.getSpawnPosition());
+                arena.setInternalTime(arena.getCurrentGame().getExplainTime());
+                arena.getCurrentGame().onExplainStart();
             }
         }
     }
