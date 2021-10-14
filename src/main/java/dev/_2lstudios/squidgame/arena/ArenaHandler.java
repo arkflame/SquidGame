@@ -5,6 +5,7 @@ import org.bukkit.entity.Player;
 
 import dev._2lstudios.jelly.config.Configuration;
 import dev._2lstudios.squidgame.SquidGame;
+import dev._2lstudios.squidgame.player.SquidPlayer;
 
 public class ArenaHandler {
 
@@ -55,6 +56,10 @@ public class ArenaHandler {
     }
 
     public void handlePlayerLeave(final Player bukkitPlayer) {
+        if (this.arena.getState() == ArenaState.FINISHING_ARENA) {
+            return;
+        }
+
         arena.broadcastMessage("§c" + bukkitPlayer.getName() + " §ehas leave the game §c(" + arena.getPlayers().size()
                 + "/" + arena.getMaxPlayers() + ")");
 
@@ -117,6 +122,29 @@ public class ArenaHandler {
                 arena.setInternalTime(arena.getCurrentGame().getExplainTime());
                 arena.getCurrentGame().onExplainStart();
             }
+        }
+
+        else if (arena.getState() == ArenaState.FINISHING_ARENA) {
+            if (arena.getInternalTime() == 0) {
+                arena.resetArena();
+            }
+        }
+    }
+
+    public void handleArenaFinish(final ArenaFinishReason reason) {
+        this.arena.setInternalTime(5);
+
+        switch (reason) {
+            case ALL_PLAYERS_DEATH:
+                this.arena.broadcastTitle("§6DRAW", "§cAll players die");
+                return;
+            case ONE_PLAYER_IN_ARENA:
+                final SquidPlayer winner = this.arena.calculateWinner();
+                this.arena.broadcastTitle("§d§lFINISHED",
+                        "§b" + winner.getBukkitPlayer().getName() + " §ehas won the game.");
+                break;
+            case PLUGIN_STOP:
+                break;
         }
     }
 }

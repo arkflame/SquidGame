@@ -42,9 +42,7 @@ public class Arena {
         this.world = world;
         this.name = name;
 
-        this.games.add(new G1RedGreenLightGame(this));
-        this.games.add(new G1RedGreenLightGame(this));
-        this.games.add(new G1RedGreenLightGame(this));
+        this.resetArena();
     }
 
     public void broadcastMessage(final String message) {
@@ -88,7 +86,7 @@ public class Arena {
     }
 
     public Location getSpawnPosition() {
-        if (this.getState() == ArenaState.INTERMISSION) {
+        if (this.getState() == ArenaState.INTERMISSION || this.getState() == ArenaState.FINISHING_ARENA) {
             final Location loc = this.arenaConfig.getLocation("arena.waiting_room");
             loc.setWorld(this.world);
             return loc;
@@ -111,6 +109,12 @@ public class Arena {
         }
     }
 
+    public void finishArena(final ArenaFinishReason reason) {
+        this.handler.handleArenaFinish(reason);
+        this.setState(ArenaState.FINISHING_ARENA);
+        this.teleportAllPlayers(this.getSpawnPosition());
+    }
+
     public Arena addPlayer(final SquidPlayer player) {
         if (!this.players.contains(player) && !this.spectators.contains(player)) {
             this.players.add(player);
@@ -126,6 +130,10 @@ public class Arena {
         this.addSpectator(player);
         this.broadcastSound(Sound.ENTITY_GENERIC_EXPLODE);
         this.broadcastMessage("§c" + player.getBukkitPlayer().getName() + " §eha sido eliminado.");
+
+        if (this.isAllPlayersDeath()) {
+            this.finishArena(ArenaFinishReason.ALL_PLAYERS_DEATH);
+        }
     }
 
     public Arena addSpectator(final SquidPlayer player) {
@@ -155,6 +163,30 @@ public class Arena {
         player.getBukkitPlayer().teleport(SquidGame.getInstance().getMainConfig().getLocation("lobby"));
         scoreboardHook.request(player, SquidGame.getInstance().getScoreboardConfig().getStringList("lobby"));
         player.setArena(null);
+    }
+
+    public List<SquidPlayer> getAllPlayers() {
+        final List<SquidPlayer> result = new ArrayList<>(this.getPlayers());
+        result.addAll(this.getSpectators());
+        return result;
+    }
+
+    public void resetArena() {
+        for (final SquidPlayer player : this.getAllPlayers()) {
+            this.removePlayer(player);
+        }
+
+        this.state = ArenaState.WAITING;
+        this.currentGame = null;
+        this.internalTime = -1;
+
+        this.players.clear();
+        this.spectators.clear();
+        this.games.clear();
+
+        this.games.add(new G1RedGreenLightGame(this));
+        this.games.add(new G1RedGreenLightGame(this));
+        this.games.add(new G1RedGreenLightGame(this));
     }
 
     public List<SquidPlayer> getPlayers() {
@@ -196,6 +228,18 @@ public class Arena {
         }
     }
 
+    public SquidPlayer calculateWinner() {
+        if (this.players.size() == 1) {
+            return this.players.get(0);
+        } else {
+            return null;
+        }
+    }
+
+    public boolean isAllPlayersDeath() {
+        return this.players.isEmpty();
+    }
+
     public void doArenaTick() {
         if (this.internalTime >= 0) {
             this.internalTime--;
@@ -204,19 +248,19 @@ public class Arena {
     }
 
     public void nextGame() {
-        final ArenaGameBase nextGame = this.games.size() > 0 ? this.games.get(0) : null;
-        if (nextGame != null) {
-            this.currentGame = nextGame;
-            this.games.remove(nextGame);
-
-            this.setState(ArenaState.INTERMISSION);
-            this.teleportAllPlayers(this.getSpawnPosition());
-
-            this.setInternalTime(5);
-            this.broadcastTitle("Intermission", "Next game in 5 seconds");
-        } else {
-            this.setState(ArenaState.FINISHING_ARENA);
-            this.broadcastMessage("§cArena finished.");
+        if (this.calculateWinner() != null) {
+            this.finishArena(ArenaFinishReason.ONE_PLAYER_IN_ARENA);
+            return;
         }
+
+        final ArenaGameBase nextGame = this.games.get(0);
+        this.currentGame = nextGame;
+        this.games.remove(nextGame);
+
+        this.setState(ArenaState.INTERMISSION);
+        this.teleportAllPlayers(this.getSpawnPosition());
+
+        this.setInternalTime(5);
+        this.broadcastTitle("Intermission", "Next game in 5 seconds");
     }
 }

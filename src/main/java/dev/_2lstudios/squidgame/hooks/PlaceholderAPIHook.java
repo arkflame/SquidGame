@@ -47,6 +47,10 @@ public class PlaceholderAPIHook extends PlaceholderExpansion {
         switch (identifier) {
             case "players":
                 return arena.getPlayers().size() + "";
+            case "winner":
+                final SquidPlayer winner = arena.calculateWinner();
+                final String name = winner != null ? winner.getBukkitPlayer().getName() : "None";
+                return name;
             case "maxplayers":
                 return arena.getMaxPlayers() + "";
             case "required":
