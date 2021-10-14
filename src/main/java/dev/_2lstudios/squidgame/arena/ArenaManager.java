@@ -14,16 +14,13 @@ import dev._2lstudios.squidgame.SquidGame;
 import dev._2lstudios.squidgame.errors.ArenaAlreadyExistException;
 import dev._2lstudios.squidgame.errors.ArenaMisconfiguredException;
 import dev._2lstudios.squidgame.errors.NoAvailableArenaException;
-import dev._2lstudios.squidgame.hooks.ScoreboardHook;
 
 public class ArenaManager {
 
-    private final ScoreboardHook scoreboardHook;
     private final List<Arena> arenas;
     private final File arenasPath;
 
     public ArenaManager(final SquidGame plugin) {
-        this.scoreboardHook = plugin.getScoreboardHook();
         this.arenas = new ArrayList<>();
         this.arenasPath = new File(plugin.getDataFolder(), "arenas");
 
@@ -55,7 +52,7 @@ public class ArenaManager {
                     world = new WorldCreator(arenaConfig.getString("arena.world")).createWorld();
                 }
 
-                final Arena arena = new Arena(world, name, scoreboardHook, arenaConfig);
+                final Arena arena = new Arena(world, name, arenaConfig);
                 this.arenas.add(arena);
             }
         }
@@ -77,7 +74,7 @@ public class ArenaManager {
         }
 
         final Configuration arenaConfig = new Configuration(new File(this.arenasPath, name + ".yml"));
-        final Arena arena = new Arena(world, name, scoreboardHook, arenaConfig);
+        final Arena arena = new Arena(world, name, arenaConfig);
         arenaConfig.save();
         this.arenas.add(arena);
         return arena;

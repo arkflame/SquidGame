@@ -3,45 +3,19 @@ package dev._2lstudios.squidgame.arena;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
-import dev._2lstudios.jelly.config.Configuration;
-import dev._2lstudios.squidgame.SquidGame;
 import dev._2lstudios.squidgame.player.SquidPlayer;
 
 public class ArenaHandler {
-
     private final Arena arena;
-    private final Configuration scoreboardConfig;
 
     public ArenaHandler(final Arena arena) {
         this.arena = arena;
-        this.scoreboardConfig = SquidGame.getInstance().getScoreboardConfig();
     }
 
     public void handleArenaSwitchState() {
         final ArenaState state = this.arena.getState();
-        switch (state) {
-            case WAITING:
-                arena.broadcastScoreboard(this.scoreboardConfig.getStringList("waiting"));
-                break;
-            case STARTING:
-                arena.broadcastScoreboard(this.scoreboardConfig.getStringList("starting"));
-                break;
-            case INTERMISSION:
-                arena.broadcastScoreboard(this.scoreboardConfig.getStringList("intermission"));
-                break;
-            case EXPLAIN_GAME:
-                arena.broadcastScoreboard(this.scoreboardConfig.getStringList("explaining_game"));
-                break;
-            case IN_GAME:
-                arena.broadcastScoreboard(this.scoreboardConfig.getStringList("in_game"));
-                break;
-            case FINISHING_GAME:
-                arena.broadcastScoreboard(this.scoreboardConfig.getStringList("finishing_game"));
-                break;
-            case FINISHING_ARENA:
-                arena.broadcastScoreboard(this.scoreboardConfig.getStringList("finishing"));
-                break;
-        }
+        final String scoreboardKey = state.toString().toLowerCase();
+        this.arena.broadcastScoreboard(scoreboardKey);
     }
 
     public void handlePlayerJoin(final SquidPlayer player) {
@@ -50,20 +24,14 @@ public class ArenaHandler {
         arena.broadcastMessage("§a" + bukkitPlayer.getName() + " §ehas joined the game §a(" + arena.getPlayers().size()
                 + "/" + arena.getMaxPlayers() + ")");
 
+        player.sendScoreboard(this.arena.getState().toString().toLowerCase());
+
         if (arena.getState() == ArenaState.WAITING) {
             if (arena.getPlayers().size() >= arena.getMinPlayers()) {
                 arena.setInternalTime(5);
                 arena.setState(ArenaState.STARTING);
                 arena.broadcastMessage("§aStarting the game in " + arena.getInternalTime() + " seconds.");
             }
-
-            else {
-                this.arena.getScoreboardHook().request(player, this.scoreboardConfig.getStringList("waiting"));
-            }
-        }
-
-        else if (arena.getState() == ArenaState.STARTING) {
-            this.arena.getScoreboardHook().request(player, this.scoreboardConfig.getStringList("starting"));
         }
     }
 

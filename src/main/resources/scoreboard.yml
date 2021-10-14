@@ -59,7 +59,7 @@ finishing_game:
   - "&eBack to lobby in: &b%squidgame_arena_time%"
   - ""
   - "&eplay.arkflame.com"
-finishing:
+finishing_arena:
   - "&e&lSQUIDGAME"
   - "&7%squidgame_arena_name%"
   - ""

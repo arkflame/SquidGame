@@ -7,18 +7,21 @@ import org.bukkit.entity.Player;
 
 import dev._2lstudios.jelly.player.IPluginPlayerManager;
 import dev._2lstudios.jelly.player.PluginPlayer;
+import dev._2lstudios.squidgame.SquidGame;
 
 public class PlayerManager implements IPluginPlayerManager {
 
     private final Map<Player, SquidPlayer> players;
+    private final SquidGame plugin;
 
-    public PlayerManager() {
+    public PlayerManager(final SquidGame plugin) {
         this.players = new HashMap<>();
+        this.plugin = plugin;
     }
 
     @Override
     public PluginPlayer addPlayer(Player player) {
-        final SquidPlayer pluginPlayer = new SquidPlayer(player);
+        final SquidPlayer pluginPlayer = new SquidPlayer(this.plugin, player);
         this.players.put(player, pluginPlayer);
         return pluginPlayer;
     }

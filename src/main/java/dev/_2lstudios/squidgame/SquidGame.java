@@ -45,7 +45,7 @@ public class SquidGame extends JellyPlugin {
 
         // Instantiate managers
         this.arenaManger = new ArenaManager(this);
-        this.playerManager = new PlayerManager();
+        this.playerManager = new PlayerManager(this);
 
         final ScoreboardHook scoreboardHook = new ScoreboardHook(pluginManager);
 

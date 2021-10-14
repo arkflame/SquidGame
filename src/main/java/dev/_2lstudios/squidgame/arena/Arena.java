@@ -9,11 +9,9 @@ import org.bukkit.World;
 import org.bukkit.entity.Player;
 
 import dev._2lstudios.jelly.config.Configuration;
-import dev._2lstudios.squidgame.SquidGame;
 import dev._2lstudios.squidgame.arena.games.ArenaGameBase;
 import dev._2lstudios.squidgame.arena.games.G1RedGreenLightGame;
 import dev._2lstudios.squidgame.arena.games.G7SquidGame;
-import dev._2lstudios.squidgame.hooks.ScoreboardHook;
 import dev._2lstudios.squidgame.player.SquidPlayer;
 
 public class Arena {
@@ -21,7 +19,6 @@ public class Arena {
     private final List<SquidPlayer> spectators;
     private final List<ArenaGameBase> games;
 
-    private final ScoreboardHook scoreboardHook;
     private final Configuration arenaConfig;
     private final ArenaHandler handler;
     private final World world;
@@ -31,13 +28,11 @@ public class Arena {
     private ArenaGameBase currentGame;
     private int internalTime;
 
-    public Arena(final World world, final String name, final ScoreboardHook scoreboardHook,
-            final Configuration arenaConfig) {
+    public Arena(final World world, final String name, final Configuration arenaConfig) {
         this.players = new ArrayList<>();
         this.spectators = new ArrayList<>();
         this.games = new ArrayList<>();
 
-        this.scoreboardHook = scoreboardHook;
         this.arenaConfig = arenaConfig;
         this.handler = new ArenaHandler(this);
         this.world = world;
@@ -59,8 +54,8 @@ public class Arena {
         this.spectators.clear();
         this.games.clear();
 
-        this.games.add(new G7SquidGame(this));
         this.games.add(new G1RedGreenLightGame(this));
+        this.games.add(new G7SquidGame(this));
     }
 
     public void broadcastMessage(final String message) {
@@ -70,24 +65,20 @@ public class Arena {
     }
 
     public void broadcastSound(final Sound sound) {
-        for (final Player player : this.world.getPlayers()) {
-            player.playSound(player.getLocation(), sound, 1, 1);
+        for (final SquidPlayer player : this.getAllPlayers()) {
+            player.playSound(sound);
         }
     }
 
     public void broadcastTitle(final String title, final String subtitle) {
-        for (final Player player : this.world.getPlayers()) {
-            player.sendTitle(title, subtitle, 2, 40, 2);
+        for (final SquidPlayer player : this.getAllPlayers()) {
+            player.sendTitle(title, subtitle, 2);
         }
     }
 
-    public void broadcastScoreboard(final List<String> lines) {
-        for (final SquidPlayer player : this.players) {
-            scoreboardHook.request(player, lines);
-        }
-
-        for (final SquidPlayer player : this.spectators) {
-            scoreboardHook.request(player, lines);
+    public void broadcastScoreboard(final String scoreboardKey) {
+        for (final SquidPlayer player : this.getAllPlayers()) {
+            player.sendScoreboard(scoreboardKey);
         }
     }
 
@@ -118,12 +109,8 @@ public class Arena {
     }
 
     public void teleportAllPlayers(final Location location) {
-        for (final SquidPlayer player : this.players) {
-            player.getBukkitPlayer().teleport(location);
-        }
-
-        for (final SquidPlayer player : this.spectators) {
-            player.getBukkitPlayer().teleport(location);
+        for (final SquidPlayer player : this.getAllPlayers()) {
+            player.teleport(location);
         }
     }
 
@@ -146,7 +133,7 @@ public class Arena {
 
     public void killPlayer(final SquidPlayer player, boolean setSpectator) {
         if (setSpectator) {
-            player.setSpectator(true);
+            this.addSpectator(player);
         }
 
         this.broadcastSound(Sound.ENTITY_GENERIC_EXPLODE);
@@ -194,8 +181,8 @@ public class Arena {
             return;
         }
 
-        player.getBukkitPlayer().teleport(SquidGame.getInstance().getMainConfig().getLocation("lobby"));
-        scoreboardHook.request(player, SquidGame.getInstance().getScoreboardConfig().getStringList("lobby"));
+        player.teleportToLobby();
+        player.sendScoreboard("lobby");
         player.setArena(null);
     }
 
@@ -278,9 +265,5 @@ public class Arena {
 
         this.setInternalTime(5);
         this.broadcastTitle("Intermission", "Next game in 5 seconds");
-    }
-
-    public ScoreboardHook getScoreboardHook() {
-        return this.scoreboardHook;
     }
 }
