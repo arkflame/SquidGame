@@ -5,7 +5,7 @@ import dev._2lstudios.squidgame.arena.Arena;
 public class G0WaitLobby extends ArenaGameBase {
 
     public G0WaitLobby(final Arena arena) {
-        super("§cSummary", "waiting_room", 1, 5, 1, arena);
+        super("§cSummary", "waiting_room", 1, 1, 5, arena);
     }
 
     @Override

@@ -21,6 +21,10 @@ public class PlayerMoveListener implements Listener {
 
     @EventHandler
     public void onPlayerMove(final PlayerMoveEvent e) {
+        if (e.getFrom().distance(e.getTo()) <= 0.03) {
+            return;
+        }
+
         final SquidPlayer player = (SquidPlayer) this.plugin.getPlayerManager().getPlayer(e.getPlayer());
         final Arena arena = player.getArena();
 
@@ -36,6 +40,15 @@ public class PlayerMoveListener implements Listener {
                 if (game.getBarrier().isBetween(playerPosition)) {
                     e.setCancelled(true);
                     e.setTo(e.getFrom());
+                }
+            }
+
+            else if (arena.getState() == ArenaState.IN_GAME) {
+                if (!game.isCanWalk()) {
+                    final Vector3 playerPosition = new Vector3(e.getTo().getX(), e.getTo().getY(), e.getTo().getZ());
+                    if (game.getKillZone().isBetween(playerPosition)) {
+                        arena.killPlayer(player);
+                    }
                 }
             }
         }

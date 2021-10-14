@@ -11,4 +11,8 @@ public class NumberUtils {
             return numberNames[number];
         }
     }
+
+    public static int randomNumber(final int min, final int max) {
+        return (int) (Math.random() * (max - min)) + min;
+    }
 }

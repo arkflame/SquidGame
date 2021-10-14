@@ -18,7 +18,6 @@ public class ArenaHandler {
 
     public void handleArenaSwitchState() {
         final ArenaState state = this.arena.getState();
-        this.arena.broadcastMessage(state.toString());
         switch (state) {
             case WAITING:
                 arena.broadcastScoreboard(this.scoreboardConfig.getStringList("waiting"));
