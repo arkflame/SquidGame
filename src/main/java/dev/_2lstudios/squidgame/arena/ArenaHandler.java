@@ -44,14 +44,26 @@ public class ArenaHandler {
         }
     }
 
-    public void handlePlayerJoin(final Player bukkitPlayer) {
+    public void handlePlayerJoin(final SquidPlayer player) {
+        final Player bukkitPlayer = player.getBukkitPlayer();
+
         arena.broadcastMessage("§a" + bukkitPlayer.getName() + " §ehas joined the game §a(" + arena.getPlayers().size()
                 + "/" + arena.getMaxPlayers() + ")");
 
-        if (arena.getPlayers().size() >= arena.getMinPlayers() && arena.getState() == ArenaState.WAITING) {
-            arena.setInternalTime(5);
-            arena.setState(ArenaState.STARTING);
-            arena.broadcastMessage("§aStarting the game in " + arena.getInternalTime() + " seconds.");
+        if (arena.getState() == ArenaState.WAITING) {
+            if (arena.getPlayers().size() >= arena.getMinPlayers()) {
+                arena.setInternalTime(5);
+                arena.setState(ArenaState.STARTING);
+                arena.broadcastMessage("§aStarting the game in " + arena.getInternalTime() + " seconds.");
+            }
+
+            else {
+                this.arena.getScoreboardHook().request(player, this.scoreboardConfig.getStringList("waiting"));
+            }
+        }
+
+        else if (arena.getState() == ArenaState.STARTING) {
+            this.arena.getScoreboardHook().request(player, this.scoreboardConfig.getStringList("starting"));
         }
     }
 
@@ -71,10 +83,6 @@ public class ArenaHandler {
                 arena.broadcastMessage("§cNo enough players to start the game, required: " + arena.getMinPlayers());
                 arena.setInternalTime(30);
             }
-        }
-
-        else if (this.arena.getPlayers().contains(player)) {
-            this.arena.killPlayer(player);
         }
     }
 

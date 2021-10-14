@@ -138,14 +138,17 @@ public class Arena {
             this.players.add(player);
             player.getBukkitPlayer().teleport(this.getSpawnPosition());
             player.setArena(this);
-            this.handler.handlePlayerJoin(player.getBukkitPlayer());
+            this.handler.handlePlayerJoin(player);
         }
 
         return this;
     }
 
-    public void killPlayer(final SquidPlayer player) {
-        this.addSpectator(player);
+    public void killPlayer(final SquidPlayer player, boolean setSpectator) {
+        if (setSpectator) {
+            player.setSpectator(true);
+        }
+
         this.broadcastSound(Sound.ENTITY_GENERIC_EXPLODE);
         this.broadcastMessage("§c" + player.getBukkitPlayer().getName() + " §eha sido eliminado.");
 
@@ -156,6 +159,10 @@ public class Arena {
         else if (this.calculateWinner() != null) {
             this.finishArena(ArenaFinishReason.ONE_PLAYER_IN_ARENA);
         }
+    }
+
+    public void killPlayer(final SquidPlayer player) {
+        this.killPlayer(player, true);
     }
 
     public Arena addSpectator(final SquidPlayer player) {
@@ -175,6 +182,11 @@ public class Arena {
         if (this.players.contains(player)) {
             this.players.remove(player);
             this.handler.handlePlayerLeave(player);
+
+            if (this.getState() != ArenaState.WAITING && this.getState() != ArenaState.STARTING
+                    && this.getState() != ArenaState.FINISHING_ARENA) {
+                this.killPlayer(player);
+            }
         } else if (this.spectators.contains(player)) {
             this.spectators.remove(player);
             player.setSpectator(false);
@@ -266,5 +278,9 @@ public class Arena {
 
         this.setInternalTime(5);
         this.broadcastTitle("Intermission", "Next game in 5 seconds");
+    }
+
+    public ScoreboardHook getScoreboardHook() {
+        return this.scoreboardHook;
     }
 }

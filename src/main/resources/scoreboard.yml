@@ -10,7 +10,7 @@ waiting:
   - "&7%squidgame_arena_name%"
   - ""
   - "&ePlayers: &a%squidgame_arena_players%/%squidgame_arena_maxplayers%"
-  - "&eRequired to start: &c%squidgame_arena_requiredplayers%"
+  - "&eRequired to start: &c%squidgame_arena_required%"
   - ""
   - "&eplay.arkflame.com"
 starting:
