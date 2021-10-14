@@ -152,6 +152,10 @@ public class Arena {
         if (this.isAllPlayersDeath()) {
             this.finishArena(ArenaFinishReason.ALL_PLAYERS_DEATH);
         }
+
+        else if (this.calculateWinner() != null) {
+            this.finishArena(ArenaFinishReason.ONE_PLAYER_IN_ARENA);
+        }
     }
 
     public Arena addSpectator(final SquidPlayer player) {
@@ -170,7 +174,7 @@ public class Arena {
     public void removePlayer(final SquidPlayer player) {
         if (this.players.contains(player)) {
             this.players.remove(player);
-            this.handler.handlePlayerLeave(player.getBukkitPlayer());
+            this.handler.handlePlayerLeave(player);
         } else if (this.spectators.contains(player)) {
             this.spectators.remove(player);
             player.setSpectator(false);

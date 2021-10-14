@@ -12,6 +12,7 @@ import dev._2lstudios.squidgame.arena.ArenaManager;
 import dev._2lstudios.squidgame.commands.SquidGameCommand;
 import dev._2lstudios.squidgame.hooks.PlaceholderAPIHook;
 import dev._2lstudios.squidgame.hooks.ScoreboardHook;
+import dev._2lstudios.squidgame.listeners.EntityDamageListener;
 import dev._2lstudios.squidgame.listeners.PlayerInteractListener;
 import dev._2lstudios.squidgame.listeners.PlayerJoinListener;
 import dev._2lstudios.squidgame.listeners.PlayerMoveListener;
@@ -51,9 +52,10 @@ public class SquidGame extends JellyPlugin {
         this.addCommand(new SquidGameCommand());
 
         // Register listeners
+        this.addEventListener(new EntityDamageListener(this));
         this.addEventListener(new PlayerInteractListener(this));
-        this.addEventListener(new PlayerMoveListener(this));
         this.addEventListener(new PlayerJoinListener(this, scoreboardHook));
+        this.addEventListener(new PlayerMoveListener(this));
 
         // Register player manager
         this.setPluginPlayerManager(this.playerManager);

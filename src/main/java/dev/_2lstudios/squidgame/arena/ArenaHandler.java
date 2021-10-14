@@ -55,18 +55,26 @@ public class ArenaHandler {
         }
     }
 
-    public void handlePlayerLeave(final Player bukkitPlayer) {
+    public void handlePlayerLeave(final SquidPlayer player) {
+        final Player bukkitPlayer = player.getBukkitPlayer();
+
         if (this.arena.getState() == ArenaState.FINISHING_ARENA) {
             return;
         }
 
-        arena.broadcastMessage("§c" + bukkitPlayer.getName() + " §ehas leave the game §c(" + arena.getPlayers().size()
-                + "/" + arena.getMaxPlayers() + ")");
+        else if (this.arena.getState() == ArenaState.WAITING || this.arena.getState() == ArenaState.STARTING) {
+            arena.broadcastMessage("§c" + bukkitPlayer.getName() + " §ehas leave the game §c("
+                    + arena.getPlayers().size() + "/" + arena.getMaxPlayers() + ")");
 
-        if (arena.getPlayers().size() < arena.getMinPlayers() && arena.getState() == ArenaState.STARTING) {
-            arena.setState(ArenaState.WAITING);
-            arena.broadcastMessage("§cNo enough players to start the game, required: " + arena.getMinPlayers());
-            arena.setInternalTime(30);
+            if (arena.getPlayers().size() < arena.getMinPlayers() && arena.getState() == ArenaState.STARTING) {
+                arena.setState(ArenaState.WAITING);
+                arena.broadcastMessage("§cNo enough players to start the game, required: " + arena.getMinPlayers());
+                arena.setInternalTime(30);
+            }
+        }
+
+        else if (this.arena.getPlayers().contains(player)) {
+            this.arena.killPlayer(player);
         }
     }
 
