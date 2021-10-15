@@ -23,6 +23,8 @@ public class Arena {
     private final World world;
     private final String name;
 
+    private String joined, leaved;
+
     private ArenaState state = ArenaState.WAITING;
     private ArenaGameBase currentGame;
     private int internalTime;
@@ -48,6 +50,9 @@ public class Arena {
         this.state = ArenaState.WAITING;
         this.currentGame = null;
         this.internalTime = -1;
+
+        this.leaved = null;
+        this.joined = null;
 
         this.players.clear();
         this.spectators.clear();
@@ -121,6 +126,7 @@ public class Arena {
 
     public Arena addPlayer(final SquidPlayer player) {
         if (!this.players.contains(player) && !this.spectators.contains(player)) {
+            this.joined = player.getBukkitPlayer().getName();
             this.players.add(player);
             player.getBukkitPlayer().teleport(this.getSpawnPosition());
             player.setArena(this);
@@ -166,6 +172,7 @@ public class Arena {
 
     public void removePlayer(final SquidPlayer player) {
         if (this.players.contains(player)) {
+            this.leaved = player.getBukkitPlayer().getName();
             this.players.remove(player);
             this.handler.handlePlayerLeave(player);
 
@@ -228,6 +235,14 @@ public class Arena {
         if (time >= 0) {
             this.internalTime = time;
         }
+    }
+
+    public String getJoinedPlayer() {
+        return this.joined;
+    }
+
+    public String getLeavedPlayer() {
+        return this.leaved;
     }
 
     public SquidPlayer calculateWinner() {
