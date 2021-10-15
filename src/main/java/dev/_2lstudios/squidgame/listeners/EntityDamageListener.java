@@ -6,6 +6,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 
 import dev._2lstudios.squidgame.SquidGame;
+import dev._2lstudios.squidgame.arena.Arena;
 import dev._2lstudios.squidgame.player.SquidPlayer;
 
 public class EntityDamageListener implements Listener {
@@ -19,12 +20,18 @@ public class EntityDamageListener implements Listener {
     public void onEntityDamage(final EntityDamageEvent e) {
         if (e.getEntity() instanceof Player) {
             final Player bukkitPlayer = (Player) e.getEntity();
-            if (bukkitPlayer.getHealth() - e.getDamage() <= 0) {
-                final SquidPlayer squidPlayer = (SquidPlayer) this.plugin.getPlayerManager().getPlayer(bukkitPlayer);
-                if (squidPlayer.getArena() != null) {
-                    squidPlayer.getArena().killPlayer(squidPlayer);
-                    e.setCancelled(true);
-                }
+            final SquidPlayer squidPlayer = (SquidPlayer) this.plugin.getPlayerManager().getPlayer(bukkitPlayer);
+            final Arena arena = squidPlayer.getArena();
+
+            if (arena == null) {
+                return;
+            }
+
+            if (!arena.isPvPAllowed()) {
+                e.setCancelled(true);
+            } else if (bukkitPlayer.getHealth() - e.getDamage() <= 0) {
+                squidPlayer.getArena().killPlayer(squidPlayer);
+                e.setCancelled(true);
             }
         }
     }

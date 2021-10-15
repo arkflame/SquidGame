@@ -28,6 +28,7 @@ public class Arena {
     private ArenaState state = ArenaState.WAITING;
     private ArenaGameBase currentGame;
     private int internalTime;
+    private boolean allowPvP;
 
     public Arena(final World world, final String name, final Configuration arenaConfig) {
         this.players = new ArrayList<>();
@@ -50,6 +51,7 @@ public class Arena {
         this.state = ArenaState.WAITING;
         this.currentGame = null;
         this.internalTime = -1;
+        this.allowPvP = false;
 
         this.leaved = null;
         this.joined = null;
@@ -261,6 +263,14 @@ public class Arena {
 
     public boolean isAllPlayersDeath() {
         return this.players.isEmpty();
+    }
+
+    public boolean isPvPAllowed() {
+        return this.allowPvP;
+    }
+
+    public void setPvPAllowed(final boolean result) {
+        this.allowPvP = result;
     }
 
     public void doArenaTick() {
