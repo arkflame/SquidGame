@@ -11,7 +11,7 @@ public class EditArenaGUI extends InventoryGUI {
     private final Arena arena;
 
     public EditArenaGUI(final Arena arena) {
-        super("§d§lEdit Arena §f" + arena.getName(), 5 * 9);
+        super("§d§lArena §f" + arena.getName(), 5 * 9);
         this.arena = arena;
     }
 

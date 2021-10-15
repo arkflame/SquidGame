@@ -1,5 +1,6 @@
 package dev._2lstudios.squidgame.hooks;
 
+import me.clip.placeholderapi.PlaceholderAPI;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 
 import org.bukkit.entity.Player;
@@ -10,9 +11,11 @@ import dev._2lstudios.squidgame.player.SquidPlayer;
 
 public class PlaceholderAPIHook extends PlaceholderExpansion {
     private final SquidGame plugin;
+    private static boolean enabled = false;
 
     public PlaceholderAPIHook(final SquidGame plugin) {
         this.plugin = plugin;
+        enabled = true;
     }
 
     public String getPlugin() {
@@ -29,6 +32,15 @@ public class PlaceholderAPIHook extends PlaceholderExpansion {
 
     public String getVersion() {
         return plugin.getDescription().getVersion();
+    }
+
+    /* Static Formatter */
+    public static String formatString(final String text, final Player player) {
+        if (enabled) {
+            return PlaceholderAPI.setPlaceholders(player, text);
+        } else {
+            return text;
+        }
     }
 
     /* Formatters */

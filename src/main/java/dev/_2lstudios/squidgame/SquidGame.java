@@ -70,6 +70,8 @@ public class SquidGame extends JellyPlugin {
 
         // Generate config files
         this.getMainConfig();
+        this.getMessagesConfig();
+        this.getScoreboardConfig();
 
         // Banner
         this.getLogger().log(Level.INFO, "§7§m==========================================================");
@@ -89,6 +91,10 @@ public class SquidGame extends JellyPlugin {
     /* Configuration */
     public Configuration getMainConfig() {
         return this.getConfig("config.yml");
+    }
+
+    public Configuration getMessagesConfig() {
+        return this.getConfig("messages.yml");
     }
 
     public Configuration getScoreboardConfig() {

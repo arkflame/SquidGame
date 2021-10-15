@@ -8,12 +8,9 @@ import dev._2lstudios.squidgame.SquidGame;
 import dev._2lstudios.squidgame.arena.Arena;
 
 public abstract class ArenaGameBase {
-
     private final String name;
     private final String configKey;
-
     private final Arena arena;
-
     private final int explainTime, gameTime, finishTime;
 
     public ArenaGameBase(final String name, final String configKey, final int explainTime, final int gameTime,
@@ -28,11 +25,20 @@ public abstract class ArenaGameBase {
         this.finishTime = finishTime;
     }
 
-    public abstract void onExplainStart();
+    public void onExplainStart() {
+        final String key = "games." + this.configKey + ".tutorial";
+        this.broadcastTitleAfterSeconds(3, key + ".title", key + ".items.1");
+        this.broadcastTitleAfterSeconds(6, key + ".title", key + ".items.2");
+        this.broadcastTitleAfterSeconds(9, key + ".title", key + ".items.3");
+        this.broadcastTitleAfterSeconds(12, key + ".title", key + ".items.4");
+        this.broadcastTitleAfterSeconds(15, "events.game-start.title", "events.game-start.subtitle");
+    }
 
-    public abstract void onStart();
+    public void onStart() {
+    }
 
-    public abstract void onTimeUp();
+    public void onTimeUp() {
+    }
 
     public Location getSpawnPosition() {
         final Configuration config = this.arena.getConfig();

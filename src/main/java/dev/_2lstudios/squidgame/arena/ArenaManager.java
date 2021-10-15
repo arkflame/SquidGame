@@ -75,6 +75,7 @@ public class ArenaManager {
 
         final Configuration arenaConfig = new Configuration(new File(this.arenasPath, name + ".yml"));
         final Arena arena = new Arena(world, name, arenaConfig);
+        arenaConfig.set("arena.world", world.getName());
         arenaConfig.save();
         this.arenas.add(arena);
         return arena;

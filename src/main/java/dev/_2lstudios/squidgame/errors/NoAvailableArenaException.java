@@ -1,9 +1,9 @@
 package dev._2lstudios.squidgame.errors;
 
-import dev._2lstudios.jelly.errors.CommandException;
+import dev._2lstudios.jelly.errors.I18nCommandException;
 
-public class NoAvailableArenaException extends CommandException {
+public class NoAvailableArenaException extends I18nCommandException {
     public NoAvailableArenaException() {
-        super("No available arena.");
+        super("arena.no-available-arena", "No available arena.");
     }
 }

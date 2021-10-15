@@ -10,6 +10,7 @@ import dev._2lstudios.jelly.errors.CommandException;
 import dev._2lstudios.squidgame.SquidGame;
 import dev._2lstudios.squidgame.arena.Arena;
 import dev._2lstudios.squidgame.gui.EditArenaGUI;
+import dev._2lstudios.squidgame.player.SquidPlayer;
 
 @Command(name = "editarena", usage = "/squid editarena [arena]", description = "Edit an arena", permission = "squidgame.admin", target = CommandExecutionTarget.ONLY_PLAYER, arguments = {
         String.class })
@@ -20,7 +21,8 @@ public class SquidEditArenaCommand extends CommandListener {
         final Arena arena = ((SquidGame) context.getPlugin()).getArenaManager().getArena(arenaName);
 
         if (arena == null) {
-            context.getPlayer().sendMessage("§cArena " + arenaName + " doesn't exist.");
+            final SquidPlayer player = (SquidPlayer) context.getPluginPlayer();
+            player.sendMessage("setup.arena-not-exist");
         } else {
             EditArenaGUI gui = new EditArenaGUI(arena);
             gui.open(context.getPlayer());

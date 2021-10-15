@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import dev._2lstudios.jelly.player.PluginPlayer;
 import dev._2lstudios.squidgame.SquidGame;
 import dev._2lstudios.squidgame.arena.Arena;
+import dev._2lstudios.squidgame.hooks.PlaceholderAPIHook;
 
 public class SquidPlayer extends PluginPlayer {
 
@@ -68,12 +69,23 @@ public class SquidPlayer extends PluginPlayer {
         this.teleport(this.plugin.getMainConfig().getLocation("lobby"));
     }
 
+    public String getI18n(final String key) {
+        return this.plugin.getMessagesConfig().getString(key);
+    }
+
+    private String formatMessage(final String message) {
+        final String translatedMessage = this.getI18n(message);
+        final String formatColor = ChatColor.translateAlternateColorCodes('&', translatedMessage);
+        final String replacedVariables = PlaceholderAPIHook.formatString(formatColor, this.getBukkitPlayer());
+        return replacedVariables;
+    }
+
     public void sendMessage(final String message) {
-        this.getBukkitPlayer().sendMessage(ChatColor.translateAlternateColorCodes('&', message));
+        this.getBukkitPlayer().sendMessage(this.formatMessage(message));
     }
 
     public void sendTitle(final String title, final String subtitle, final int duration) {
-        this.getBukkitPlayer().sendTitle(title, subtitle, 2, duration * 20, 2);
+        this.getBukkitPlayer().sendTitle(this.formatMessage(title), this.formatMessage(subtitle), 2, duration * 20, 2);
     }
 
     public void sendScoreboard(final String scoreboardKey) {

@@ -1,7 +1,6 @@
 package dev._2lstudios.squidgame.arena;
 
 import org.bukkit.Sound;
-import org.bukkit.entity.Player;
 
 import dev._2lstudios.squidgame.player.SquidPlayer;
 
@@ -19,43 +18,36 @@ public class ArenaHandler {
     }
 
     public void handlePlayerJoin(final SquidPlayer player) {
-        final Player bukkitPlayer = player.getBukkitPlayer();
-
-        arena.broadcastMessage("§a" + bukkitPlayer.getName() + " §ehas joined the game §a(" + arena.getPlayers().size()
-                + "/" + arena.getMaxPlayers() + ")");
-
+        arena.broadcastMessage("arena.join");
         player.sendScoreboard(this.arena.getState().toString().toLowerCase());
 
         if (arena.getState() == ArenaState.WAITING) {
             if (arena.getPlayers().size() >= arena.getMinPlayers()) {
                 arena.setInternalTime(5);
                 arena.setState(ArenaState.STARTING);
-                arena.broadcastMessage("§aStarting the game in " + arena.getInternalTime() + " seconds.");
+                arena.broadcastMessage("arena.starting");
             }
         }
     }
 
     public void handlePlayerLeave(final SquidPlayer player) {
-        final Player bukkitPlayer = player.getBukkitPlayer();
-
         if (this.arena.getState() == ArenaState.FINISHING_ARENA) {
             return;
         }
 
         else if (this.arena.getState() == ArenaState.WAITING || this.arena.getState() == ArenaState.STARTING) {
-            arena.broadcastMessage("§c" + bukkitPlayer.getName() + " §ehas leave the game §c("
-                    + arena.getPlayers().size() + "/" + arena.getMaxPlayers() + ")");
+            arena.broadcastMessage("arena.leave");
 
             if (arena.getPlayers().size() < arena.getMinPlayers() && arena.getState() == ArenaState.STARTING) {
                 arena.setState(ArenaState.WAITING);
-                arena.broadcastMessage("§cNo enough players to start the game, required: " + arena.getMinPlayers());
+                arena.broadcastMessage("arena.no-enough-players");
                 arena.setInternalTime(30);
             }
         }
     }
 
     public void handleArenaStart() {
-        arena.broadcastMessage("§aGame started, good luck!");
+        arena.broadcastMessage("arena.started");
         arena.nextGame();
         arena.broadcastSound(Sound.ENTITY_EXPERIENCE_ORB_PICKUP);
     }
@@ -63,12 +55,12 @@ public class ArenaHandler {
     public void handleArenaTick() {
         if (arena.getState() == ArenaState.STARTING) {
             if (arena.getInternalTime() == 10) {
-                arena.broadcastMessage("§aStarting the game in §e" + arena.getInternalTime() + " §aseconds.");
+                arena.broadcastMessage("arena.starting");
                 arena.broadcastSound(Sound.UI_BUTTON_CLICK);
             }
 
             else if (arena.getInternalTime() <= 5 && arena.getInternalTime() > 0) {
-                arena.broadcastMessage("§aStarting the game in §6" + arena.getInternalTime() + " §aseconds.");
+                arena.broadcastMessage("arena.starting");
                 arena.broadcastSound(Sound.BLOCK_NOTE_BLOCK_PLING);
             }
 
@@ -120,12 +112,10 @@ public class ArenaHandler {
 
         switch (reason) {
             case ALL_PLAYERS_DEATH:
-                this.arena.broadcastTitle("§6DRAW", "§cAll players die");
+                this.arena.broadcastTitle("finish.draw.title", "finish.draw.subtitle");
                 return;
             case ONE_PLAYER_IN_ARENA:
-                final SquidPlayer winner = this.arena.calculateWinner();
-                this.arena.broadcastTitle("§d§lFINISHED",
-                        "§b" + winner.getBukkitPlayer().getName() + " §ehas won the game.");
+                this.arena.broadcastTitle("finish.winner.title", "finish.winner.subtitle");
                 break;
             case PLUGIN_STOP:
                 break;

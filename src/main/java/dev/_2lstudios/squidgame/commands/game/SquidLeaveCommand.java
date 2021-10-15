@@ -18,9 +18,8 @@ public class SquidLeaveCommand extends CommandListener {
         final Arena arena = player.getArena();
         if (arena != null) {
             arena.removePlayer(player);
-            player.getBukkitPlayer().sendMessage("§eSaliendo del juego.");
         } else {
-            player.getBukkitPlayer().sendMessage("§cNo te encuentras en ninguna arena.");
+            player.sendMessage("arena.not-in-game");
         }
     }
 }

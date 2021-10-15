@@ -6,7 +6,6 @@ import java.util.List;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.World;
-import org.bukkit.entity.Player;
 
 import dev._2lstudios.jelly.config.Configuration;
 import dev._2lstudios.squidgame.arena.games.ArenaGameBase;
@@ -59,7 +58,7 @@ public class Arena {
     }
 
     public void broadcastMessage(final String message) {
-        for (final Player player : this.world.getPlayers()) {
+        for (final SquidPlayer player : this.getAllPlayers()) {
             player.sendMessage(message);
         }
     }
@@ -137,7 +136,7 @@ public class Arena {
         }
 
         this.broadcastSound(Sound.ENTITY_GENERIC_EXPLODE);
-        this.broadcastMessage("§c" + player.getBukkitPlayer().getName() + " §eha sido eliminado.");
+        this.broadcastMessage("arena.death");
 
         if (this.isAllPlayersDeath()) {
             this.finishArena(ArenaFinishReason.ALL_PLAYERS_DEATH);
@@ -264,6 +263,6 @@ public class Arena {
         this.teleportAllPlayers(this.getSpawnPosition());
 
         this.setInternalTime(5);
-        this.broadcastTitle("Intermission", "Next game in 5 seconds");
+        this.broadcastTitle("events.intermission.title", "events.intermission.subtitle");
     }
 }

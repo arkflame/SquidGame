@@ -29,7 +29,7 @@ intermission:
   - "&eNext game in: &b%squidgame_arena_time%"
   - ""
   - "&eplay.arkflame.com"
-explaining_game:
+explain_game:
   - "&e&lSQUIDGAME"
   - "&7%squidgame_arena_name%"
   - ""

@@ -1,9 +1,9 @@
 package dev._2lstudios.squidgame.errors;
 
-import dev._2lstudios.jelly.errors.CommandException;
+import dev._2lstudios.jelly.errors.I18nCommandException;
 
-public class ArenaAlreadyExistException extends CommandException {
+public class ArenaAlreadyExistException extends I18nCommandException {
     public ArenaAlreadyExistException(final String name) {
-        super("Arena " + name + " already exist.");
+        super("setup.arena-already-exist", "Arena " + name + " already exist.");
     }
 }
