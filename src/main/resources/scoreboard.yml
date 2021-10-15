@@ -1,6 +1,7 @@
 lobby:
     - "&e&lSQUIDGAME"
     - ""
+    - "&7(Coming soon)"
     - "&eWins: &a%squidgame_player_wins%"
     - "&eDeaths: &c%squidgame_player_deaths%"
     - ""
