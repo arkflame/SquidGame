@@ -1,5 +1,6 @@
 package dev._2lstudios.squidgame.listeners;
 
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,8 +19,15 @@ public class EntityDamageListener implements Listener {
 
     @EventHandler
     public void onEntityDamage(final EntityDamageEvent e) {
-        if (e.getEntity() instanceof Player) {
-            final Player bukkitPlayer = (Player) e.getEntity();
+        final Entity entity = e.getEntity();
+
+        if (entity instanceof Player) {
+            final Player bukkitPlayer = (Player) entity;
+
+            if (!bukkitPlayer.isOnline()) {
+                return;
+            }
+
             final SquidPlayer squidPlayer = (SquidPlayer) this.plugin.getPlayerManager().getPlayer(bukkitPlayer);
             final Arena arena = squidPlayer.getArena();
 
