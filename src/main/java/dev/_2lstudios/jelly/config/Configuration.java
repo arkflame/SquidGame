@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.configuration.InvalidConfigurationException;
@@ -12,6 +11,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 import dev._2lstudios.jelly.math.Cuboid;
 import dev._2lstudios.jelly.math.Vector3;
+import dev._2lstudios.jelly.utils.WorldUtils;
 
 public class Configuration extends YamlConfiguration {
 
@@ -43,8 +43,8 @@ public class Configuration extends YamlConfiguration {
         return new Cuboid(firstPoint, secondPoint);
     }
 
-    public Location getLocation(final String key) {
-        final World world = Bukkit.getWorld(key);
+    public Location getLocation(final String key, final boolean getWorld) {
+        final World world = getWorld ? WorldUtils.getWorldSafe(this.getString(key + ".world")) : null;
         final double x = this.getDouble(key + ".x");
         final double y = this.getDouble(key + ".y");
         final double z = this.getDouble(key + ".z");
@@ -52,6 +52,10 @@ public class Configuration extends YamlConfiguration {
         final float yaw = (float) this.getDouble(key + ".yaw");
 
         return new Location(world, x, y, z, yaw, pitch);
+    }
+
+    public Location getLocation(final String key) {
+        return this.getLocation(key, true);
     }
 
     public void setVector3(final String key, final Vector3 vector) {

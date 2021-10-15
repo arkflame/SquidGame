@@ -4,31 +4,31 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
 import dev._2lstudios.squidgame.SquidGame;
 import dev._2lstudios.squidgame.arena.Arena;
 import dev._2lstudios.squidgame.player.SquidPlayer;
 
-public class EntityDamageListener implements Listener {
+public class EntityDamageByEntityListener implements Listener {
     private final SquidGame plugin;
 
-    public EntityDamageListener(final SquidGame plugin) {
+    public EntityDamageByEntityListener(final SquidGame plugin) {
         this.plugin = plugin;
     }
 
     @EventHandler
-    public void onEntityDamage(final EntityDamageEvent e) {
-        final Entity entity = e.getEntity();
+    public void onEntityDamageByEntity(final EntityDamageByEntityEvent e) {
+        final Entity entity = e.getDamager();
 
         if (entity instanceof Player) {
             final Player bukkitPlayer = (Player) entity;
+            final SquidPlayer squidPlayer = (SquidPlayer) this.plugin.getPlayerManager().getPlayer(bukkitPlayer);
 
-            if (!bukkitPlayer.isOnline()) {
+            if (squidPlayer == null) {
                 return;
             }
 
-            final SquidPlayer squidPlayer = (SquidPlayer) this.plugin.getPlayerManager().getPlayer(bukkitPlayer);
             final Arena arena = squidPlayer.getArena();
 
             if (arena == null) {

@@ -104,13 +104,13 @@ public class Arena {
 
     public Location getSpawnPosition() {
         if (this.getState() == ArenaState.INTERMISSION || this.getState() == ArenaState.FINISHING_ARENA) {
-            final Location loc = this.arenaConfig.getLocation("arena.waiting_room");
+            final Location loc = this.arenaConfig.getLocation("arena.waiting_room", false);
             loc.setWorld(this.world);
             return loc;
         } else if (this.getCurrentGame() != null) {
             return this.getCurrentGame().getSpawnPosition();
         } else {
-            final Location loc = this.arenaConfig.getLocation("arena.prelobby");
+            final Location loc = this.arenaConfig.getLocation("arena.prelobby", false);
             loc.setWorld(this.world);
             return loc;
         }
