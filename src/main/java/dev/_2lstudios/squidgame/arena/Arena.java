@@ -8,6 +8,7 @@ import org.bukkit.Sound;
 import org.bukkit.World;
 
 import dev._2lstudios.jelly.config.Configuration;
+import dev._2lstudios.squidgame.SquidGame;
 import dev._2lstudios.squidgame.arena.games.ArenaGameBase;
 import dev._2lstudios.squidgame.arena.games.G1RedGreenLightGame;
 import dev._2lstudios.squidgame.arena.games.G7SquidGame;
@@ -90,11 +91,11 @@ public class Arena {
     }
 
     public int getMinPlayers() {
-        return this.arenaConfig.getInt("arena.min-players");
+        return SquidGame.getInstance().getMainConfig().getInt("game-settings.min-players");
     }
 
     public int getMaxPlayers() {
-        return this.arenaConfig.getInt("arena.max-players");
+        return SquidGame.getInstance().getMainConfig().getInt("game-settings.max-players");
     }
 
     public Configuration getConfig() {

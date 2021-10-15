@@ -3,6 +3,9 @@ description: ${description}
 author: ${author}
 main: ${mainClass}
 version: ${version}
+api-version: 1.13
+api: 1.13
+softdepends: ["PlaceholderAPI", "SwiftBoard"]
 softdepend:
   - "PlaceholderAPI"
   - "SwiftBoard"

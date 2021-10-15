@@ -28,7 +28,8 @@ public class EditArenaWaitingLobbyGUI extends InventoryGUI {
     public void handle(int id, Player player) {
         switch (id) {
             case 0:
-                this.arena.getConfig().setLocation("arena.waiting_room.spawn", player.getLocation(), false);
+                this.arena.getConfig().setLocation("arena.prelobby", player.getLocation(), false);
+                this.arena.getConfig().setLocation("arena.waiting_room", player.getLocation(), false);
                 player.sendMessage("§eWaiting room spawn §ahas set to your current position.");
                 break;
             case 1:

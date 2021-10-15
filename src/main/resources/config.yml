@@ -1,3 +1,7 @@
+game-settings:
+  min-players: 2
+  max-players: 12
+
 lobby:
   world: ""
   x: 0
