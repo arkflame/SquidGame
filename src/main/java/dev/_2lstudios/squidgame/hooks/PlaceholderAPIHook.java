@@ -57,6 +57,8 @@ public class PlaceholderAPIHook extends PlaceholderExpansion {
 
     private String requestArenaPlaceholder(final Arena arena, final String identifier) {
         switch (identifier) {
+            case "death":
+                return arena.getDeathPlayer() != null ? arena.getDeathPlayer() : "None";
             case "joined":
                 return arena.getJoinedPlayer() != null ? arena.getJoinedPlayer() : "None";
             case "leaved":

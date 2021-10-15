@@ -23,7 +23,7 @@ public class Arena {
     private final World world;
     private final String name;
 
-    private String joined, leaved;
+    private String joined, leaved, death;
 
     private ArenaState state = ArenaState.WAITING;
     private ArenaGameBase currentGame;
@@ -53,6 +53,7 @@ public class Arena {
 
         this.leaved = null;
         this.joined = null;
+        this.death = null;
 
         this.players.clear();
         this.spectators.clear();
@@ -141,6 +142,7 @@ public class Arena {
             this.addSpectator(player);
         }
 
+        this.death = player.getBukkitPlayer().getName();
         this.broadcastSound(Sound.ENTITY_GENERIC_EXPLODE);
         this.broadcastMessage("arena.death");
 
@@ -243,6 +245,10 @@ public class Arena {
 
     public String getLeavedPlayer() {
         return this.leaved;
+    }
+
+    public String getDeathPlayer() {
+        return this.death;
     }
 
     public SquidPlayer calculateWinner() {

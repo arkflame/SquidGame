@@ -33,6 +33,14 @@ events:
   game-pass:
     title: "&2You've passed!"
     subtitle: "&aYou advance to the next round"
+  finish:
+    draw:
+      title: "&6&lDraw"
+      subtitle: "&cAll the players have died"
+    winner:
+      title: "&d&lFinished"
+      subtitle: "&b%squidgame_arena_winner% &ehas won the game"
+
 
 games:
   first:
@@ -50,11 +58,12 @@ games:
     red-light:
       title: "&4&lRed Light"
       subtitle: "&cDO NOT MOVE"
-
-finish:
-  draw:
-    title: "&6&lDraw"
-    subtitle: "&cAll the players have died"
-  winner:
-    title: "&d&lFinished"
-    subtitle: "&b%squid_arena_winner% &ehas won the game"
+  seventh:
+    name: "&dSquid&fGame"
+    tutorial:
+      title: "&r\n"
+      items:
+        "1": "&eYou must push your enemies out of the arena"
+        "2": "&eIf a player is out, they will be eliminated"
+        "3": "&eIf a player dies, they will also be eliminated"
+        "4": "&eYou will win if you are the last one standing"

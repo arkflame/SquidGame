@@ -112,10 +112,10 @@ public class ArenaHandler {
 
         switch (reason) {
             case ALL_PLAYERS_DEATH:
-                this.arena.broadcastTitle("finish.draw.title", "finish.draw.subtitle");
+                this.arena.broadcastTitle("events.finish.draw.title", "events.finish.draw.subtitle");
                 return;
             case ONE_PLAYER_IN_ARENA:
-                this.arena.broadcastTitle("finish.winner.title", "finish.winner.subtitle");
+                this.arena.broadcastTitle("events.finish.winner.title", "events.finish.winner.subtitle");
                 break;
             case PLUGIN_STOP:
                 break;
