@@ -1,60 +1,60 @@
 arena:
-  join: "&a%squidgame_arena_joined% &ese ha unido al juego &b(%squidgame_arena_players%/%squidgame_arena_maxplayers%)"
-  leave: "&c%squidgame_arena_leaved% &eha dejado el juego &b(%squidgame_arena_players%/%squidgame_arena_maxplayers%)"
-  starting: "&eLa partida inicia en &b%squidgame_arena_time% &esegundos."
-  started: "&aLa partida ha iniciado ¡Buena Suerte!"
-  death: "&c%squidgame_arena_death% &eha sido eliminado."
-  no-enough-players: "&cNo hay suficiente jugadores para iniciar la partida, se requieren %squidgame_arena_required%"
-  already-in-game: "&cYa te encuentras en una partida."
-  not-in-game: "&cNo te encuentras en partida."
-  misconfigured-arena: "&cNo hay ninguna arena o esta se encuentra con un fallo de configuración. Contacta al administrador del servidor."
-  no-available-arena: "&cNo hay ninguna arena disponible."
+  join: "&a%squidgame_arena_joined% &ehas joined the game &b(%squidgame_arena_players%/%squidgame_arena_maxplayers%)"
+  leave: "&c%squidgame_arena_leaved% &ehas left the game &b(%squidgame_arena_players%/%squidgame_arena_maxplayers%)"
+  starting: "&eThe game starts in &b%squidgame_arena_time% &eseconds."
+  started: "&aThe game has started Good luck!"
+  death: "&c%squidgame_arena_death% &ehas been eliminated."
+  no-enough-players: "&cNot enough players to start the game, 5 %squidgame_arena_required% required."
+  already-in-game: "&cYou are already in a game."
+  not-in-game: "&cYou are not in game."
+  misconfigured-arena: "&cThere is no arena or it is misconfigured. Contact the server administrator."
+  no-available-arena: "&cThere is no arena available."
 
 setup:
-  arena-not-exist: "&cNo existe ninguna arena con este nombre."
-  arena-already-exist: "&cYa existe una arena con este nombre."
-  arena-created: "&a¡Se ha creado la arena exitosamente! Utiliza &b/squid editarena &e(nombre) &apara editarla."
-  set-lobby: "&aHas definido el lobby en tu posición actual"
+  arena-not-exist: "&cThere is no arena with this name."
+  arena-already-exist: "&cThere is already an arena with this name."
+  arena-created: "&aThe arena has been created successfully! Use &b/squid editarena &e(name) &eto edit it."
+  set-lobby: "&aYou have defined the lobby in your current position."
   
 
 events:
   intermission:
-    title: "&b&lIntermision"
-    subtitle: "&dEl siguiente juego inicia en %squidgame_arena_time% segundos"
+    title: "&b&lIntermission"
+    subtitle: "&dNext game starts in %squidgame_arena_time% seconds"
   game-start:
-    title: "&6¡Adelante!"
-    subtitle: "&aBuena suerte"
+    title: "&6Go Ahead!"
+    subtitle: "&aGood Luck"
   game-timeout:
-    title: "&c¡Se acabó!"
-    subtitle: "&eEl tiempo se ha agotado"
+    title: "&cIt's over!"
+    subtitle: "&etime is over"
   game-timeout-died:
-    title: "&4Has muerto"
-    subtitle: "&cNo has llegado a tiempo"
+    title: "&4You have died"
+    subtitle: "&cYou have not arrived on time"
   game-pass:
-    title: "&2¡Has pasado!"
-    subtitle: "&aAvanzas a la siguiente ronda"
+    title: "&2You've passed!"
+    subtitle: "&aYou advance to the next round"
 
 games:
   first:
-    name: "&cLuz Roja &7| &aLuz Verde"
+    name: "&cRed Light &7| &aGreen Light"
     tutorial:
       title: "&r\n"
       items:
-        "1": "&ePara ganar debes llegar a la meta"
-        "2": "&eSolo podras moverte cuando la muñeca diga &aLuz verde"
-        "3": "&eSi ella detecta que te mueves en &cLuz Roja&e, serás eliminado"
-        "4": "&eSolo tendrán 60 segundos, es hora de comenzar."
+        "1": "&eTo win you must reach the goal"
+        "2": "&eYou can only move when the doll says &aGreen light"
+        "3": "&eIf you move in &cRed Light&e, you will be eliminated"
+        "4": "&eThey'll only have 60 seconds, it's time to start."
     green-light:
-      title: "&2&lO"
-      subtitle: "&aLuz verde"
+      title: "&2&lGreen Light"
+      subtitle: "&aNow you can move"
     red-light:
-      title: "&4&lO"
-      subtitle: "&cLuz roja"
+      title: "&4&lRed Light"
+      subtitle: "&cDO NOT MOVE"
 
 finish:
   draw:
-    title: "&6&lEmpate"
-    subtitle: "&cTodos los jugadores han muerto"
+    title: "&6&lDraw"
+    subtitle: "&cAll the players have died"
   winner:
-    title: "&d&lFinalizado"
-    subtitle: "&b%squid_arena_winner% &eha ganado el juego"
+    title: "&d&lFinished"
+    subtitle: "&b%squid_arena_winner% &ehas won the game"
