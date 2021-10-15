@@ -74,6 +74,11 @@ public class G1RedGreenLightGame extends ArenaGameBase {
     }
 
     @Override
+    public void onStop() {
+        this.playing = false;
+    }
+
+    @Override
     public void onTimeUp() {
         this.getArena().setPvPAllowed(false);
         this.canWalk = false;

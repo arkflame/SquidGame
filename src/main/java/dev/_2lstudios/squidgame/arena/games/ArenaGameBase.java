@@ -40,6 +40,10 @@ public abstract class ArenaGameBase {
     public void onTimeUp() {
     }
 
+    public void onStop () {
+        
+    }
+
     public Location getSpawnPosition() {
         final Configuration config = this.arena.getConfig();
         final Location location = config.getLocation("games." + this.configKey + ".spawn");

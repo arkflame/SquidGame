@@ -123,6 +123,10 @@ public class Arena {
     }
 
     public void finishArena(final ArenaFinishReason reason) {
+        if (this.currentGame != null) {
+            this.currentGame.onStop();
+        }
+
         this.handler.handleArenaFinish(reason);
         this.setState(ArenaState.FINISHING_ARENA);
         this.teleportAllPlayers(this.getSpawnPosition());
@@ -285,6 +289,8 @@ public class Arena {
         if (this.calculateWinner() != null) {
             this.finishArena(ArenaFinishReason.ONE_PLAYER_IN_ARENA);
             return;
+        } else if (this.currentGame != null) {
+            this.currentGame.onStop();
         }
 
         final ArenaGameBase nextGame = this.games.get(0);
