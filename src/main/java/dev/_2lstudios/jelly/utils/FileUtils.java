@@ -12,6 +12,32 @@ import java.util.stream.Stream;
 
 public class FileUtils {
 
+    public static String getBaseName(String fileName) {
+        int pos = fileName.lastIndexOf(".");
+        if (pos > 0 && pos < (fileName.length() - 1)) { // If '.' is not the first or last character.
+            fileName = fileName.substring(0, pos);
+        }
+        return fileName;
+    }
+
+    public static String getBaseName(final File file) {
+        return getBaseName(file.getName());
+    }
+
+    public static void extractFile(final File target, final String name, boolean overwrite) throws IOException {
+        if (target.exists() && !overwrite) {
+            return;
+        }
+
+        final InputStream is = FileUtils.class.getClassLoader().getResourceAsStream(name);
+        Files.copy(is, target.getAbsoluteFile().toPath());
+        is.close();
+    }
+
+    public static void extractFile(final File target, final String name) throws IOException {
+        extractFile(target, name, false);
+    }
+
     public static String readFile(final File file) {
         final StringBuilder contentBuilder = new StringBuilder();
         try (Stream<String> stream = Files.lines(file.toPath(), StandardCharsets.UTF_8)) {
@@ -20,12 +46,6 @@ public class FileUtils {
             e.printStackTrace();
         }
         return contentBuilder.toString();
-    }
-
-    public static void deleteFolder(File source) {
-    }
-
-    public static void deleteFile(File file) {
     }
 
     public static void copyFolder(File source, File destination) {
