@@ -1,7 +1,6 @@
 package dev._2lstudios.squidgame.listeners;
 
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
@@ -35,6 +34,7 @@ public class PlayerMoveListener implements Listener {
             return;
         }
 
+        /* Game 1: Handling */
         if (arena.getCurrentGame() instanceof G1RedGreenLightGame) {
             final G1RedGreenLightGame game = (G1RedGreenLightGame) arena.getCurrentGame();
 
@@ -55,11 +55,14 @@ public class PlayerMoveListener implements Listener {
             }
         }
 
+        /* Game 7: Handling */
         else if (arena.getCurrentGame() instanceof G7SquidGame) {
             final Location loc = e.getTo().clone();
+            final String killBlock = arena.getConfig().getString("games.seventh.kill-block", "sand");
+
             loc.subtract(0, 1, 0);
 
-            if (loc.getBlock().getType() == Material.SAND) {
+            if (loc.getBlock().getType() != null && loc.getBlock().getType().toString().equalsIgnoreCase(killBlock)) {
                 arena.killPlayer(player);
             }
         }

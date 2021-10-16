@@ -24,8 +24,8 @@ public class G1RedGreenLightGame extends ArenaGameBase {
     private boolean canWalk = true;
     private boolean playing = false;
 
-    public G1RedGreenLightGame(final Arena arena) {
-        super("§aGreen Light §7| §cRed Light", "first", 15, 60, 5, arena);
+    public G1RedGreenLightGame(final Arena arena, final int durationTime) {
+        super("§aGreen Light §7| §cRed Light", "first", durationTime, arena);
     }
 
     public Cuboid getBarrier() {

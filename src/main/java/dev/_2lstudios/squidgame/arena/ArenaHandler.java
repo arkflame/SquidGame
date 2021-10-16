@@ -2,13 +2,17 @@ package dev._2lstudios.squidgame.arena;
 
 import org.bukkit.Sound;
 
+import dev._2lstudios.jelly.config.Configuration;
+import dev._2lstudios.squidgame.SquidGame;
 import dev._2lstudios.squidgame.player.SquidPlayer;
 
 public class ArenaHandler {
     private final Arena arena;
+    private final Configuration mainConfig;
 
     public ArenaHandler(final Arena arena) {
         this.arena = arena;
+        this.mainConfig = SquidGame.getInstance().getMainConfig();
     }
 
     public void handleArenaSwitchState() {
@@ -23,7 +27,7 @@ public class ArenaHandler {
 
         if (arena.getState() == ArenaState.WAITING) {
             if (arena.getPlayers().size() >= arena.getMinPlayers()) {
-                arena.setInternalTime(5);
+                arena.setInternalTime(this.mainConfig.getInt("arena.starting-time", 30));
                 arena.setState(ArenaState.STARTING);
                 arena.broadcastMessage("arena.starting");
             }
@@ -40,8 +44,8 @@ public class ArenaHandler {
 
             if (arena.getPlayers().size() < arena.getMinPlayers() && arena.getState() == ArenaState.STARTING) {
                 arena.setState(ArenaState.WAITING);
-                arena.broadcastMessage("arena.no-enough-players");
-                arena.setInternalTime(30);
+                arena.broadcastMessage("game-settings.no-enough-players");
+                arena.setInternalTime(this.mainConfig.getInt("game-settings.starting-time", 30));
             }
         }
     }
@@ -80,7 +84,7 @@ public class ArenaHandler {
         else if (arena.getState() == ArenaState.IN_GAME) {
             if (arena.getInternalTime() == 0) {
                 this.arena.setState(ArenaState.FINISHING_GAME);
-                this.arena.setInternalTime(this.arena.getCurrentGame().getFinishTime());
+                this.arena.setInternalTime(this.mainConfig.getInt("game-settings.finishing-time", 5));
                 this.arena.getCurrentGame().onTimeUp();
             }
         }
@@ -95,7 +99,7 @@ public class ArenaHandler {
             if (arena.getInternalTime() == 0) {
                 arena.setState(ArenaState.EXPLAIN_GAME);
                 arena.teleportAllPlayers(arena.getSpawnPosition());
-                arena.setInternalTime(arena.getCurrentGame().getExplainTime());
+                arena.setInternalTime(15);
                 arena.getCurrentGame().onExplainStart();
             }
         }
@@ -108,7 +112,7 @@ public class ArenaHandler {
     }
 
     public void handleArenaFinish(final ArenaFinishReason reason) {
-        this.arena.setInternalTime(5);
+        this.arena.setInternalTime(this.mainConfig.getInt("game-settings.finishing-time", 5));
 
         switch (reason) {
             case ALL_PLAYERS_DEATH:

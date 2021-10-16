@@ -19,6 +19,7 @@ public class Arena {
     private final List<SquidPlayer> spectators;
     private final List<ArenaGameBase> games;
 
+    private final Configuration mainConfig;
     private final Configuration arenaConfig;
     private final ArenaHandler handler;
     private final World world;
@@ -36,6 +37,7 @@ public class Arena {
         this.spectators = new ArrayList<>();
         this.games = new ArrayList<>();
 
+        this.mainConfig = SquidGame.getInstance().getMainConfig();
         this.arenaConfig = arenaConfig;
         this.handler = new ArenaHandler(this);
         this.world = world;
@@ -62,8 +64,12 @@ public class Arena {
         this.spectators.clear();
         this.games.clear();
 
-        this.games.add(new G1RedGreenLightGame(this));
-        this.games.add(new G7SquidGame(this));
+        this.games.add(new G1RedGreenLightGame(this, mainConfig.getInt("game-settings.game-time.1", 60)));
+        this.games.add(new G7SquidGame(this, mainConfig.getInt("game-settings.game-time.7", 600)));
+    }
+
+    public Configuration getMainConfig() {
+        return this.mainConfig;
     }
 
     public void broadcastMessage(final String message) {
@@ -91,11 +97,11 @@ public class Arena {
     }
 
     public int getMinPlayers() {
-        return SquidGame.getInstance().getMainConfig().getInt("game-settings.min-players");
+        return this.mainConfig.getInt("game-settings.min-players");
     }
 
     public int getMaxPlayers() {
-        return SquidGame.getInstance().getMainConfig().getInt("game-settings.max-players");
+        return this.mainConfig.getInt("game-settings.max-players");
     }
 
     public Configuration getConfig() {

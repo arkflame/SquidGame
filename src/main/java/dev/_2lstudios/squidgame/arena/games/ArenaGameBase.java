@@ -8,21 +8,17 @@ import dev._2lstudios.squidgame.SquidGame;
 import dev._2lstudios.squidgame.arena.Arena;
 
 public abstract class ArenaGameBase {
+
     private final String name;
     private final String configKey;
     private final Arena arena;
-    private final int explainTime, gameTime, finishTime;
+    private final int gameTime;
 
-    public ArenaGameBase(final String name, final String configKey, final int explainTime, final int gameTime,
-            final int finishTime, final Arena arena) {
+    public ArenaGameBase(final String name, final String configKey, final int gameTime, final Arena arena) {
         this.name = name;
         this.configKey = configKey;
-
         this.arena = arena;
-
-        this.explainTime = explainTime;
         this.gameTime = gameTime;
-        this.finishTime = finishTime;
     }
 
     public void onExplainStart() {
@@ -63,16 +59,8 @@ public abstract class ArenaGameBase {
         }, seconds * 20L);
     }
 
-    public int getExplainTime() {
-        return this.explainTime;
-    }
-
     public int getGameTime() {
         return this.gameTime;
-    }
-
-    public int getFinishTime() {
-        return this.finishTime;
     }
 
     public Arena getArena() {

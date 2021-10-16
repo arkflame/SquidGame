@@ -21,6 +21,7 @@ public class Configuration extends YamlConfiguration {
         this.file = file;
     }
 
+    /* Utils methods */
     public void load() throws FileNotFoundException, IOException, InvalidConfigurationException {
         this.load(this.file);
     }
@@ -29,6 +30,41 @@ public class Configuration extends YamlConfiguration {
         this.save(this.file);
     }
 
+    public void safeSave() {
+        try {
+            this.save();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setIfNotExist(final String path, final Object value) {
+        if (!this.contains(path)) {
+            this.set(path, value);
+            this.safeSave();
+        }
+    }
+
+    /* Primitive object get and set */
+    @Override
+    public int getInt(final String path, final int defaultValue) {
+        this.setIfNotExist(path, defaultValue);
+        return super.getInt(path, defaultValue);
+    }
+
+    @Override
+    public String getString(final String path, final String defaultValue) {
+        this.setIfNotExist(path, defaultValue);
+        return super.getString(path, defaultValue);
+    }
+
+    @Override
+    public boolean getBoolean(final String path, final boolean defaultValue) {
+        this.setIfNotExist(path, defaultValue);
+        return super.getBoolean(path, defaultValue);
+    }
+
+    /* Custom object get and set */
     public Vector3 getVector3(final String key) {
         final double x = this.getDouble(key + ".x", Integer.MIN_VALUE);
         final double y = this.getDouble(key + ".y", Integer.MIN_VALUE);

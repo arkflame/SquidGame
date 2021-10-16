@@ -1,6 +1,11 @@
 game-settings:
   min-players: 2
   max-players: 12
+  starting-time: 30
+  finishing-time: 5
+  game-time:
+    "1": 60
+    "7": 600
 
 lobby:
   world: ""
