@@ -39,8 +39,7 @@ public class PlayerMoveListener implements Listener {
             final G1RedGreenLightGame game = (G1RedGreenLightGame) arena.getCurrentGame();
 
             if (arena.getState() == ArenaState.EXPLAIN_GAME) {
-                final Vector3 playerPosition = new Vector3(e.getTo().getX(), e.getTo().getY(), e.getTo().getZ());
-                if (game.getBarrier().isBetween(playerPosition)) {
+                if (game.getBarrier().isBetween(e.getTo())) {
                     e.setCancelled(true);
                     e.setTo(e.getFrom());
                 }

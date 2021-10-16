@@ -17,30 +17,38 @@ import dev._2lstudios.squidgame.player.SquidPlayer;
 
 public class G1RedGreenLightGame extends ArenaGameBase {
 
-    private final Cuboid barrier;
-    private final Cuboid killZone;
-    private final Cuboid goalZone;
+    private Cuboid barrier;
+    private Cuboid killZone;
+    private Cuboid goalZone;
 
     private boolean canWalk = true;
     private boolean playing = false;
 
     public G1RedGreenLightGame(final Arena arena) {
         super("§aGreen Light §7| §cRed Light", "first", 15, 60, 5, arena);
-
-        this.barrier = arena.getConfig().getCuboid("games.first.barrier");
-        this.killZone = arena.getConfig().getCuboid("games.first.killzone");
-        this.goalZone = arena.getConfig().getCuboid("games.first.goal");
     }
 
     public Cuboid getBarrier() {
+        if (this.barrier == null) {
+            this.barrier = this.getArena().getConfig().getCuboid("games.first.barrier");
+        }
+
         return this.barrier;
     }
 
     public Cuboid getKillZone() {
+        if (this.killZone == null) {
+            this.killZone = this.getArena().getConfig().getCuboid("games.first.killzone");
+        }
+
         return this.killZone;
     }
 
     public Cuboid getGoalZone() {
+        if (this.goalZone == null) {
+            this.goalZone = this.getArena().getConfig().getCuboid("games.first.goal");
+        }
+
         return this.goalZone;
     }
 

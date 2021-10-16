@@ -30,9 +30,13 @@ public class Configuration extends YamlConfiguration {
     }
 
     public Vector3 getVector3(final String key) {
-        final double x = this.getDouble(key + ".x");
-        final double y = this.getDouble(key + ".y");
-        final double z = this.getDouble(key + ".z");
+        final double x = this.getDouble(key + ".x", Integer.MIN_VALUE);
+        final double y = this.getDouble(key + ".y", Integer.MIN_VALUE);
+        final double z = this.getDouble(key + ".z", Integer.MIN_VALUE);
+
+        if (x == Integer.MIN_VALUE || y == Integer.MIN_VALUE || z == Integer.MIN_VALUE) {
+            return null;
+        }
 
         return new Vector3(x, y, z);
     }
@@ -40,6 +44,11 @@ public class Configuration extends YamlConfiguration {
     public Cuboid getCuboid(final String key) {
         final Vector3 firstPoint = this.getVector3(key + ".first_point");
         final Vector3 secondPoint = this.getVector3(key + ".second_point");
+
+        if (firstPoint == null || secondPoint == null) {
+            return null;
+        }
+
         return new Cuboid(firstPoint, secondPoint);
     }
 

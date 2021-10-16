@@ -4,7 +4,7 @@ arena:
   starting: "&eThe game starts in &b%squidgame_arena_time% &eseconds."
   started: "&aThe game has started Good luck!"
   death: "&c%squidgame_arena_death% &ehas been eliminated."
-  no-enough-players: "&cNot enough players to start the game, 5 %squidgame_arena_required% required."
+  no-enough-players: "&cNot enough players to start the game, %squidgame_arena_required% required."
   already-in-game: "&cYou are already in a game."
   not-in-game: "&cYou are not in game."
   misconfigured-arena: "&cThere is no arena or it is misconfigured. Contact the server administrator."
