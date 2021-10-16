@@ -61,7 +61,7 @@ public class ReflectionUtils {
     public Class<?> getNetMinecraftClass(String key) {
         try {
             final int lastDot = key.lastIndexOf(".");
-            final String lastKey = key.substring(lastDot > 0 ? lastDot + 1 : 0, key.length());
+            final String lastKey = key.substring(lastDot > 0 ? lastDot + 1 : 0);
             return getClass("net.minecraft.server." + this.version + "." + lastKey);
         } catch (final ClassNotFoundException e) {
             /* Ignored */
@@ -83,7 +83,7 @@ public class ReflectionUtils {
     public Class<?> getCraftBukkitClass(String key) {
         try {
             final int lastDot = key.lastIndexOf(".");
-            final String lastKey = key.substring(lastDot > 0 ? lastDot + 1 : 0, key.length());
+            final String lastKey = key.substring(lastDot > 0 ? lastDot + 1 : 0);
 
             return getClass("org.bukkit.craftbukkit." + this.version + "." + lastKey);
         } catch (final ClassNotFoundException e) {
