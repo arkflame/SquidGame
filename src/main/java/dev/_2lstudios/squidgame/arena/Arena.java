@@ -156,7 +156,7 @@ public class Arena {
         }
 
         this.death = player.getBukkitPlayer().getName();
-        this.broadcastSound(Sound.ENTITY_GENERIC_EXPLODE);
+        this.broadcastSound(this.getMainConfig().getSound("game-settings.sounds.player-death", "EXPLODE"));
         this.broadcastMessage("arena.death");
 
         if (this.isAllPlayersDeath()) {

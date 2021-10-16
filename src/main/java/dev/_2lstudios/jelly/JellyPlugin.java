@@ -13,14 +13,11 @@ import dev._2lstudios.jelly.listeners.InventoryCloseListener;
 import dev._2lstudios.jelly.listeners.PlayerJoinListener;
 import dev._2lstudios.jelly.listeners.PlayerQuitListener;
 import dev._2lstudios.jelly.player.IPluginPlayerManager;
-import dev._2lstudios.jelly.utils.ReflectionUtils;
 
 public class JellyPlugin extends JavaPlugin {
 
     private CommandHandler commandHandler = new CommandHandler(this);
     private ConfigManager configManager = new ConfigManager(this);
-    private ReflectionUtils reflection = new ReflectionUtils();
-
     private IPluginPlayerManager pluginPlayerManager;
 
     public void useInventoryAPI() {
@@ -42,10 +39,6 @@ public class JellyPlugin extends JavaPlugin {
 
     public IPluginPlayerManager getPluginPlayerManager() {
         return this.pluginPlayerManager;
-    }
-
-    public ReflectionUtils getReflection() {
-        return this.reflection;
     }
 
     public void setPluginPlayerManager(final IPluginPlayerManager manager) {

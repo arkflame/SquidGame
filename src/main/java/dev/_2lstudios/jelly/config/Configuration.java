@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.bukkit.Location;
+import org.bukkit.Sound;
 import org.bukkit.World;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -65,6 +66,20 @@ public class Configuration extends YamlConfiguration {
     }
 
     /* Custom object get and set */
+    private Sound getSound(final String key) {
+        final String name = this.getString(key);
+        return Sound.valueOf(name);
+    }
+
+    public Sound getSound(final String key, final String defaultValue) {
+        this.setIfNotExist(key, defaultValue);
+        return this.getSound(key);
+    }
+
+    public Sound getSound(final String key, final Sound defaultValue) {
+        return this.getSound(key, defaultValue.toString());
+    }
+
     public Vector3 getVector3(final String key) {
         final double x = this.getDouble(key + ".x", Integer.MIN_VALUE);
         final double y = this.getDouble(key + ".y", Integer.MIN_VALUE);

@@ -18,14 +18,14 @@ public class EditArenaGUI extends InventoryGUI {
     @Override
     public void init() {
         this.addItem(1,
-                this.createItem("§eFirst game", Material.ENDER_EYE, "§r\n§aGreen Light§7, §cRed Light §7game.\n§r"), 2,
-                2);
+                this.createItem("§eFirst game", Material.ENDER_PEARL, "§r\n§aGreen Light§7, §cRed Light §7game.\n§r"),
+                2, 2);
 
-        this.addItem(2, this.createItem("§cComing soon", Material.GRAY_DYE), 3, 2);
-        this.addItem(3, this.createItem("§cComing soon", Material.GRAY_DYE), 4, 2);
-        this.addItem(4, this.createItem("§cComing soon", Material.GRAY_DYE), 5, 2);
-        this.addItem(5, this.createItem("§cComing soon", Material.GRAY_DYE), 6, 2);
-        this.addItem(6, this.createItem("§cComing soon", Material.GRAY_DYE), 7, 2);
+        this.addItem(2, this.createItem("§cComing soon", Material.COAL), 3, 2);
+        this.addItem(3, this.createItem("§cComing soon", Material.COAL), 4, 2);
+        this.addItem(4, this.createItem("§cComing soon", Material.COAL), 5, 2);
+        this.addItem(5, this.createItem("§cComing soon", Material.COAL), 6, 2);
+        this.addItem(6, this.createItem("§cComing soon", Material.COAL), 7, 2);
 
         this.addItem(7,
                 this.createItem("§eSeventh game", Material.STICK, "§r\n§dSquid§fGame§7, is the Final game.\n§r"), 8, 2);

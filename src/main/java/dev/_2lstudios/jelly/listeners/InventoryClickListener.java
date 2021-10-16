@@ -9,6 +9,7 @@ import org.bukkit.inventory.Inventory;
 
 import dev._2lstudios.jelly.gui.InventoryGUI;
 import dev._2lstudios.jelly.gui.InventoryManager;
+import dev._2lstudios.jelly.utils.ServerUtils;
 
 public class InventoryClickListener implements Listener {
 
@@ -18,7 +19,13 @@ public class InventoryClickListener implements Listener {
             final Player player = (Player) e.getWhoClicked();
             final InventoryGUI gui = InventoryManager.getOpenInventory(player);
 
-            final Inventory clickedInventory = e.getClickedInventory();
+            Inventory clickedInventory;
+            if (ServerUtils.isLegacy()) {
+                clickedInventory = e.getInventory();
+            } else {
+                clickedInventory = e.getClickedInventory();
+            }
+
             final int slot = e.getSlot();
             if (gui != null && clickedInventory.equals(gui.getInventory()) && e.getInventory().getItem(slot) != null) {
                 e.setCancelled(true);

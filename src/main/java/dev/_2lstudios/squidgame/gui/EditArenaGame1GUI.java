@@ -25,9 +25,9 @@ public class EditArenaGame1GUI extends InventoryGUI {
     public void init() {
         this.addItem(0, this.createItem("§eSpawn point", Material.COMPASS, "§r\n§7Set at your current location\n§r"), 2,
                 2);
-        this.addItem(1, this.createItem("§eBarrier", Material.BARREL, "§r\n§7Set with your location wand\n§r"), 4, 2);
-        this.addItem(2, this.createItem("§eKill Zone", Material.ENDER_EYE, "§r\n§7Set with your location wand\n§r"), 6,
-                2);
+        this.addItem(1, this.createItem("§eBarrier", Material.BEDROCK, "§r\n§7Set with your location wand\n§r"), 4, 2);
+        this.addItem(2, this.createItem("§eKill Zone", Material.ENDER_PEARL, "§r\n§7Set with your location wand\n§r"),
+                6, 2);
         this.addItem(3, this.createItem("§eGoal", Material.ARMOR_STAND, "§r\n§7Set with your location wand\n§r"), 8, 2);
 
         this.addItem(99, this.createItem("§cBack", Material.BARRIER), 5, 4);
@@ -44,7 +44,7 @@ public class EditArenaGame1GUI extends InventoryGUI {
             return;
         } else if (id == 0) {
             this.arena.getConfig().setLocation("games.first.spawn", player.getLocation(), false);
-            player.sendMessage("§eFirst game spawn §aset in your current location.");
+            player.sendMessage("§eFirst game spawn§a set in your current location.");
         } else {
             String key = "games.first";
 
@@ -66,7 +66,7 @@ public class EditArenaGame1GUI extends InventoryGUI {
                 player.sendMessage("§cYou need to set area with your region wand first.");
             } else {
                 this.arena.getConfig().setCuboid(key, wand.getCuboid());
-                player.sendMessage("§eFirst game " + key + " §aset with your location wand §7("
+                player.sendMessage("§eFirst game " + key + "§a set with your location wand §7("
                         + wand.getFirstPoint().toString() + ") (" + wand.getSecondPoint().toString() + ")");
             }
         }

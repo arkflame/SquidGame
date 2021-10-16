@@ -2,8 +2,6 @@ package dev._2lstudios.squidgame.player;
 
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
-import org.bukkit.Location;
-import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
 import dev._2lstudios.jelly.player.PluginPlayer;
@@ -15,7 +13,6 @@ public class SquidPlayer extends PluginPlayer {
 
     private Arena arena = null;
     private PlayerWand wand = null;
-
     private boolean spectator = false;
 
     private final SquidGame plugin;
@@ -61,10 +58,6 @@ public class SquidPlayer extends PluginPlayer {
         }
     }
 
-    public void teleport(final Location loc) {
-        this.getBukkitPlayer().teleport(loc);
-    }
-
     public void teleportToLobby() {
         this.teleport(this.plugin.getMainConfig().getLocation("lobby"));
     }
@@ -85,15 +78,11 @@ public class SquidPlayer extends PluginPlayer {
     }
 
     public void sendTitle(final String title, final String subtitle, final int duration) {
-        this.getBukkitPlayer().sendTitle(this.formatMessage(title), this.formatMessage(subtitle), 2, duration * 20, 2);
+        super.sendTitle(this.formatMessage(title), this.formatMessage(subtitle), duration);
     }
 
     public void sendScoreboard(final String scoreboardKey) {
         this.plugin.getScoreboardHook().request(this.getBukkitPlayer(),
                 this.plugin.getScoreboardConfig().getStringList(scoreboardKey));
-    }
-
-    public void playSound(final Sound sound) {
-        this.getBukkitPlayer().playSound(this.getBukkitPlayer().getLocation(), sound, 1, 1);
     }
 }

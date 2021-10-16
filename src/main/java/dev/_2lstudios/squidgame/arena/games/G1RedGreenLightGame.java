@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
 import dev._2lstudios.jelly.math.Cuboid;
@@ -112,12 +111,14 @@ public class G1RedGreenLightGame extends ArenaGameBase {
         Bukkit.getScheduler().runTaskLater(SquidGame.getInstance(), () -> {
             for (final SquidPlayer player : death) {
                 player.sendTitle("events.game-timeout-died.title", "events.game-timeout-died.subtitle", 3);
-                player.playSound(Sound.ENTITY_CAT_HURT);
+                player.playSound(
+                        this.getArena().getMainConfig().getSound("game-settings.sounds.player-loss-game", "CAT_HIT"));
             }
 
             for (final SquidPlayer player : alive) {
                 player.sendTitle("events.game-pass.title", "events.game-pass.subtitle", 3);
-                player.playSound(Sound.ENTITY_PLAYER_LEVELUP);
+                player.playSound(
+                        this.getArena().getMainConfig().getSound("game-settings.sounds.player-pass-game", "LEVELUP"));
             }
         }, 40L);
 

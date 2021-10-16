@@ -1,7 +1,5 @@
 package dev._2lstudios.squidgame.arena;
 
-import org.bukkit.Sound;
-
 import dev._2lstudios.jelly.config.Configuration;
 import dev._2lstudios.squidgame.SquidGame;
 import dev._2lstudios.squidgame.player.SquidPlayer;
@@ -53,19 +51,19 @@ public class ArenaHandler {
     public void handleArenaStart() {
         arena.broadcastMessage("arena.started");
         arena.nextGame();
-        arena.broadcastSound(Sound.ENTITY_EXPERIENCE_ORB_PICKUP);
+        arena.broadcastSound(this.mainConfig.getSound("game-settings.sounds.arena-start", "ORB_PICKUP"));
     }
 
     public void handleArenaTick() {
         if (arena.getState() == ArenaState.STARTING) {
             if (arena.getInternalTime() == 10) {
                 arena.broadcastMessage("arena.starting");
-                arena.broadcastSound(Sound.UI_BUTTON_CLICK);
+                arena.broadcastSound(this.mainConfig.getSound("game-settings.sounds.arena-starting", "CLICK"));
             }
 
             else if (arena.getInternalTime() <= 5 && arena.getInternalTime() > 0) {
                 arena.broadcastMessage("arena.starting");
-                arena.broadcastSound(Sound.BLOCK_NOTE_BLOCK_PLING);
+                arena.broadcastSound(this.mainConfig.getSound("game-settings.sounds.arena-countdown", "NOTE_PLING"));
             }
 
             else if (arena.getInternalTime() == 0) {

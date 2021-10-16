@@ -7,7 +7,6 @@ import dev._2lstudios.jelly.errors.ArgumentParserException;
 import dev._2lstudios.jelly.errors.PlayerOfflineException;
 
 public class CommandArgumentParser {
-
     public static Object parse(final Class<?> clazz, final int index, final String str)
             throws PlayerOfflineException, ArgumentParserException {
         Object result = null;
