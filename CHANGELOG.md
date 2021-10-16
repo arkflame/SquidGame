@@ -9,7 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added 1.8 Compatibility.
 - Added option to configure arena times (Wait, Starting and In-game time)
+- Game sounds are now configurable.
 - Kill block in last game is now configurable.
 
 ### Fixed
