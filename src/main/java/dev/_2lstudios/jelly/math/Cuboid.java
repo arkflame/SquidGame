@@ -18,12 +18,8 @@ public class Cuboid {
 
         double xP = target.getX();
         double zP = target.getZ();
-
-        if (((x1 < xP && xP < x2) || (x1 > xP && xP > x2)) && ((z1 < zP && zP < z2) || (z1 > zP && zP > z2))) {
-            return true;
-        } else {
-            return false;
-        }
+        
+        return ((x1 < xP && xP < x2) || (x1 > xP && xP > x2)) && ((z1 < zP && zP < z2) || (z1 > zP && zP > z2));
     }
 
     public Vector3 getFirstPoint() {
