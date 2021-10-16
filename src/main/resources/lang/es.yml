@@ -1,4 +1,3 @@
-# Coming soon / Proximamente
 arena:
   join: "&a%squidgame_arena_joined% &ese ha unido al juego &b(%squidgame_arena_players%/%squidgame_arena_maxplayers%)"
   leave: "&c%squidgame_arena_leaved% &eha dejado el juego &b(%squidgame_arena_players%/%squidgame_arena_maxplayers%)"
@@ -16,7 +15,6 @@ setup:
   arena-already-exist: "&cYa existe una arena con este nombre."
   arena-created: "&a¡Se ha creado la arena exitosamente! Utiliza &b/squid editarena &e(nombre) &apara editarla."
   set-lobby: "&aHas definido el lobby en tu posición actual"
-  
 
 events:
   intermission:
@@ -34,6 +32,13 @@ events:
   game-pass:
     title: "&2¡Has pasado!"
     subtitle: "&aAvanzas a la siguiente ronda"
+  finish:
+    draw:
+      title: "&6&lEmpate"
+      subtitle: "&cTodos los jugadores han muerto"
+    winner:
+      title: "&d&lFinalizado"
+      subtitle: "&b%squid_arena_winner% &eha ganado el juego"
 
 games:
   first:
@@ -51,11 +56,85 @@ games:
     red-light:
       title: "&4&lO"
       subtitle: "&cLuz roja"
+  seventh:
+    name: "&dSquid&fGame"
+    tutorial:
+      title: "&r\n"
+      items:
+        "1": "&eDebes empujar a tus enemigos afuera de la arena"
+        "2": "&eSi un jugador sale del campo, este será eliminado"
+        "3": "&eAl igual que si un jugador muere, será eliminado"
+        "4": "&eGanará el último jugador sobre pie"
 
-finish:
-  draw:
-    title: "&6&lEmpate"
-    subtitle: "&cTodos los jugadores han muerto"
-  winner:
-    title: "&d&lFinalizado"
-    subtitle: "&b%squid_arena_winner% &eha ganado el juego"
+scoreboard:
+  lobby:
+      - "&e&lSQUIDGAME"
+      - ""
+      - "&7(Próximamente)"
+      - "&eVictorias: &a%squidgame_player_wins%"
+      - "&eDerrotas: &c%squidgame_player_deaths%"
+      - ""
+      - "&eplay.arkflame.com"
+  waiting:
+    - "&e&lSQUIDGAME"
+    - "&7%squidgame_arena_name%"
+    - ""
+    - "&eJugadores: &a%squidgame_arena_players%/%squidgame_arena_maxplayers%"
+    - "&eJugadores necesarios: &c%squidgame_arena_required%"
+    - ""
+    - "&eplay.arkflame.com"
+  starting:
+    - "&e&lSQUIDGAME"
+    - "&7%squidgame_arena_name%"
+    - ""
+    - "&eJugadores: &a%squidgame_arena_players%/%squidgame_arena_maxplayers%"
+    - "&eInicia en: &c%squidgame_arena_time%"
+    - ""
+    - "&eplay.arkflame.com"
+  intermission:
+    - "&e&lSQUIDGAME"
+    - "&7%squidgame_arena_name%"
+    - ""
+    - "&eJugadores vivos: &a%squidgame_arena_players%"
+    - "&eEspectadores: &c%squidgame_arena_spectators%"
+    - ""
+    - "&eSiguiente juego en: &b%squidgame_arena_time%"
+    - ""
+    - "&eplay.arkflame.com"
+  explain_game:
+    - "&e&lSQUIDGAME"
+    - "&7%squidgame_arena_name%"
+    - ""
+    - "&eJugadores vivos: &a%squidgame_arena_players%"
+    - "&eEspectadores: &c%squidgame_arena_spectators%"
+    - ""
+    - "&eInicia en: &b%squidgame_arena_time%"
+    - ""
+    - "&eplay.arkflame.com"
+  in_game:
+    - "&e&lSQUIDGAME"
+    - "&7%squidgame_arena_name%"
+    - ""
+    - "&eJugadores vivos: &a%squidgame_arena_players%"
+    - "&eEspectadores: &c%squidgame_arena_spectators%"
+    - ""
+    - "&eFinaliza en: &b%squidgame_arena_time%"
+    - ""
+    - "&eplay.arkflame.com"
+  finishing_game:
+    - "&e&lSQUIDGAME"
+    - "&7%squidgame_arena_name%"
+    - ""
+    - "&eJugadores vivos: &a%squidgame_arena_players%"
+    - "&eEspectadores: &c%squidgame_arena_spectators%"
+    - ""
+    - "&eVolver al lobby: &b%squidgame_arena_time%"
+    - ""
+    - "&eplay.arkflame.com"
+  finishing_arena:
+    - "&e&lSQUIDGAME"
+    - "&7%squidgame_arena_name%"
+    - ""
+    - "&eGanador: &a%squidgame_arena_winner%"
+    - ""
+    - "&eplay.arkflame.com"
