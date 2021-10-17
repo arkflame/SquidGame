@@ -18,7 +18,9 @@ public class PluginPlayer {
     }
 
     public void playSound(final Sound sound) {
-        this.getBukkitPlayer().playSound(this.getBukkitPlayer().getLocation(), sound, 1, 1);
+        if (sound != null) {
+            this.getBukkitPlayer().playSound(this.getBukkitPlayer().getLocation(), sound, 1, 1);
+        }
     }
 
     public void teleport(final Location loc) {

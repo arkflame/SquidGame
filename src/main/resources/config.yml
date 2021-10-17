@@ -3,6 +3,10 @@ game-settings:
   max-players: 12
   starting-time: 30
   finishing-time: 5
+  game-time:
+    "1": 60
+    "7": 600
+    
   sounds:
     player-loss-game: CAT_HIT
     player-pass-game: LEVELUP
@@ -10,6 +14,8 @@ game-settings:
     arena-starting: CLICK
     arena-countdown: NOTE_PLING
     arena-start: ORB_PICKUP
+    green-light: GHAST_MOAN
+    red-light: BLAZE_HIT
   # For 1.13+
   # sounds:
   #    player-loss-game: ENTITY_CAT_HURT
@@ -18,9 +24,8 @@ game-settings:
   #    arena-starting: UI_BUTTON_CLICK
   #    arena-countdown: BLOCK_NOTE_BLOCK_PLING
   #    arena-start: ENTITY_EXPERIENCE_ORB_PICKUP
-  game-time:
-    "1": 60
-    "7": 600
+  #    green-light: ENTITY_GHAST_AMBIENT
+  #    red-light: ENTITY_BLAZE_HURT
 
 lobby:
   world: ""

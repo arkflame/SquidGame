@@ -68,7 +68,13 @@ public class Configuration extends YamlConfiguration {
     /* Custom object get and set */
     private Sound getSound(final String key) {
         final String name = this.getString(key);
-        return Sound.valueOf(name);
+
+        try {
+            return Sound.valueOf(name);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public Sound getSound(final String key, final String defaultValue) {

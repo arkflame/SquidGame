@@ -58,11 +58,14 @@ public class G1RedGreenLightGame extends ArenaGameBase {
 
         final int time = NumberUtils.randomNumber(2, 5);
         this.getArena().broadcastTitle("games.first.green-light.title", "games.first.green-light.subtitle");
+        this.getArena().broadcastSound(
+                this.getArena().getMainConfig().getSound("game-settings.sounds.green-light", "GHAST_MOAN"));
         this.canWalk = true;
 
         Bukkit.getScheduler().runTaskLater(SquidGame.getInstance(), () -> {
             this.getArena().broadcastTitle("games.first.red-light.title", "games.first.red-light.subtitle");
-
+            this.getArena().broadcastSound(
+                    this.getArena().getMainConfig().getSound("game-settings.sounds.red-light", "BLAZE_HIT"));
             Bukkit.getScheduler().runTaskLater(SquidGame.getInstance(), () -> {
                 this.canWalk = false;
                 final int waitTime = NumberUtils.randomNumber(2, 5);
