@@ -41,17 +41,22 @@ events:
       title: "&d&lFinished"
       subtitle: "&b%squidgame_arena_winner% &ehas won the game"
 
-
 games:
   first:
     name: "&cRed Light &7| &aGreen Light"
     tutorial:
-      title: "&r\n"
-      items:
-        "1": "&eTo win you must reach the goal"
-        "2": "&eYou can only move when the doll says &aGreen light"
-        "3": "&eIf you move in &cRed Light&e, you will be eliminated"
-        "4": "&eThey'll only have 60 seconds, it's time to start."
+      "1": 
+        title: "&6&l1"
+        subtitle: "&eTo win you must reach the goal"
+      "2":
+        title: "&6&l2"
+        subtitle: "&eYou can only move when the doll says &aGreen light"
+      "3":
+        title: "&6&l3"
+        subtitle: "&eIf you move in &cRed Light&e, you will be eliminated"
+      "4":
+        title: "&6&l4"
+        subtitle: "&eThey'll only have 60 seconds, it's time to start."
     green-light:
       title: "&2&lGreen Light"
       subtitle: "&aNow you can move"
@@ -61,9 +66,15 @@ games:
   seventh:
     name: "&dSquid&fGame"
     tutorial:
-      title: "&r\n"
-      items:
-        "1": "&eYou must push your enemies out of the arena"
-        "2": "&eIf a player is out, they will be eliminated"
-        "3": "&eIf a player dies, they will also be eliminated"
-        "4": "&eYou will win if you are the last one standing"
+      "1":
+        title: "&6&l1"
+        subtitle: "&eYou must push your enemies out of the arena"
+      "2":
+        title: "&6&l2"
+        subtitle: "&eIf a player is out, they will be eliminated"
+      "3": 
+        title: "&6&l3"
+        subtitle: "&eIf a player dies, they will also be eliminated"
+      "4":
+        title: "&6&l4"
+        subtitle: "&eYou will win if you are the last one standing"

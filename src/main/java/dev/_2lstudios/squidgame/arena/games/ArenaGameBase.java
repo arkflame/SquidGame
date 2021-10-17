@@ -23,10 +23,10 @@ public abstract class ArenaGameBase {
 
     public void onExplainStart() {
         final String key = "games." + this.configKey + ".tutorial";
-        this.broadcastTitleAfterSeconds(3, key + ".title", key + ".items.1");
-        this.broadcastTitleAfterSeconds(6, key + ".title", key + ".items.2");
-        this.broadcastTitleAfterSeconds(9, key + ".title", key + ".items.3");
-        this.broadcastTitleAfterSeconds(12, key + ".title", key + ".items.4");
+        this.broadcastTitleAfterSeconds(3, key + ".1.title", key + ".1.subtitle");
+        this.broadcastTitleAfterSeconds(6, key + ".2.title", key + ".2.subtitle");
+        this.broadcastTitleAfterSeconds(9, key + ".3.title", key + ".3.subtitle");
+        this.broadcastTitleAfterSeconds(12, key + ".4.title", key + ".4.subtitle");
         this.broadcastTitleAfterSeconds(15, "events.game-start.title", "events.game-start.subtitle");
     }
 
