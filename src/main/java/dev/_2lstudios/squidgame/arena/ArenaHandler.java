@@ -1,5 +1,10 @@
 package dev._2lstudios.squidgame.arena;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.bukkit.Bukkit;
+
 import dev._2lstudios.jelly.config.Configuration;
 import dev._2lstudios.squidgame.SquidGame;
 import dev._2lstudios.squidgame.player.SquidPlayer;
@@ -118,6 +123,16 @@ public class ArenaHandler {
                 return;
             case ONE_PLAYER_IN_ARENA:
                 this.arena.broadcastTitle("events.finish.winner.title", "events.finish.winner.subtitle");
+
+                // Give rewards
+                final List<String> rewardCommands = this.mainConfig.getStringList("game-settings.rewards",
+                        new ArrayList<>());
+
+                for (final String reward : rewardCommands) {
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(),
+                            reward.replace("{winner}", arena.calculateWinner().getBukkitPlayer().getName()));
+                }
+
                 break;
             case PLUGIN_STOP:
                 break;

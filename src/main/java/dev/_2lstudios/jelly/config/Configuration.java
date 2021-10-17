@@ -3,6 +3,7 @@ package dev._2lstudios.jelly.config;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
 
 import org.bukkit.Location;
 import org.bukkit.Sound;
@@ -63,6 +64,11 @@ public class Configuration extends YamlConfiguration {
     public boolean getBoolean(final String path, final boolean defaultValue) {
         this.setIfNotExist(path, defaultValue);
         return super.getBoolean(path, defaultValue);
+    }
+
+    public List<String> getStringList(final String path, final List<String> defaultValue) {
+        this.setIfNotExist(path, defaultValue);
+        return super.getStringList(path);
     }
 
     /* Custom object get and set */

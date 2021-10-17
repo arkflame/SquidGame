@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Now tutorial title is configurable per tutorial item, like subtitle.
 - Added configurable sounds for red-light and green-light game.
+- Added reward system with commands executed by console.
 
 ## [0.1.2] - 2021-10-16
 

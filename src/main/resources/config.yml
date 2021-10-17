@@ -6,7 +6,9 @@ game-settings:
   game-time:
     "1": 60
     "7": 600
-    
+  rewards:
+    - "say {winner} is the winner!"
+    - "eco give {winner} 10"
   sounds:
     player-loss-game: CAT_HIT
     player-pass-game: LEVELUP
