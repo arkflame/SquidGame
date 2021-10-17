@@ -1,0 +1,79 @@
+arena:
+  join: "&a%squidgame_arena_joined% &eoyuna katıldı &b(%squidgame_arena_players%/%squidgame_arena_maxplayers%)"
+  leave: "&c%squidgame_arena_leaved% &eoyundan ayrıldı &b(%squidgame_arena_players%/%squidgame_arena_maxplayers%)"
+  starting: "&eOyun &b%squidgame_arena_time% &esaniye sonra başlayacak."
+  started: "&aOyun başladı! Bol şans!"
+  death: "&c%squidgame_arena_death% &eelendi."
+  no-enough-players: "&cOyuna başlamak için yeterli oyuncu bulunmamakta, %squidgame_arena_required% oyuncu gerekmekte."
+  already-in-game: "&cZaten oyundasın."
+  not-in-game: "&cŞuan'da oyunda değilsin."
+  misconfigured-arena: "&cArena yok veya yanlış yapılandırılmış. Sunucu yöneticisine başvurun."
+  no-available-arena: "&cBurada geçerli bir arena bulunmamakta."
+
+setup:
+  arena-not-exist: "&cBu isimde bir arena bulunmamkta."
+  arena-already-exist: "&cBu isime sahip bir arena bulunmakta."
+  arena-created: "&aArena başarıyla oluşturuldu! Arenayı düzenlemek için &b/squid editarena &e(name) &akomutunu kullanın."
+  set-lobby: "&aGiriş kısmını mevcut pozisyonda ayarladınız."
+  
+events:
+  intermission:
+    title: "&b&lMola!"
+    subtitle: "&dBir dahaki oyun %squidgame_arena_time% saniye sonra başlayacak."
+  game-start:
+    title: "&6Ilerleyin!"
+    subtitle: "&aBol şanslar!"
+  game-timeout:
+    title: "&cZaman bitti!"
+    subtitle: "&eSüre doldu"
+  game-timeout-died:
+    title: "&4Öldün"
+    subtitle: "&cZamanında başaramadığın için öldün"
+  game-pass:
+    title: "&2Geçtin!"
+    subtitle: "&aBir sonraki tura geçmeye hak kazandın"
+  finish:
+    draw:
+      title: "&6&lBerabere"
+      subtitle: "&cBütün oyuncular öldü"
+    winner:
+      title: "&d&lBitti!"
+      subtitle: "&b%squidgame_arena_winner% &eadlı oyuncu oyunu kazandı!"
+
+games:
+  first:
+    name: "&cKırmızı Işık &7| &aYeşil Işık"
+    tutorial:
+      "1":
+        title: "&6&l1"
+        subtitle: "&eKazanmak için hedefe ulaşmalısın"
+      "2":
+        title: "&6&l2"
+        subtitle: "&eYalnızca oyuncak bebek &cYeşil ışık &edediğinde hareket edebilirsiniz."
+      "3":
+        title: "&6&l3"
+        subtitle: "&eEğer &cKırmızı ışık&e dendiğinde hareket ederseniz, ölürsünüz ve elenirsiniz."
+      "4":
+        title: "&6&l4"
+        subtitle: "&eOyunu bitirmek için sadece 60 saniyeniz olacak!"
+    green-light:
+      title: "&2&lYeşil ışık"
+      subtitle: "&aHareket edebilirsin!"
+    red-light:
+      title: "&4&lKırmızı ışık"
+      subtitle: "&cHareket etme!"
+  seventh:
+    name: "&dSquid&fGame"
+    tutorial:
+      "1":
+        title: "&6&l1"
+        subtitle: "&eDüşmanlarınızı arenanın dışına itmelisiniz."
+      "2":
+        title: "&6&l2"
+        subtitle: "&eBir oyuncu arenanın dışına çıkarsa, elenirler."
+      "3":
+        title: "&6&l3"
+        subtitle: "&eBir oyuncu ölürse, onlar da elenir."
+      "4":
+        title: "&6&l4"
+        subtitle: "&eAyakta kalan son kişi olursan kazanırsın"
