@@ -54,7 +54,7 @@ public class SquidPlayer extends PluginPlayer {
         if (result) {
             this.getBukkitPlayer().setGameMode(GameMode.SPECTATOR);
         } else {
-            this.getBukkitPlayer().setGameMode(GameMode.ADVENTURE);
+            this.getBukkitPlayer().setGameMode(GameMode.SURVIVAL);
         }
     }
 

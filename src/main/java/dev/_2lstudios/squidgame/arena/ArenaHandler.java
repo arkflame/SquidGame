@@ -47,7 +47,7 @@ public class ArenaHandler {
 
             if (arena.getPlayers().size() < arena.getMinPlayers() && arena.getState() == ArenaState.STARTING) {
                 arena.setState(ArenaState.WAITING);
-                arena.broadcastMessage("game-settings.no-enough-players");
+                arena.broadcastMessage("arena.no-enough-players");
                 arena.setInternalTime(this.mainConfig.getInt("game-settings.starting-time", 30));
             }
         }

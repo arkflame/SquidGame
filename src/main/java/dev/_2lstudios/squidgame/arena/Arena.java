@@ -3,6 +3,7 @@ package dev._2lstudios.squidgame.arena;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.World;
@@ -202,6 +203,7 @@ public class Arena {
             return;
         }
 
+        player.getBukkitPlayer().setGameMode(GameMode.SURVIVAL);
         player.teleportToLobby();
         player.sendScoreboard("lobby");
         player.setArena(null);
