@@ -1,0 +1,79 @@
+arena:
+  join: "&a%squidgame_arena_joined% &etelah bergabung ke game &b(%squidgame_arena_players%/%squidgame_arena_maxplayers%)"
+  leave: "&c%squidgame_arena_leaved% &etelah keluar dari game &b(%squidgame_arena_players%/%squidgame_arena_maxplayers%)"
+  starting: "&egame akan dimulai dalam &b%squidgame_arena_time% &edetik."
+  started: "&agame telah dimulai, semoga beruntung !"
+  death: "&c%squidgame_arena_death% &etelah di eliminasi."
+  no-enough-players: "&cTidak cukup pemain untuk memulai, %squidgame_arena_required% pemain diperlukan."
+  already-in-game: "&cKamu sudah didalam game."
+  not-in-game: "&cKamu tidak lagi di game."
+  misconfigured-arena: "&cTidak ada arena atau kesalahan konfigurasi, silahkan laporkan ke Administrator."
+  no-available-arena: "&cTidak ada arena yang tersedia."
+
+setup:
+  arena-not-exist: "&cTidak ada arena dengan nama ini."
+  arena-already-exist: "&cSudah ada arena dengan nama ini."
+  arena-created: "&aArena sukses diciptakan, Gunakan &b/squid editarena &e(name) &euntuk melakukan editing."
+  set-lobby: "&aAnda telah menentukan lobi di posisi Anda saat ini."
+
+events:
+  intermission:
+    title: "&b&lIstirahat"
+    subtitle: "&dGame berikutnya dimulai dalam %squidgame_arena_time% detik"
+  game-start:
+    title: "&6Maju"
+    subtitle: "&aSemoga beruntung"
+  game-timeout:
+    title: "&cGame selesai"
+    subtitle: "&eWaktu sudah habis"
+  game-timeout-died:
+    title: "&4Kamu sudah mati"
+    subtitle: "&cKamu belum menyelesaikan game tepat waktu."
+  game-pass:
+    title: "&2Kamu lulus!"
+    subtitle: "&aKamu akan naik ke game berikutnya."
+  finish:
+    draw:
+      title: "&6&lDraw"
+      subtitle: "&cSemua pemain sudah mati."
+    winner:
+      title: "&d&lMenang"
+      subtitle: "&b%squidgame_arena_winner% &eMenang game."
+
+games:
+  first:
+    name: "&cLampu Merah &7| &aLampu Hijau"
+    tutorial:
+      "1": 
+        title: "&6&l1"
+        subtitle: "&eUntuk menang kamu harus ke garis finish"
+      "2":
+        title: "&6&l2"
+        subtitle: "&eKamu hanya boleh bergerak jika, boneka mengatakan &aLampu Hijau"
+      "3":
+        title: "&6&l3"
+        subtitle: "&eJika kamu bergerak di &cLampu merah&e, kamu akan di eliminasi"
+      "4":
+        title: "&6&l4"
+        subtitle: "&eKamu hanya punya 60 detik, untuk menyelesaikan game ini."
+    green-light:
+      title: "&2&lLampu Hijau"
+      subtitle: "&aKamu boleh bergerak."
+    red-light:
+      title: "&4&lLampu merah"
+      subtitle: "&cBERHENTI"
+  seventh:
+    name: "&dSquid&fGame"
+    tutorial:
+      "1":
+        title: "&6&l1"
+        subtitle: "&eKamu harus mendorong pemain keluar dari arena"
+      "2":
+        title: "&6&l2"
+        subtitle: "&eJika seorang pemain keluar, mereka akan dieliminasi"
+      "3": 
+        title: "&6&l3"
+        subtitle: "&eJika seorang pemain mati, mereka juga akan dieliminasi"
+      "4":
+        title: "&6&l4"
+        subtitle: "&eAnda akan menang jika Anda yang terakhir bertahan"
