@@ -76,12 +76,14 @@ public class Configuration extends YamlConfiguration {
     private Sound getSound(final String key) {
         final String name = this.getString(key);
 
-        try {
-            return Sound.valueOf(name);
-        } catch (Exception e) {
-            Bukkit.getLogger().warning("Couldn't load sound '" + name + "' from configuration file! (Invalid name?)");
-            return null;
+        for (final Sound sound : Sound.values()) {
+            if (name.equals(sound.name())) {
+                return sound;
+            }
         }
+
+        Bukkit.getLogger().warning("Couldn't load sound '" + name + "' from configuration file! (Invalid name?)");
+        return null;
     }
 
     public Sound getSound(final String key, final String defaultValue) {
