@@ -153,6 +153,10 @@ public class Arena {
         return this;
     }
 
+    public void forceStart() {
+        this.handler.handleArenaStart();
+    }
+
     public void killPlayer(final SquidPlayer player, boolean setSpectator) {
         if (setSpectator) {
             this.addSpectator(player);
