@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added configurable sounds for red-light and green-light game.
 - Added reward system with commands executed by console.
 - Prevent food level change in game.
+- Added /squid start command for force start.
 
 ### Fixed
 
