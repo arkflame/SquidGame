@@ -17,7 +17,7 @@ public class EntityDamageByEntityListener implements Listener {
         this.plugin = plugin;
     }
 
-    @EventHandler
+    @EventHandler(ignoreCancelled = true)
     public void onEntityDamageByEntity(final EntityDamageByEntityEvent e) {
         final Entity entity = e.getDamager();
 

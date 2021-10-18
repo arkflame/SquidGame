@@ -144,6 +144,8 @@ public class Arena {
             this.joined = player.getBukkitPlayer().getName();
             this.players.add(player);
             player.getBukkitPlayer().teleport(this.getSpawnPosition());
+            player.getBukkitPlayer().setFoodLevel(20);
+            player.getBukkitPlayer().setHealth(20);
             player.setArena(this);
             this.handler.handlePlayerJoin(player);
         }

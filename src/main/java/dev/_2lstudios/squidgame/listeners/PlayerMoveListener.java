@@ -21,9 +21,9 @@ public class PlayerMoveListener implements Listener {
         this.plugin = plugin;
     }
 
-    @EventHandler
+    @EventHandler(ignoreCancelled = true)
     public void onPlayerMove(final PlayerMoveEvent e) {
-        if (e.getFrom().distance(e.getTo()) <= 0.03) {
+        if (e.getFrom().distance(e.getTo()) <= 0.015) {
             return;
         }
 

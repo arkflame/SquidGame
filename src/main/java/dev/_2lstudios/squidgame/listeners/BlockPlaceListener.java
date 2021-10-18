@@ -16,7 +16,7 @@ public class BlockPlaceListener implements Listener {
         this.plugin = plugin;
     }
 
-    @EventHandler
+    @EventHandler(ignoreCancelled = true)
     public void onBlockPlace(final BlockPlaceEvent e) {
         final Player bukkitPlayer = e.getPlayer();
         final SquidPlayer squidPlayer = (SquidPlayer) this.plugin.getPlayerManager().getPlayer(bukkitPlayer);
