@@ -1,3 +1,26 @@
+# This scoreboard will only work if SwiftBoard is installed
+# https://www.spigotmc.org/resources/swiftboard-free-async-and-fast.96879/
+#
+# Anyway, you can use any other scoreboard plugin as long as it has PlaceholderAPI support and it is also installed.
+# https://www.spigotmc.org/resources/placeholderapi.6245/
+#
+# Arena Variables:
+# %squidgame_arena_death%      Return last player death.
+# %squidgame_arena_joined%     Return last player joined.
+# %squidgame_arena_leaved%     Return last played leave.
+# %squidgame_arena_players%    Return alive players in arena.
+# %squidgame_arena_spectators% Return spectators players in arena.
+# %squidgame_arena_required%   Return required players count to start arena.
+# %squidgame_arena_maxplayers% Return max players allowed in arena.
+# %squidgame_arena_winner%     Return arena winner.
+# %squidgame_arena_time%       Return current arena event time.
+# %squidgame_arena_game%       Return current arena game name.
+# %squidgame_arena_name%       Return arena name.
+#
+# Player Variables: (Not finished yet)
+# %squidgame_player_wins%      Return player wins,
+# %squidgame_player_deaths%    Return player deaths.
+
 lobby:
     - "&e&lSQUIDGAME"
     - ""
