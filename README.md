@@ -23,6 +23,13 @@
  - [PlaceholderAPI](https://www.spigotmc.org/resources/placeholderapi.6245/) (Optional but Recommended)
  - [SwiftBoard](https://www.spigotmc.org/resources/swiftboard-free-async-and-fast.96879/) (Optional but Recommended)
 
+### Translations
+
+- [English](https://github.com/2lstudios-mc/SquidGame/blob/main/translations/en.yml) By me (Sammwy)
+- [Germany](https://github.com/2lstudios-mc/SquidGame/blob/main/translations/de.yml) By Toohard2explain
+- [Spanish](https://github.com/2lstudios-mc/SquidGame/blob/main/translations/es.yml) By me (Sammwy)
+- [Turkish](https://github.com/2lstudios-mc/SquidGame/blob/main/translations/tr.yml) By BeautyBlood
+
 ### Donation
 
 If you want to support the project, you can make a donation in [PayPal](https://paypal.me/sammwy)
