@@ -19,7 +19,7 @@ public class EntityDamageByEntityListener implements Listener {
 
     @EventHandler(ignoreCancelled = true)
     public void onEntityDamageByEntity(final EntityDamageByEntityEvent e) {
-        final Entity entity = e.getDamager();
+        final Entity entity = e.getEntity();
 
         if (entity instanceof Player) {
             final Player bukkitPlayer = (Player) entity;
