@@ -1,0 +1,79 @@
+arena:
+  join: "&a%squidgame_arena_joined% &eвлезе во играта &b(%squidgame_arena_players%/%squidgame_arena_maxplayers%)"
+  leave: "&c%squidgame_arena_leaved% &eизлезе од играта &b(%squidgame_arena_players%/%squidgame_arena_maxplayers%)"
+  starting: "&eИграта ќе започне за &b%squidgame_arena_time% &eсекунди."
+  started: "&aИграта започна, со среќа!"
+  death: "&c%squidgame_arena_death% &eе елиминиран."
+  no-enough-players: "&cНема доволно играчи, играта нема да започне, %squidgame_arena_required% потребно."
+  already-in-game: "&cТи си веќе во игра."
+  not-in-game: "&cНе си во игра."
+  misconfigured-arena: "&cНема арена или имате грешка во конфиг. Контактирајте администратор на серверот."
+  no-available-arena: "&cНема арени."
+
+setup:
+  arena-not-exist: "&cНема арена со вакво име."
+  arena-already-exist: "&cВеќе има арена со ова име."
+  arena-created: "&aАрената беше креирана успешно! Користи &b/squid editarena &e(name) &eза да едитираш."
+  set-lobby: "&aГо намести место на лобито."
+
+events:
+  intermission:
+    title: "&b&lИнтермесија"
+    subtitle: "&dСледна игра започнува за %squidgame_arena_time% секунди"
+  game-start:
+    title: "&6Оди напред!"
+    subtitle: "&aСо среќа"
+  game-timeout:
+    title: "&cИграта е готова"
+    subtitle: "&eВремето истече"
+  game-timeout-died:
+    title: "&4Ти си елиминиран"
+    subtitle: "&cНе стигна на време"
+  game-pass:
+    title: "&2Ти ја промина играта"
+    subtitle: "&aТи одиш во следна игра"
+  finish:
+    draw:
+      title: "&6&lНерешено"
+      subtitle: "&cСите играчи се елиминирани"
+    winner:
+      title: "&d&lЗаврши"
+      subtitle: "&b%squidgame_arena_winner% &eја победи играта"
+
+games:
+  first:
+    name: "&cЦрвено светло &7| &aЗелено светло"
+    tutorial:
+      "1": 
+        title: "&6&l1"
+        subtitle: "&eЗа да победиш морат да стигниш то линијата"
+      "2":
+        title: "&6&l2"
+        subtitle: "&eМоже само да мрдаш кога куклата ќе речи &aЗелено светло"
+      "3":
+        title: "&6&l3"
+        subtitle: "&eАко мрдниш на &cЗалено светло&e, ти ќе бидеш елиминиран"
+      "4":
+        title: "&6&l4"
+        subtitle: "&eЌе имате само 60 секунди, време е да започнеме."
+    green-light:
+      title: "&2&lЗалено светло"
+      subtitle: "&aСега можеш да мрдаш"
+    red-light:
+      title: "&4&lЦрвено светло"
+      subtitle: "&cНЕ МРДАЈ"
+  seventh:
+    name: "&dSquid&fGame"
+    tutorial:
+      "1":
+        title: "&6&l1"
+        subtitle: "&eМора да ти турнеш твоите непријатели од арената"
+      "2":
+        title: "&6&l2"
+        subtitle: "&eАко некој играч падне, тој е елиминиран"
+      "3": 
+        title: "&6&l3"
+        subtitle: "&eАко некој играч умре, тој ќе биде елиминиран"
+      "4":
+        title: "&6&l4"
+        subtitle: "&eТи ќе победиш ако си последен играч"

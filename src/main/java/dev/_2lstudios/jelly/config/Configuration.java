@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.World;
@@ -75,12 +76,14 @@ public class Configuration extends YamlConfiguration {
     private Sound getSound(final String key) {
         final String name = this.getString(key);
 
-        try {
-            return Sound.valueOf(name);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
+        for (final Sound sound : Sound.values()) {
+            if (name.equals(sound.name())) {
+                return sound;
+            }
         }
+
+        Bukkit.getLogger().warning("Couldn't load sound '" + name + "' from configuration file! (Invalid name?)");
+        return null;
     }
 
     public Sound getSound(final String key, final String defaultValue) {
