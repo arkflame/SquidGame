@@ -61,7 +61,7 @@ games:
       subtitle: "&aСега можеш да мрдаш"
     red-light:
       title: "&4&lЦрвено светло"
-      subtitle: "&cDO NOT MOVE"
+      subtitle: "&cНЕ МРДАЈ"
   seventh:
     name: "&dSquid&fGame"
     tutorial:
