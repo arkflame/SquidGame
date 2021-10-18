@@ -157,6 +157,18 @@ public class Arena {
         this.handler.handleArenaStart();
     }
 
+    public void killAllPlayers() {
+        final List<SquidPlayer> list = new ArrayList<>(this.players);
+
+        for (final SquidPlayer player : list) {
+            this.death = player.getBukkitPlayer().getName();
+            this.broadcastSound(this.getMainConfig().getSound("game-settings.sounds.player-death", "EXPLODE"));
+            this.broadcastMessage("arena.death");
+        }
+
+        this.finishArena(ArenaFinishReason.ALL_PLAYERS_DEATH);
+    }
+
     public void killPlayer(final SquidPlayer player, boolean setSpectator) {
         if (setSpectator) {
             this.addSpectator(player);

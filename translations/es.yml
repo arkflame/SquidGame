@@ -38,7 +38,7 @@ events:
       subtitle: "&cTodos los jugadores han muerto"
     winner:
       title: "&d&lFinalizado"
-      subtitle: "&b%squid_arena_winner% &eha ganado el juego"
+      subtitle: "&b%squidgame_arena_winner% &eha ganado el juego"
 
 games:
   first:
