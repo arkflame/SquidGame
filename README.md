@@ -25,9 +25,9 @@
 
 ### Translations
 
-- [English](https://github.com/2lstudios-mc/SquidGame/blob/main/translations/en.yml) By me (Sammwy)
-- [Germany](https://github.com/2lstudios-mc/SquidGame/blob/main/translations/de.yml) By Toohard2explain
-- [Spanish](https://github.com/2lstudios-mc/SquidGame/blob/main/translations/es.yml) By me (Sammwy)
+- [English](https://github.com/2lstudios-mc/SquidGame/blob/main/translations/en.yml) By Sammwy
+- [German](https://github.com/2lstudios-mc/SquidGame/blob/main/translations/de.yml) By Toohard2explain
+- [Spanish](https://github.com/2lstudios-mc/SquidGame/blob/main/translations/es.yml) By Sammwy
 - [Turkish](https://github.com/2lstudios-mc/SquidGame/blob/main/translations/tr.yml) By BeautyBlood
 
 ### Donation
