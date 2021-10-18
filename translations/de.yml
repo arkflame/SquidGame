@@ -1,0 +1,79 @@
+arena:
+  join: "&a%squidgame_arena_joined% &ehat das Spiel betreten &b(%squidgame_arena_players%/%squidgame_arena_maxplayers%)"
+  leave: "&c%squidgame_arena_leaved% &ehat das Spiel verlassen &b(%squidgame_arena_players%/%squidgame_arena_maxplayers%)"
+  starting: "&eDas Spiel startet in &b%squidgame_arena_time% &eSekunden."
+  started: "&aDas Spiel hat gestartet, viel Glück!"
+  death: "&c%squidgame_arena_death% &ewurde eliminiert."
+  no-enough-players: "&cNicht genug Spieler um das Spiel zu starten, %squidgame_arena_required% Spieler werden benötigt."
+  already-in-game: "&cDu bist bereits in einem Spiel."
+  not-in-game: "&cDu bist in keinem Spiel."
+  misconfigured-arena: "&cDort ist keine Arena oder sie wurde falsch konfiguriert. Kontaktiere einen Administrator."
+  no-available-arena: "&cKeine Arena ist verfügbar."
+
+setup:
+  arena-not-exist: "&cEs wurde keine Arena unter diesem Namen gefunden."
+  arena-already-exist: "&cEs gibt bereits eine Arena unter diesem Namen."
+  arena-created: "&aDie Arena wurde erfolreich erstellt! Benutze &b/squid editarena &e(name) &eum sie zu bearbeiten."
+  set-lobby: "&aDu hast die Lobby auf deiner aktuellen Position gesetzt."
+
+events:
+  intermission:
+    title: "&b&lUnterbrechung"
+    subtitle: "&dDas nächste Spiel startet in %squidgame_arena_time% Sekunden"
+  game-start:
+    title: "&6Los geht's!"
+    subtitle: "&aViel Glück"
+  game-timeout:
+    title: "&cEs ist vorbei!"
+    subtitle: "&eDie Zeit ist abgelaufen"
+  game-timeout-died:
+    title: "&4Du bist gestorben"
+    subtitle: "&cDu bist nicht innerhalb der Zeit angekommen"
+  game-pass:
+    title: "&2Du hast bestanden!"
+    subtitle: "&aDu wirst an der nächsten Runde teilnehmen"
+  finish:
+    draw:
+      title: "&6&lGleichstand"
+      subtitle: "&cAlle Spieler sind gestorben"
+    winner:
+      title: "&d&lEnde"
+      subtitle: "&b%squidgame_arena_winner% &ehat das Spiel gewonnen"
+
+games:
+  first:
+    name: "&cRotes Licht &7| &aGrünes Licht"
+    tutorial:
+      "1": 
+        title: "&6&l1"
+        subtitle: "&eUm zu gewinnen musst du das Ziel erreichen"
+      "2":
+        title: "&6&l2"
+        subtitle: "&eDu kannst dich erst bewegen, wenn die Puppe &aGrünes Light &esagt"
+      "3":
+        title: "&6&l3"
+        subtitle: "&eWenn du dich bei &cRotes Licht&e bewegst, wirst du eliminiert"
+      "4":
+        title: "&6&l4"
+        subtitle: "&eSie haben nur 60 Sekunden, es wird Zeit zu starten."
+    green-light:
+      title: "&2&lGrünes Licht"
+      subtitle: "&aDu kannst dich nun bewegen"
+    red-light:
+      title: "&4&lRotes Licht"
+      subtitle: "&cNICHT BEWEGEN"
+  seventh:
+    name: "&dSquid&fGame"
+    tutorial:
+      "1":
+        title: "&6&l1"
+        subtitle: "&eDu musst deine Gegner aus der Arena stoßen"
+      "2":
+        title: "&6&l2"
+        subtitle: "&eWenn ein Spieler außerhalb ist, wird er eliminiert"
+      "3": 
+        title: "&6&l3"
+        subtitle: "&eWenn ein Spieler stirbt, wird er ebenfalls eliminiert"
+      "4":
+        title: "&6&l4"
+        subtitle: "&eDu wirst gewinnen, wenn du der letzte Überlebende bist"
