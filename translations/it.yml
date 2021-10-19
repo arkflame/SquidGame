@@ -34,10 +34,10 @@ events:
     subtitle: "&aPassi al turno successivo"
   finish:
     draw:
-      title: "&6&lDisegna"
-      subtitle: "&cTutti i giocatori sono morti"
+      title: "&6&lStop"
+      subtitle: "&cTutti i giocatori sono morti!"
     winner:
-      title: "&d&lFinito"
+      title: "&d&lFine"
       subtitle: "&b%squidgame_arena_winner% &eha vinto la sfida!"
 
 games:
