@@ -1,0 +1,79 @@
+arena:
+  join: "&a%squidgame_arena_joined% &epartecipa alla partita &b(%squidgame_arena_players%/%squidgame_arena_maxplayers%)"
+  leave: "&c%squidgame_arena_leaved% &eabbandona la partita &b(%squidgame_arena_players%/%squidgame_arena_maxplayers%)"
+  starting: "&eLa partita inizia tra &b%squidgame_arena_time% &esecondi!"
+  started: "&aLa partita è iniziata, buona fortuna!"
+  death: "&c%squidgame_arena_death% &eè stato eliminato!"
+  no-enough-players: "&cNon ci sono abbastanza giocatori per iniziare, %squidgame_arena_required% giocatori richiesti."
+  already-in-game: "&cSei già in una partita."
+  not-in-game: "&cNon sei in partita."
+  misconfigured-arena: "&cNon è presente un'arena o sono presenti errori di configurazione. Contatta l'amministratore del server."
+  no-available-arena: "&cNon ci sono arene disponibili."
+
+setup:
+  arena-not-exist: "&cNon ci sono arene con questo nome."
+  arena-already-exist: "&cÉ già presente un'arena con questo nome."
+  arena-created: "&aL'arena è stata creata con successo! Esegui il comando &b/squid editarena &e(nome) &eper modificarla."
+  set-lobby: "&aHai impostato correttamente la lobby nella posizione corrente!"
+
+events:
+  intermission:
+    title: "&b&lIntervallo"
+    subtitle: "&dLa prossima sfida inizia tra %squidgame_arena_time% secondi!"
+  game-start:
+    title: "&6Vai avanti!"
+    subtitle: "&aBuona fortuna"
+  game-timeout:
+    title: "&cIl tempo"
+    subtitle: "&eè terminato!"
+  game-timeout-died:
+    title: "&4Sei morto"
+    subtitle: "&cNon sei arrivato in tempo"
+  game-pass:
+    title: "&2Sei passato!"
+    subtitle: "&aPassi al turno successivo"
+  finish:
+    draw:
+      title: "&6&lDisegna"
+      subtitle: "&cTutti i giocatori sono morti"
+    winner:
+      title: "&d&lFinito"
+      subtitle: "&b%squidgame_arena_winner% &eha vinto la sfida!"
+
+games:
+  first:
+    name: "&cRed Light &7| &aGreen Light"
+    tutorial:
+      "1": 
+        title: "&6&l1"
+        subtitle: "&ePer vincere devi raggiungere l'obiettivo"
+      "2":
+        title: "&6&l2"
+        subtitle: "&eTi puoi muovere solo quando viene detto &aGreen light"
+      "3":
+        title: "&6&l3"
+        subtitle: "&eSe ti muovi quando in &cRed Light&e, verrai eliminato"
+      "4":
+        title: "&6&l4"
+        subtitle: "&eAvranno solo 60 secondi, è ora di iniziare."
+    green-light:
+      title: "&2&lGreen Light"
+      subtitle: "&aOra puoi muoverti"
+    red-light:
+      title: "&4&lRed Light"
+      subtitle: "&cNON MUOVERTI"
+  seventh:
+    name: "&dSquid&fGame"
+    tutorial:
+      "1":
+        title: "&6&l1"
+        subtitle: "&eDevi spingere i tuoi nemici fuori dall'arena"
+      "2":
+        title: "&6&l2"
+        subtitle: "&eSe un giocatore è fuori, verrà eliminato"
+      "3": 
+        title: "&6&l3"
+        subtitle: "&eSe un giocatore muore, verrà eliminato anche lui"
+      "4":
+        title: "&6&l4"
+        subtitle: "&eVincerai solo se sarai l'ultimo in vita"
