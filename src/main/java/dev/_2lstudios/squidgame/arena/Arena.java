@@ -66,8 +66,8 @@ public class Arena {
         this.spectators.clear();
         this.games.clear();
 
-        this.games.add(new G6GlassesGame(this, mainConfig.getInt("game-settings.game-time.6", 60)));
         this.games.add(new G1RedGreenLightGame(this, mainConfig.getInt("game-settings.game-time.1", 60)));
+        this.games.add(new G6GlassesGame(this, mainConfig.getInt("game-settings.game-time.6", 60)));
         this.games.add(new G7SquidGame(this, mainConfig.getInt("game-settings.game-time.7", 600)));
     }
 

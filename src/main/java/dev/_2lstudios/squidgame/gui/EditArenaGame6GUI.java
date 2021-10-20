@@ -25,7 +25,7 @@ public class EditArenaGame6GUI extends InventoryGUI {
         this.addItem(0, this.createItem("§eSpawn point", Material.COMPASS, "§r\n§7Set at your current location\n§r"), 3,
                 2);
         this.addItem(1, this.createItem("§eGlass Zone", Material.GLASS, "§r\n§7Set with your location wand\n§r"), 5, 2);
-        this.addItem(1, this.createItem("§eGoal Zone", Material.ARMOR_STAND, "§r\n§7Set with your location wand\n§r"),
+        this.addItem(2, this.createItem("§eGoal Zone", Material.ARMOR_STAND, "§r\n§7Set with your location wand\n§r"),
                 7, 2);
 
         this.addItem(99, this.createItem("§cBack", Material.BARRIER), 5, 4);

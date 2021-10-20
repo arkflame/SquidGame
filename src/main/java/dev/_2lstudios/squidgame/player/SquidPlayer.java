@@ -68,7 +68,10 @@ public class SquidPlayer extends PluginPlayer {
 
     private String formatMessage(final String message) {
         final String translatedMessage = this.getI18n(message);
-        final String formatColor = ChatColor.translateAlternateColorCodes('&', translatedMessage);
+        final String formatColor = ChatColor.translateAlternateColorCodes('&',
+                translatedMessage == null
+                        ? "§6§lWARNING: §eMissing translation key §7" + message + " §ein message.yml file"
+                        : translatedMessage);
         final String replacedVariables = PlaceholderAPIHook.formatString(formatColor, this.getBukkitPlayer());
         return replacedVariables;
     }
