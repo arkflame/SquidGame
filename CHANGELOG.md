@@ -7,10 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.4] - 2021-10-18
 
+### Added
+
+- Improved sixth (6th) game.
+
 ### Fixed
 
 - Kill all players if all game ends with a draw to prevent plugin crash.
 - Fix plugin crash when a player kills other player.
+- Only prevent fall damage if arena isn't in game state.
 
 ## [0.1.3] - 2021-10-17
 

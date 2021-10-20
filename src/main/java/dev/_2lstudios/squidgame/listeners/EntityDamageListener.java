@@ -8,6 +8,8 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 
 import dev._2lstudios.squidgame.SquidGame;
+import dev._2lstudios.squidgame.arena.Arena;
+import dev._2lstudios.squidgame.arena.ArenaState;
 import dev._2lstudios.squidgame.player.SquidPlayer;
 
 public class EntityDamageListener implements Listener {
@@ -24,7 +26,9 @@ public class EntityDamageListener implements Listener {
         if (entity instanceof Player) {
             final SquidPlayer player = (SquidPlayer) this.plugin.getPlayerManager().getPlayer((Player) entity);
             if (player != null && player.getArena() != null) {
-                if (e.getCause() == DamageCause.FALL) {
+                final Arena arena = player.getArena();
+
+                if (e.getCause() == DamageCause.FALL && arena.getState() != ArenaState.IN_GAME) {
                     e.setCancelled(true);
                 }
             }

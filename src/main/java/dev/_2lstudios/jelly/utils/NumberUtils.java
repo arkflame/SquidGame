@@ -1,5 +1,7 @@
 package dev._2lstudios.jelly.utils;
 
+import java.util.Random;
+
 public class NumberUtils {
 
     final static private String[] numberNames = new String[] { "Zero", "First", "Second", "Third", "Fourth" };
@@ -13,6 +15,11 @@ public class NumberUtils {
     }
 
     public static int randomNumber(final int min, final int max) {
-        return (int) (Math.random() * (max - min)) + min;
+        if (min >= max) {
+            throw new IllegalArgumentException("max must be greater than min");
+        }
+
+        Random r = new Random();
+        return r.nextInt((max - min) + 1) + min;
     }
 }

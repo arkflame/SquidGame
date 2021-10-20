@@ -1,15 +1,20 @@
 package dev._2lstudios.squidgame.listeners;
 
 import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.Sound;
+import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 
 import dev._2lstudios.jelly.math.Vector3;
+import dev._2lstudios.jelly.utils.BlockUtils;
 import dev._2lstudios.squidgame.SquidGame;
 import dev._2lstudios.squidgame.arena.Arena;
 import dev._2lstudios.squidgame.arena.ArenaState;
 import dev._2lstudios.squidgame.arena.games.G1RedGreenLightGame;
+import dev._2lstudios.squidgame.arena.games.G6GlassesGame;
 import dev._2lstudios.squidgame.arena.games.G7SquidGame;
 import dev._2lstudios.squidgame.player.SquidPlayer;
 
@@ -55,6 +60,20 @@ public class PlayerMoveListener implements Listener {
             }
         }
 
+        /* Game 6: Handling */
+        else if (arena.getCurrentGame() instanceof G6GlassesGame) {
+            final Location loc = e.getTo().clone().subtract(0, 1, 0);
+            final Block block = loc.getBlock();
+
+            if (block != null && block.getType() == Material.GLASS) {
+                final G6GlassesGame game = (G6GlassesGame) arena.getCurrentGame();
+                if (game.isFakeBlock(loc.getBlock())) {
+                    arena.broadcastSound(Sound.BLOCK_GLASS_BREAK);
+                    BlockUtils.destroyBlockGroup(loc.getBlock());
+                }
+            }
+        }
+
         /* Game 7: Handling */
         else if (arena.getCurrentGame() instanceof G7SquidGame) {
             final Location loc = e.getTo().clone();
@@ -62,7 +81,8 @@ public class PlayerMoveListener implements Listener {
 
             loc.subtract(0, 1, 0);
 
-            if (loc.getBlock().getType() != null && loc.getBlock().getType().toString().equalsIgnoreCase(killBlock)) {
+            if (loc.getBlock() != null && loc.getBlock().getType() != null
+                    && loc.getBlock().getType().toString().equalsIgnoreCase(killBlock)) {
                 arena.killPlayer(player);
             }
         }
