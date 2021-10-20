@@ -3,18 +3,25 @@ package dev._2lstudios.squidgame.arena.games;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Player;
 
 import dev._2lstudios.jelly.math.Cuboid;
 import dev._2lstudios.jelly.math.Vector3;
 import dev._2lstudios.jelly.utils.BooleanUtils;
+import dev._2lstudios.squidgame.SquidGame;
 import dev._2lstudios.squidgame.arena.Arena;
+import dev._2lstudios.squidgame.player.SquidPlayer;
 
 public class G6GlassesGame extends ArenaGameBase {
 
     private Cuboid glassZone;
+    private Cuboid goalZone;
+
     private List<Block> fakeBlocks;
 
     public G6GlassesGame(final Arena arena, final int durationTime) {
@@ -25,10 +32,18 @@ public class G6GlassesGame extends ArenaGameBase {
 
     private Cuboid getGlassZone() {
         if (this.glassZone == null) {
-            this.glassZone = this.getArena().getConfig().getCuboid("games.sixth.glass_zone");
+            this.glassZone = this.getArena().getConfig().getCuboid("games.sixth.glass");
         }
 
         return this.glassZone;
+    }
+
+    public Cuboid getGoalZone() {
+        if (this.goalZone == null) {
+            this.goalZone = this.getArena().getConfig().getCuboid("games.sixth.goal");
+        }
+
+        return this.goalZone;
     }
 
     public boolean isFakeBlock(final Block block) {
@@ -150,5 +165,42 @@ public class G6GlassesGame extends ArenaGameBase {
     @Override
     public void onTimeUp() {
         this.generateTiles(Material.AIR);
+
+        this.getArena().broadcastTitle("events.game-timeout.title", "events.game-timeout.subtitle");
+
+        final List<SquidPlayer> alive = new ArrayList<>();
+        final List<SquidPlayer> death = new ArrayList<>();
+
+        for (final SquidPlayer squidPlayer : this.getArena().getPlayers()) {
+            final Player player = squidPlayer.getBukkitPlayer();
+            final Location location = player.getLocation();
+            final Vector3 position = new Vector3(location.getX(), location.getY(), location.getZ());
+
+            if (this.getGoalZone().isBetween(position)) {
+                alive.add(squidPlayer);
+            } else {
+                death.add(squidPlayer);
+            }
+        }
+
+        Bukkit.getScheduler().runTaskLater(SquidGame.getInstance(), () -> {
+            for (final SquidPlayer player : death) {
+                player.sendTitle("events.game-timeout-died.title", "events.game-timeout-died.subtitle", 3);
+                player.playSound(
+                        this.getArena().getMainConfig().getSound("game-settings.sounds.player-loss-game", "CAT_HIT"));
+            }
+
+            for (final SquidPlayer player : alive) {
+                player.sendTitle("events.game-pass.title", "events.game-pass.subtitle", 3);
+                player.playSound(
+                        this.getArena().getMainConfig().getSound("game-settings.sounds.player-pass-game", "LEVELUP"));
+            }
+        }, 40L);
+
+        Bukkit.getScheduler().runTaskLater(SquidGame.getInstance(), () -> {
+            for (final SquidPlayer squidPlayer : death) {
+                this.getArena().killPlayer(squidPlayer);
+            }
+        }, 80L);
     }
 }
