@@ -1,0 +1,79 @@
+arena:
+  join: "&a%squidgame_arena_joined% &edoet mee in het spel &b(%squidgame_arena_players%/%squidgame_arena_maxplayers%)"
+  leave: "&c%squidgame_arena_leaved% &eheeft het spel verlaten &b(%squidgame_arena_players%/%squidgame_arena_maxplayers%)"
+  starting: "&eHet spel start in &b%squidgame_arena_time% &eseconds."
+  started: "&aHet spel is gestart, succes!"
+  death: "&c%squidgame_arena_death% &eis geëlimineerd."
+  no-enough-players: "&cNog niet genoeg spelers om te starten, er zijn %squidgame_arena_required% nodig."
+  already-in-game: "&cJe zit al in een spel."
+  not-in-game: "&cJe zit niet in een spel."
+  misconfigured-arena: "&cEr is zeen arena of hij is fout geconfigureerd. Neem contact op met een server administrator."
+  no-available-arena: "&cEr is geen arena beschikbaar"
+
+setup:
+  arena-not-exist: "&cEr is geen arena met deze naam."
+  arena-already-exist: "&cEr is al een arena met deze naam."
+  arena-created: "&aDe arena is succesvol succesvol aangemaakt! Gebruik &b/squid editarena &e(naam) &eom hem aan te passen."
+  set-lobby: "&aYou hebt de lobby aangemaakt op je huidige positie."
+
+events:
+  intermission:
+    title: "&b&lPauze"
+    subtitle: "&dVolgende spel start in %squidgame_arena_time% seconden"
+  game-start:
+    title: "&6Van start!"
+    subtitle: "&aSucces"
+  game-timeout:
+    title: "&cEinde spel!"
+    subtitle: "&eTijd is op"
+  game-timeout-died:
+    title: "&4Je bent gestorven"
+    subtitle: "&cJe bent niet optijd aangekomen"
+  game-pass:
+    title: "&2Je bent door!"
+    subtitle: "&aJe bent door naar de volgende ronde"
+  finish:
+    draw:
+      title: "&6&lGelijk spel"
+      subtitle: "&cAlle spelers zijn dood"
+    winner:
+      title: "&d&lEinde spel"
+      subtitle: "&b%squidgame_arena_winner% &eheeft het spel gewonnen"
+
+games:
+  first:
+    name: "&cAnnemaria &7| &aKoekoek"
+    tutorial:
+      "1": 
+        title: "&6&l1"
+        subtitle: "&eOm te winnen moet je het einde halen"
+      "2":
+        title: "&6&l2"
+        subtitle: "&eJe mag alleen bewegen als de pop &aAnnemaria &ezegt"
+      "3":
+        title: "&6&l3"
+        subtitle: "&eAls je beweegt wanneer ze &cKoekoek &e, word je geëlimineerd"
+      "4":
+        title: "&6&l4"
+        subtitle: "&eZe hebben maar 60 seconden, het is tijd om te beginnen"
+    green-light:
+      title: "&2&lAnnemaria"
+      subtitle: "&aJe mag bewegen"
+    red-light:
+      title: "&4&lKoekoek"
+      subtitle: "&cSTA STIL"
+  seventh:
+    name: "&dSquid&fGame"
+    tutorial:
+      "1":
+        title: "&6&l1"
+        subtitle: "&eJe moet je tegenstander uit de arena duwen"
+      "2":
+        title: "&6&l2"
+        subtitle: "&eAls een speler er uit wordt geduwd, wordt deze speler geëlimineerd"
+      "3": 
+        title: "&6&l3"
+        subtitle: "&eAls een speler sterft, is deze ook geëlimineerd"
+      "4":
+        title: "&6&l4"
+        subtitle: "&eJe wint als je als laatste overblijft"
