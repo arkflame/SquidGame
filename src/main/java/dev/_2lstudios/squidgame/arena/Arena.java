@@ -12,6 +12,7 @@ import dev._2lstudios.jelly.config.Configuration;
 import dev._2lstudios.squidgame.SquidGame;
 import dev._2lstudios.squidgame.arena.games.ArenaGameBase;
 import dev._2lstudios.squidgame.arena.games.G1RedGreenLightGame;
+import dev._2lstudios.squidgame.arena.games.G6GlassesGame;
 import dev._2lstudios.squidgame.arena.games.G7SquidGame;
 import dev._2lstudios.squidgame.player.SquidPlayer;
 
@@ -65,6 +66,7 @@ public class Arena {
         this.spectators.clear();
         this.games.clear();
 
+        this.games.add(new G6GlassesGame(this, mainConfig.getInt("game-settings.game-time.6", 60)));
         this.games.add(new G1RedGreenLightGame(this, mainConfig.getInt("game-settings.game-time.1", 60)));
         this.games.add(new G7SquidGame(this, mainConfig.getInt("game-settings.game-time.7", 600)));
     }

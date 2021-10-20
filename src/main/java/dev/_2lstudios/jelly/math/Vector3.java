@@ -1,5 +1,8 @@
 package dev._2lstudios.jelly.math;
 
+import org.bukkit.Location;
+import org.bukkit.World;
+
 public class Vector3 {
     private double x;
     private double y;
@@ -23,6 +26,24 @@ public class Vector3 {
         return this.z;
     }
 
+    public Vector3 setX(final double x) {
+        this.x = x;
+
+        return this;
+    }
+
+    public Vector3 setY(final double y) {
+        this.y = y;
+
+        return this;
+    }
+
+    public Vector3 setZ(final double z) {
+        this.z = z;
+
+        return this;
+    }
+
     public Vector3 clone() {
         return new Vector3(this.getX() + 0, this.getX() + 0, this.getZ() + 0);
     }
@@ -39,6 +60,14 @@ public class Vector3 {
         this.y += vector.y;
         this.z += vector.z;
         return this;
+    }
+
+    public Location toLocation(final World world) {
+        return new Location(world, x, y, z);
+    }
+
+    public Location toLocation() {
+        return this.toLocation(null);
     }
 
     public String toString() {

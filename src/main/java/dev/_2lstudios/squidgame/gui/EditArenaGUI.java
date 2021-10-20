@@ -25,11 +25,10 @@ public class EditArenaGUI extends InventoryGUI {
         this.addItem(3, this.createItem("§cComing soon", Material.COAL), 4, 2);
         this.addItem(4, this.createItem("§cComing soon", Material.COAL), 5, 2);
         this.addItem(5, this.createItem("§cComing soon", Material.COAL), 6, 2);
-        this.addItem(6, this.createItem("§cComing soon", Material.COAL), 7, 2);
 
+        this.addItem(6, this.createItem("§eSixth game", Material.GLASS, "§r\n§bGlass §fGame§7.\n§r"), 7, 2);
         this.addItem(7,
                 this.createItem("§eSeventh game", Material.STICK, "§r\n§dSquid§fGame§7, is the Final game.\n§r"), 8, 2);
-
         this.addItem(0,
                 this.createItem("§bIntermission", Material.COMPASS, "§r\n§7Where players spawn after each game.\n§r"),
                 4, 4);
@@ -39,18 +38,21 @@ public class EditArenaGUI extends InventoryGUI {
     @Override
     public void handle(int id, Player player) {
         switch (id) {
-            case 0:
-                new EditArenaWaitingLobbyGUI(this.arena, this).open(player);
-                break;
-            case 1:
-                new EditArenaGame1GUI(this.arena, this).open(player);
-                break;
-            case 7:
-                new EditArenaGame7GUI(this.arena, this).open(player);
-                break;
-            default:
-                this.close(player);
-                break;
+        case 0:
+            new EditArenaWaitingLobbyGUI(this.arena, this).open(player);
+            break;
+        case 1:
+            new EditArenaGame1GUI(this.arena, this).open(player);
+            break;
+        case 6:
+            new EditArenaGame6GUI(this.arena, this).open(player);
+            break;
+        case 7:
+            new EditArenaGame7GUI(this.arena, this).open(player);
+            break;
+        default:
+            this.close(player);
+            break;
         }
     }
 }
