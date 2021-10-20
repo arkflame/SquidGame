@@ -14,7 +14,6 @@ import dev._2lstudios.squidgame.hooks.PlaceholderAPIHook;
 import dev._2lstudios.squidgame.hooks.ScoreboardHook;
 import dev._2lstudios.squidgame.listeners.BlockBreakListener;
 import dev._2lstudios.squidgame.listeners.BlockPlaceListener;
-import dev._2lstudios.squidgame.listeners.EntityDamageByEntityListener;
 import dev._2lstudios.squidgame.listeners.EntityDamageListener;
 import dev._2lstudios.squidgame.listeners.FoodLevelChangeListener;
 import dev._2lstudios.squidgame.listeners.PlayerInteractListener;
@@ -59,7 +58,6 @@ public class SquidGame extends JellyPlugin {
         // Register listeners
         this.addEventListener(new BlockBreakListener(this));
         this.addEventListener(new BlockPlaceListener(this));
-        this.addEventListener(new EntityDamageByEntityListener(this));
         this.addEventListener(new EntityDamageListener(this));
         this.addEventListener(new FoodLevelChangeListener(this));
         this.addEventListener(new PlayerInteractListener(this));

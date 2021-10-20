@@ -31,6 +31,15 @@ public class EntityDamageListener implements Listener {
                 if (e.getCause() == DamageCause.FALL && arena.getState() != ArenaState.IN_GAME) {
                     e.setCancelled(true);
                 }
+
+                if (e.getCause() == DamageCause.ENTITY_ATTACK && !arena.isPvPAllowed()) {
+                    e.setCancelled(true);
+                }
+
+                if (!e.isCancelled() && player.getBukkitPlayer().getHealth() - e.getDamage() <= 0) {
+                    arena.killPlayer(player);
+                    e.setCancelled(true);
+                }
             }
         }
     }

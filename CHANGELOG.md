@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Kill all players if all game ends with a draw to prevent plugin crash.
 - Fix plugin crash when a player kills other player.
 - Only prevent fall damage if arena isn't in game state.
+- Kill arena player when bukkit player died.
 
 ## [0.1.3] - 2021-10-17
 

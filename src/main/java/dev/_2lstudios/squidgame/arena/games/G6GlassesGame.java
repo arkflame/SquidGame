@@ -35,8 +35,7 @@ public class G6GlassesGame extends ArenaGameBase {
         return this.fakeBlocks.contains(block);
     }
 
-    @Override
-    public void onExplainStart() {
+    private void generateTiles(final Material material) {
         final World world = this.getArena().getWorld();
 
         final Vector3 first = this.getGlassZone().getFirstPoint();
@@ -96,16 +95,18 @@ public class G6GlassesGame extends ArenaGameBase {
 
                         // Generar bloque en las coordenadas dadas X Y Z
                         final Block firstRowBlock = world.getBlockAt(x, yStart, z);
-                        firstRowBlock.setType(Material.GLASS);
+                        firstRowBlock.setType(material);
 
                         // Generar bloque en la misma posicion que el de arriba pero con una separación
                         final Block secondRowBlock = world.getBlockAt(x + spaceXBetweenPlatforms + size, yStart, z);
-                        secondRowBlock.setType(Material.GLASS);
+                        secondRowBlock.setType(material);
 
-                        if (isFirstFake) {
-                            this.fakeBlocks.add(firstRowBlock);
-                        } else {
-                            this.fakeBlocks.add(secondRowBlock);
+                        if (material != Material.AIR) {
+                            if (isFirstFake) {
+                                this.fakeBlocks.add(firstRowBlock);
+                            } else {
+                                this.fakeBlocks.add(secondRowBlock);
+                            }
                         }
                     }
                 }
@@ -136,12 +137,18 @@ public class G6GlassesGame extends ArenaGameBase {
     }
 
     @Override
-    public void onStart() {
+    public void onExplainStart() {
+        super.onExplainStart();
+        this.generateTiles(Material.AIR);
+    }
 
+    @Override
+    public void onStart() {
+        this.generateTiles(Material.GLASS);
     }
 
     @Override
     public void onTimeUp() {
-        this.getArena().killAllPlayers();
+        this.generateTiles(Material.AIR);
     }
 }
