@@ -9,7 +9,7 @@
     <!-- Plugin Information -->
     <name>SquidGame</name>
     <description>This is just an example plugin</description>
-    <version>0.1.4</version>
+    <version>0.1.5</version>
     <url>https://twitter.com/sammwy</url>
 
     <properties>

@@ -2,7 +2,6 @@ package dev._2lstudios.squidgame.listeners;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -68,7 +67,8 @@ public class PlayerMoveListener implements Listener {
             if (block != null && block.getType() == Material.GLASS) {
                 final G6GlassesGame game = (G6GlassesGame) arena.getCurrentGame();
                 if (game.isFakeBlock(loc.getBlock())) {
-                    arena.broadcastSound(Sound.BLOCK_GLASS_BREAK);
+                    arena.broadcastSound(
+                            this.plugin.getMainConfig().getSound("game-settings.sounds.glass-break", "glass"));
                     BlockUtils.destroyBlockGroup(loc.getBlock());
                 }
             }

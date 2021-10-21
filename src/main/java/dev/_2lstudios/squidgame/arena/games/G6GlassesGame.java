@@ -138,9 +138,20 @@ public class G6GlassesGame extends ArenaGameBase {
                         int z = zStart + zPadding;
 
                         // Generar bloque en las coordenadas dadas X Y Z
-                        world.getBlockAt(x, yStart, z).setType(Material.BEDROCK);
+                        final Block firstRowBlock = world.getBlockAt(x, yStart, z);
+                        firstRowBlock.setType(Material.BEDROCK);
+
                         // Generar bloque en la misma posicion que el de arriba pero con una separación
-                        world.getBlockAt(x, yStart, z + spaceXBetweenPlatforms + size).setType(Material.BEDROCK);
+                        final Block secondRowBlock = world.getBlockAt(x, yStart, z + spaceXBetweenPlatforms + size);
+                        secondRowBlock.setType(Material.BEDROCK);
+
+                        if (material != Material.AIR) {
+                            if (isFirstFake) {
+                                this.fakeBlocks.add(firstRowBlock);
+                            } else {
+                                this.fakeBlocks.add(secondRowBlock);
+                            }
+                        }
                     }
                 }
             }

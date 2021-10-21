@@ -5,6 +5,7 @@ game-settings:
   finishing-time: 5
   game-time:
     "1": 60
+    "6": 60
     "7": 600
   rewards:
     - "say {winner} is the winner!"
@@ -18,6 +19,7 @@ game-settings:
     arena-start: ORB_PICKUP
     green-light: GHAST_MOAN
     red-light: BLAZE_HIT
+    glass-break: GLASS
   # For 1.13+
   # sounds:
   #    player-loss-game: ENTITY_CAT_HURT
@@ -28,6 +30,7 @@ game-settings:
   #    arena-start: ENTITY_EXPERIENCE_ORB_PICKUP
   #    green-light: ENTITY_GHAST_AMBIENT
   #    red-light: ENTITY_BLAZE_HURT
+  #    grass-break: BLOCK_GLASS_BREAK
 
 lobby:
   world: ""
