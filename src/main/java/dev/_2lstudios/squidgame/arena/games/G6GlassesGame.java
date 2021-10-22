@@ -74,7 +74,7 @@ public class G6GlassesGame extends ArenaGameBase {
         final int groundHeight = (useZAsIndex ? differenceBetweenZ : differenceBetweenX) + 1;
 
         // Parametros de las paltaformas
-        final int size = groundWidth < 5 ? 1 : groundWidth < 8 ? 2 : 3;
+        final int size = groundWidth < 5 ? 1 : groundWidth < 7 ? 2 : 3;
         final int spaceXBetweenPlatforms = groundWidth - (size * 2);
         final int spaceZBetweenPlatforms = 3;
 
@@ -97,60 +97,46 @@ public class G6GlassesGame extends ArenaGameBase {
             // Is first pair item a fake block?
             boolean isFirstFake = BooleanUtils.randomBoolean();
 
-            // En caso que la coordenada Z deba de usarse como un indice:
-            if (useZAsIndex) {
-                // Por cada posición relativa X de la plataforma
-                for (int xPadding = 0; xPadding < size; xPadding++) {
-                    // Por cada posición relativa Y de la plataforma
-                    for (int zPadding = 0; zPadding < size; zPadding++) {
+            // Por cada posición relativa X de la plataforma
+            for (int xPadding = 0; xPadding < size; xPadding++) {
+                // Por cada posición relativa Y de la plataforma
+                for (int zPadding = 0; zPadding < size; zPadding++) {
+                    // Define blocks
+                    Block firstRowBlock, secondRowBlock;
+
+                    // En caso que la coordenada Z deba de usarse como un indice:
+                    if (useZAsIndex) {
                         // Sumarle valor relativo x padding al valor absoluto x start
                         int x = xStart + xPadding;
                         // Sumarle el valor del indice Z al valor relativo z padding
                         int z = shouldIncreaseIndex ? blockIndex + zPadding : blockIndex - zPadding;
 
                         // Generar bloque en las coordenadas dadas X Y Z
-                        final Block firstRowBlock = world.getBlockAt(x, yStart, z);
-                        firstRowBlock.setType(material);
+                        firstRowBlock = world.getBlockAt(x, yStart, z);
 
                         // Generar bloque en la misma posicion que el de arriba pero con una separación
-                        final Block secondRowBlock = world.getBlockAt(x + spaceXBetweenPlatforms + size, yStart, z);
-                        secondRowBlock.setType(material);
-
-                        if (material != Material.AIR) {
-                            if (isFirstFake) {
-                                this.fakeBlocks.add(firstRowBlock);
-                            } else {
-                                this.fakeBlocks.add(secondRowBlock);
-                            }
-                        }
-                    }
-                }
-
-                // En caso que la coordenada X deba de usarse como un indice:
-            } else {
-                // Por cada posición relativa X de la plataforma
-                for (int xPadding = 0; xPadding < size; xPadding++) {
-                    // Por cada posición relativa Y de la plataforma
-                    for (int zPadding = 0; zPadding < size; zPadding++) {
+                        secondRowBlock = world.getBlockAt(x + spaceXBetweenPlatforms + size, yStart, z);
+                    } else {
                         // Sumarle el valor del indice X al valor relativo x padding
                         int x = shouldIncreaseIndex ? blockIndex + xPadding : blockIndex - xPadding;
                         // Sumarle valor relativo z padding al valor absoluto z start
                         int z = zStart + zPadding;
 
                         // Generar bloque en las coordenadas dadas X Y Z
-                        final Block firstRowBlock = world.getBlockAt(x, yStart, z);
-                        firstRowBlock.setType(Material.BEDROCK);
+                        firstRowBlock = world.getBlockAt(x, yStart, z);
 
                         // Generar bloque en la misma posicion que el de arriba pero con una separación
-                        final Block secondRowBlock = world.getBlockAt(x, yStart, z + spaceXBetweenPlatforms + size);
-                        secondRowBlock.setType(Material.BEDROCK);
+                        secondRowBlock = world.getBlockAt(x, yStart, z + spaceXBetweenPlatforms + size);
+                    }
 
-                        if (material != Material.AIR) {
-                            if (isFirstFake) {
-                                this.fakeBlocks.add(firstRowBlock);
-                            } else {
-                                this.fakeBlocks.add(secondRowBlock);
-                            }
+                    firstRowBlock.setType(material);
+                    secondRowBlock.setType(material);
+
+                    if (material != Material.AIR) {
+                        if (isFirstFake) {
+                            this.fakeBlocks.add(firstRowBlock);
+                        } else {
+                            this.fakeBlocks.add(secondRowBlock);
                         }
                     }
                 }
@@ -159,7 +145,6 @@ public class G6GlassesGame extends ArenaGameBase {
             final int separation = spaceZBetweenPlatforms + size;
             blockIndex = shouldIncreaseIndex ? blockIndex + separation : blockIndex - separation;
         }
-
     }
 
     @Override

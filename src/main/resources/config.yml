@@ -1,4 +1,5 @@
 game-settings:
+  allow-victory-before-completing-game: false
   min-players: 2
   max-players: 12
   starting-time: 30

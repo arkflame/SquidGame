@@ -66,10 +66,11 @@ public class PlayerMoveListener implements Listener {
 
             if (block != null && block.getType() == Material.GLASS) {
                 final G6GlassesGame game = (G6GlassesGame) arena.getCurrentGame();
+
                 if (game.isFakeBlock(loc.getBlock())) {
-                    arena.broadcastSound(
-                            this.plugin.getMainConfig().getSound("game-settings.sounds.glass-break", "glass"));
                     BlockUtils.destroyBlockGroup(loc.getBlock());
+                    arena.broadcastSound(
+                            this.plugin.getMainConfig().getSound("game-settings.sounds.glass-break", "GLASS"));
                 }
             }
         }

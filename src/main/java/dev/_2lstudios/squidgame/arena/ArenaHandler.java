@@ -30,7 +30,7 @@ public class ArenaHandler {
 
         if (arena.getState() == ArenaState.WAITING) {
             if (arena.getPlayers().size() >= arena.getMinPlayers()) {
-                arena.setInternalTime(this.mainConfig.getInt("arena.starting-time", 30));
+                arena.setInternalTime(this.mainConfig.getInt("game-settings.starting-time", 30));
                 arena.setState(ArenaState.STARTING);
                 arena.broadcastMessage("arena.starting");
             }
@@ -118,24 +118,24 @@ public class ArenaHandler {
         this.arena.setInternalTime(this.mainConfig.getInt("game-settings.finishing-time", 5));
 
         switch (reason) {
-            case ALL_PLAYERS_DEATH:
-                this.arena.broadcastTitle("events.finish.draw.title", "events.finish.draw.subtitle");
-                return;
-            case ONE_PLAYER_IN_ARENA:
-                this.arena.broadcastTitle("events.finish.winner.title", "events.finish.winner.subtitle");
+        case ALL_PLAYERS_DEATH:
+            this.arena.broadcastTitle("events.finish.draw.title", "events.finish.draw.subtitle");
+            return;
+        case ONE_PLAYER_IN_ARENA:
+            this.arena.broadcastTitle("events.finish.winner.title", "events.finish.winner.subtitle");
 
-                // Give rewards
-                final List<String> rewardCommands = this.mainConfig.getStringList("game-settings.rewards",
-                        new ArrayList<>());
+            // Give rewards
+            final List<String> rewardCommands = this.mainConfig.getStringList("game-settings.rewards",
+                    new ArrayList<>());
 
-                for (final String reward : rewardCommands) {
-                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(),
-                            reward.replace("{winner}", arena.calculateWinner().getBukkitPlayer().getName()));
-                }
+            for (final String reward : rewardCommands) {
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(),
+                        reward.replace("{winner}", arena.calculateWinner().getBukkitPlayer().getName()));
+            }
 
-                break;
-            case PLUGIN_STOP:
-                break;
+            break;
+        case PLUGIN_STOP:
+            break;
         }
     }
 }

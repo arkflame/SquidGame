@@ -185,7 +185,13 @@ public class Arena {
         }
 
         else if (this.calculateWinner() != null) {
-            this.finishArena(ArenaFinishReason.ONE_PLAYER_IN_ARENA);
+            final boolean allowVictory = this.mainConfig
+                    .getBoolean("game-settings.allow-victory-before-completing-game", false);
+            final boolean isLastGame = this.currentGame != null && this.currentGame instanceof G7SquidGame;
+
+            if (isLastGame || allowVictory) {
+                this.finishArena(ArenaFinishReason.ONE_PLAYER_IN_ARENA);
+            }
         }
     }
 

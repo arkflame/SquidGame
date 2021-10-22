@@ -5,12 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.1.5] - 2021-10-18
+## [0.1.6] - 2021-10-11
+
+### Added
+
+- Declaring the only player alive in play as the winner is now configurable.
 
 ### Fixed
 
-- Fixed 1.8 glass break sound
-- Fixed bedrock generation instead glass
+- Fixed class not found "particles".
+- Fixed 1.8 glass break sound (again)
+- Fixed arena starting time config path.
+- Reduced code redundancy.
+
+## [0.1.5] - 2021-10-21
+
+### Fixed
+
+- Fixed 1.8 glass break sound.
+- Fixed bedrock generation instead glass.
 
 ## [0.1.4] - 2021-10-18
 
