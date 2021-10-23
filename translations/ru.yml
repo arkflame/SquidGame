@@ -1,0 +1,94 @@
+arena:
+  join: "&a%squidgame_arena_joined% &eвступает в игру &b(%squidgame_arena_players%/%squidgame_arena_maxplayers%)"
+  leave: "&c%squidgame_arena_leaved% &eвыходит из игры &b(%squidgame_arena_players%/%squidgame_arena_maxplayers%)"
+  starting: "&eИгра начнется через &b%squidgame_arena_time% &eсек."
+  started: "&aИгра начинается. Приготовьтесь!"
+  death: "&c%squidgame_arena_death% &eпокидает игру."
+  no-enough-players: "&cНедостаточно игроков для начала игры, нужно %squidgame_arena_required%"
+  already-in-game: "&cВы уже в игре."
+  not-in-game: "&cВы не в игре."
+  misconfigured-arena: "&cНет арен или они не настроены. Свяжитесь с администрацией."
+  no-available-arena: "&cНет свободных арен."
+
+setup:
+  arena-not-exist: "&cНет арены с таким именем."
+  arena-already-exist: "&cАрена с таким именем уже есть"
+  arena-created: "&aАрена успешно создана! Введите &b/squid editarena &e(название) &aчтобы редактировать её."
+  set-lobby: "&aЛобби установлено на вашем текущем местоположении."
+
+events:
+  intermission:
+    title: "&b&lПриготовьтесь"
+    subtitle: "&dИгра начнется через %squidgame_arena_time% сек"
+  game-start:
+    title: "&6Вперед!"
+    subtitle: "&aУдачи!"
+  game-timeout:
+    title: "&cКонец!"
+    subtitle: "&eВремя закончилось"
+  game-timeout-died:
+    title: "&4Вы погибли"
+    subtitle: "&cВы не успели вовремя"
+  game-pass:
+    title: "&2Вы прошли!"
+    subtitle: "&aВы допущены на следующий уровень"
+  finish:
+    draw:
+      title: "&6&lНичья"
+      subtitle: "&cВсе игроки погибли"
+    winner:
+      title: "&d&lКонец"
+      subtitle: "&b%squidgame_arena_winner% &eвыигрывает игру"
+
+games:
+  first:
+    name: "&cКрасный Свет &7| &aЗеленый Свет"
+    tutorial:
+      "1": 
+        title: "&6&l1"
+        subtitle: "&eЧтобы выиграть нужно дойти до куклы"
+      "2":
+        title: "&6&l2"
+        subtitle: "&eДвигаться можно только когда кукла говорит &aЗеленый Свет"
+      "3":
+        title: "&6&l3"
+        subtitle: "&eНельзя двигаться на &cКрасный Свет&e, иначе вы погибните"
+      "4":
+        title: "&6&l4"
+        subtitle: "&eУ вас есть всего 60 секунд. Время начинать"
+    green-light:
+      title: "&2&lЗеленый Свет"
+      subtitle: "&aМожно двигаться"
+    red-light:
+      title: "&4&lКрасный Свет"
+      subtitle: "&cНе двигайтесь"
+  sixth:
+    name: "&bСтёкла"
+    tutorial:
+      "1":
+        title: "&6&l1"
+        subtitle: "&eКогда игра начнется, сформируются 2 ряда платформ"
+      "2": 
+        title: "&6&l2"
+        subtitle: "&eВ каждом ряду есть закаленное стекло и хрупкое"
+      "3":
+        title: "&6&l3"
+        subtitle: "&eЕсли наступить на хрупкое, вы упадёте!"
+      "4":
+        title: "&6&l4"
+        subtitle: "&eЧтобы выиграть, нужно дойти до конца арены"
+  seventh:
+    name: "&dИгра в &fКальмара"
+    tutorial:
+      "1":
+        title: "&6&l1"
+        subtitle: "&eВы должны вытолкнуть оппонента из арены"
+      "2":
+        title: "&6&l2"
+        subtitle: "&eЕсли он выйдет за границу - он исключен"
+      "3": 
+        title: "&6&l3"
+        subtitle: "&eЕсли игрок умрет - он исключен"
+      "4":
+        title: "&6&l4"
+        subtitle: "&eВы выиграете, если останетесь последним выжившим"
