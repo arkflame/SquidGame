@@ -22,5 +22,5 @@ Minecraft Minigame inspired by the famous and trending Netflix series "Squid Gam
 - [ ] Third Game  
 - [ ] Fourth Game  
 - [ ] Fifth Game  
-- [ ] Sixth Game  
+- [x] Sixth Game  
 - [x] Seventh Game  
