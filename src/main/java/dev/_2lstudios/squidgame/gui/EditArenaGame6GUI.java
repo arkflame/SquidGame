@@ -16,7 +16,7 @@ public class EditArenaGame6GUI extends InventoryGUI {
     private final Arena arena;
 
     public EditArenaGame6GUI(final Arena arena, final InventoryGUI prevGui) {
-        super("§d§lEdit Arena Sixth game §f" + arena.getName(), 45, prevGui);
+        super("§d§lArena §f" + arena.getName(), 45, prevGui);
         this.arena = arena;
     }
 

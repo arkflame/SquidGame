@@ -17,7 +17,7 @@ public class EditArenaGame1GUI extends InventoryGUI {
     private final Arena arena;
 
     public EditArenaGame1GUI(final Arena arena, final InventoryGUI prevGui) {
-        super("§d§lEdit Arena First game §f" + arena.getName(), 45, prevGui);
+        super("§d§lArena §f" + arena.getName(), 45, prevGui);
         this.arena = arena;
     }
 
@@ -49,15 +49,15 @@ public class EditArenaGame1GUI extends InventoryGUI {
             String key = "games.first";
 
             switch (id) {
-                case 1:
-                    key += ".barrier";
-                    break;
-                case 2:
-                    key += ".killzone";
-                    break;
-                case 3:
-                    key += ".goal";
-                    break;
+            case 1:
+                key += ".barrier";
+                break;
+            case 2:
+                key += ".killzone";
+                break;
+            case 3:
+                key += ".goal";
+                break;
             }
 
             if (wand == null) {
