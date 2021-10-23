@@ -31,6 +31,7 @@
 - [Italian](https://github.com/2lstudios-mc/SquidGame/blob/main/translations/it.yml) By NovaPixell
 - [Macedonian](https://github.com/2lstudios-mc/SquidGame/blob/main/translations/mk.yml) By Pace1337
 - [Polish](https://github.com/2lstudios-mc/SquidGame/blob/main/translations/pl.yml) By xzowl
+- [Russian](https://github.com/2lstudios-mc/SquidGame/blob/main/translations/ru.yml) By d1sper
 - [Spanish](https://github.com/2lstudios-mc/SquidGame/blob/main/translations/es.yml) By Sammwy
 - [Turkish](https://github.com/2lstudios-mc/SquidGame/blob/main/translations/tr.yml) By BeautyBlood
 
