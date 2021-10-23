@@ -7,7 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.7] - 2021-10-23
 
+### Fixed
 
+- Fix title too longer error in GUI.
+- Kill arena player only if bukkit player is alive.
+- Kill arena player when bukkit player die.
 
 ## [0.1.6] - 2021-10-21
 
