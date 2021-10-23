@@ -62,6 +62,21 @@ games:
     red-light:
       title: "&4&lRed Light"
       subtitle: "&cDO NOT MOVE"
+  third:
+    name: "&cBattle"
+    tutorial:
+      "1": 
+        title: "&6&l1"
+        subtitle: "&eIt is enough to survive to win"
+      "2":
+        title: "&6&l2"
+        subtitle: "&eWhen the game starts the PvP will be activated"
+      "3":
+        title: "&6&l3"
+        subtitle: "&eAny player who dies at the hands of another will be eliminated"
+      "4":
+        title: "&6&l4"
+        subtitle: "&eGood luck surviving"
   sixth:
     name: "&bGlasses"
     tutorial:
