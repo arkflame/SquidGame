@@ -32,6 +32,10 @@
             <id>2lstudios</id>
             <url>https://ci.2lstudios.dev/plugin/repository/everything/</url>
         </repository>
+        <repository>
+            <id>papermc</id>
+            <url>https://papermc.io/repo/repository/maven-public/</url>
+        </repository>
     </repositories>
 
     <!-- Dependencies imports -->
@@ -55,7 +59,7 @@
         <dependency>
             <groupId>dev._2lstudios</groupId>
             <artifactId>SwiftBoard</artifactId>
-            <version>0.0.2</version>
+            <version>0.0.4</version>
             <scope>provided</scope>
         </dependency>
 
@@ -65,12 +69,19 @@
             <version>2.10.10</version>
             <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>io.papermc</groupId>
+            <artifactId>paperlib</artifactId>
+            <version>1.0.6</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <!-- Build settings -->
     <build>
         <!-- Name of your compiled artifact -->
-        <finalName>${artifactId}</finalName>
+        <finalName>${project.artifactId}</finalName>
         <!-- Directory of .java files -->
         <sourceDirectory>src/main/java</sourceDirectory>
         <!-- Clean old builds and install dependencies before compile -->

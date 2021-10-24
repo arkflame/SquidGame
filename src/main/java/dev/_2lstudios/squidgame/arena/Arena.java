@@ -16,6 +16,7 @@ import dev._2lstudios.squidgame.arena.games.G3BattleGame;
 import dev._2lstudios.squidgame.arena.games.G6GlassesGame;
 import dev._2lstudios.squidgame.arena.games.G7SquidGame;
 import dev._2lstudios.squidgame.player.SquidPlayer;
+import io.papermc.lib.PaperLib;
 
 public class Arena {
     private final List<SquidPlayer> players;
@@ -147,7 +148,7 @@ public class Arena {
         if (!this.players.contains(player) && !this.spectators.contains(player)) {
             this.joined = player.getBukkitPlayer().getName();
             this.players.add(player);
-            player.getBukkitPlayer().teleport(this.getSpawnPosition());
+            PaperLib.teleportAsync(player.getBukkitPlayer(), this.getSpawnPosition());
             player.getBukkitPlayer().setFoodLevel(20);
             player.getBukkitPlayer().setHealth(20);
             player.setArena(this);
