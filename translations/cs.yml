@@ -1,0 +1,82 @@
+arena:
+  join: "&a%squidgame_arena_joined% &ese připojil do hry &b(%squidgame_arena_players%/%squidgame_arena_maxplayers%)"
+  leave: "&c%squidgame_arena_leaved% &ese odpojil ze hry &b(%squidgame_arena_players%/%squidgame_arena_maxplayers%)"
+  starting: "&eHra začíná za &b%squidgame_arena_time% &evteřin."
+  started: "&aHra začla Přiji hodně štěstí!"
+  death: "&c%squidgame_arena_death% &eByl eliminován."
+  no-enough-players: "&cNení dostatečný počet pro start je potřeba, %squidgame_arena_required% hráčů."
+  already-in-game: "&cUž jsi ve hře!"
+  not-in-game: "&cYou are not in game."
+  misconfigured-arena: "&cNehraješ! Chyba arény! Kontaktuj administátora!"
+  no-available-arena: "&cArény jsou obsazené!" 
+
+setup:
+  arena-not-exist: "&cNeznámá Aréna."
+  arena-already-exist: "&cTato aréna již existuje."
+  arena-created: "&aAréna úspěšně vytvořena! Použij &b/squid editarena &e(jméno) &epro změnu."
+  set-lobby: "&aDefinovali jste lobby ve své současné pozici." 
+
+events:
+  intermission:
+    title: "&b&lPřestávka"
+    subtitle: "&dDalší hra začne za %squidgame_arena_time% vteřin"
+  game-start:
+    title: "&6Jdi do toho!"
+    subtitle: "&aHodně štestí"
+  game-timeout:
+    title: "&cKonec!"
+    subtitle: "&eČas je u konce"
+  game-timeout-died:
+    title: "&4UMŘEL JSI!"
+    subtitle: "&cNestihl jsi to
+  game-pass:
+    title: "&2Přezil jsi!"
+    subtitle: "&aGratulace! Postupuješ dál!"
+  finish:
+    draw:
+      title: "&6&lRemiza"
+      subtitle: "&cVšichni umřely"
+    winner:
+      title: "&d&lKonec"
+      subtitle: "&b%squidgame_arena_winner% &eVítězí" 
+
+games:
+  first:
+    name: "&cČervená &7| &aZelená"
+    tutorial:
+      "1": 
+        title: "&6&l1"
+        subtitle: "&eChceš vyhrát? Dostaň se do cíle"
+      "2":
+        title: "&6&l2"
+        subtitle: "&eHýbat se můžes jen při &a&LZELENÉ"
+      "3":
+        title: "&6&l3"
+        subtitle: "&ePohyb při &c&lČERVENÉ &eje jistá smrt"
+      "4":
+        title: "&6&l4"
+        subtitle: "&eZačneme za 60vteřin"
+    green-light:
+      title: "&2&lZELENÁ"
+      subtitle: "&aPohyb"
+    red-light:
+     title: "&4&lČERVENÁ"
+      subtitle: "&cSTOP"
+  seventh:
+    name: "&dSquid&fGame"
+    tutorial:
+      "1":
+        title: "&6&l1"
+        subtitle: "&eVytlač nepřatele z arény!"
+      "2":
+        title: "&6&l2"
+        subtitle: "&eKdo vypadne z arény je eliminován!"
+      "3": 
+        title: "&6&l3"
+        subtitle: "&eUmřeš? Jsi Eliminován"
+      "4":
+        title: "&6&l4"
+        subtitle: "&eVyhraje poslední přeživší"
+       
+# Soubor přeložil marekio
+# 🔥𝕄𝕒𝕣𝕖𝕜𝕚𝕠🔥#4450
