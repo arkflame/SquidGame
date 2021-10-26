@@ -34,7 +34,7 @@ events:
     subtitle: "&aBạn sẽ vào vòng tiếp theo"
   finish:
     draw:
-      title: "&6&lBốc thăm"
+      title: "&6&lHòa"
       subtitle: "&cTất cả người chơi đã chết"
     winner:
       title: "&d&lHoàn thành"
