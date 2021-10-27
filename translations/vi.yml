@@ -1,0 +1,79 @@
+arena:
+  join: "&a%squidgame_arena_joined% &eđã tham gia &b(%squidgame_arena_players%/%squidgame_arena_maxplayers%)"
+  leave: "&c%squidgame_arena_leaved% &eđã thoát &b(%squidgame_arena_players%/%squidgame_arena_maxplayers%)"
+  starting: "&eTrò chơi bắt đầu trong &b%squidgame_arena_time% &egiây."
+  started: "&aTrò chơi bắt đầu, chúc may mắn!"
+  death: "&c%squidgame_arena_death% &eđã bị loại."
+  no-enough-players: "&cKhông đủ người chơi, cần ít nhất %squidgame_arena_required% người."
+  already-in-game: "&cBạn đang ở trong trận."
+  not-in-game: "&cBạn không ở trong trận."
+  misconfigured-arena: "&cKhông có phòng chơi này hoặc đã bị lỗi, hãy báo lại cho quản trị viên."
+  no-available-arena: "&cKhông còn phòng chơi."
+
+setup:
+  arena-not-exist: "&cKhông có phòng chơi nào có tên này."
+  arena-already-exist: "&cPhòng chơi đó đã tồn tại."
+  arena-created: "&aĐã tạo phòng chơi thành công! Dùng lệnh &b/squid editarena &e(tên) &eđể chỉnh sửa."
+  set-lobby: "&aĐã đặt sảnh tại ví trị bạn đang đứng."
+
+events:
+  intermission:
+    title: "&b&lNghỉ giải lao"
+    subtitle: "&dTrò chơi tiếp theo bắt đầu trong %squidgame_arena_time% giây"
+  game-start:
+    title: "&6Bắt đầu!"
+    subtitle: "&aChúc may mắn"
+  game-timeout:
+    title: "&cKết thúc!"
+    subtitle: "&eĐã hết thời gian"
+  game-timeout-died:
+    title: "&4Bạn đã chết"
+    subtitle: "&cBạn không đến đúng giờ"
+  game-pass:
+    title: "&2Bạn đã qua!"
+    subtitle: "&aBạn sẽ vào vòng tiếp theo"
+  finish:
+    draw:
+      title: "&6&lHòa"
+      subtitle: "&cTất cả người chơi đã chết"
+    winner:
+      title: "&d&lHoàn thành"
+      subtitle: "&b%squidgame_arena_winner% &eđã thắng cuộc"
+
+games:
+  first:
+    name: "&cĐèn đỏ &7| &aĐèn xanh"
+    tutorial:
+      "1": 
+        title: "&6&l1"
+        subtitle: "&eBạn phải đến đích để thắng"
+      "2":
+        title: "&6&l2"
+        subtitle: "&eBạn chỉ có thể di chuyển khi búp bê nói &aĐèn xanh"
+      "3":
+        title: "&6&l3"
+        subtitle: "&eNếu di chuyển ở &cĐèn đỏ&e, bạn sẽ bị loại"
+      "4":
+        title: "&6&l4"
+        subtitle: "&eCó 60 giây, đã đến lúc bắt đầu."
+    green-light:
+      title: "&2&lĐèn xanh"
+      subtitle: "&aBạn có thể di chuyển"
+    red-light:
+      title: "&4&lĐèn đỏ"
+      subtitle: "&cHÃY ĐỨNG YÊN"
+  seventh:
+    name: "&dSquid&fGame"
+    tutorial:
+      "1":
+        title: "&6&l1"
+        subtitle: "&eBạn phải đẩy kẻ thù khỏi trận đấu"
+      "2":
+        title: "&6&l2"
+        subtitle: "&eNếu một người chơi thoát, họ sẽ bị loại"
+      "3": 
+        title: "&6&l3"
+        subtitle: "&eNếu người chơi chết, họ cũng bị loại"
+      "4":
+        title: "&6&l4"
+        subtitle: "&eBạn sẽ thắng nếu là người sống sót cuối cùng"
