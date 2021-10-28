@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Blind effect can now be given in game 3
+- Games are now deactivatable by setting their game time to -1
 
 ### Fixed
 

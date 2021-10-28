@@ -69,10 +69,19 @@ public class Arena {
         this.spectators.clear();
         this.games.clear();
 
-        this.games.add(new G1RedGreenLightGame(this, mainConfig.getInt("game-settings.game-time.1", 60)));
-        this.games.add(new G3BattleGame(this, mainConfig.getInt("game-settings.game-time.3", 60)));
-        this.games.add(new G6GlassesGame(this, mainConfig.getInt("game-settings.game-time.6", 60)));
-        this.games.add(new G7SquidGame(this, mainConfig.getInt("game-settings.game-time.7", 600)));
+        final int game1Time = mainConfig.getInt("game-settings.game-time.1", 60);
+        final int game3Time = mainConfig.getInt("game-settings.game-time.3", 60);
+        final int game6Time = mainConfig.getInt("game-settings.game-time.6", 60);
+        final int game7Time = mainConfig.getInt("game-settings.game-time.7", 60);
+
+        if (game1Time > 0)
+            this.games.add(new G1RedGreenLightGame(this, game1Time));
+        if (game3Time > 0)
+            this.games.add(new G3BattleGame(this, game3Time));
+        if (game6Time > 0)
+            this.games.add(new G6GlassesGame(this, game6Time));
+        if (game7Time > 0)
+            this.games.add(new G7SquidGame(this, game7Time));
     }
 
     public Configuration getMainConfig() {
