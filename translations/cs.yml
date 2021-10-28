@@ -1,0 +1,94 @@
+arena:
+  join: "&a%squidgame_arena_joined% &ese pripojil do hry &b(%squidgame_arena_players%/%squidgame_arena_maxplayers%)"
+  leave: "&c%squidgame_arena_leaved% &eopustil hru &b(%squidgame_arena_players%/%squidgame_arena_maxplayers%)"
+  starting: "&eHra zacina za &b%squidgame_arena_time% &esekund."
+  started: "&aHra zacala. Hodne stesti!"
+  death: "&c%squidgame_arena_death% &ebyl zastřelen."
+  no-enough-players: "&cKe spusteni hry neni dostatek hracu, %squidgame_arena_required% je potreba."
+  already-in-game: "&cUz jsi ve hre."
+  not-in-game: "&cNejsi ve hre."
+  misconfigured-arena: "&cNeexistuje arena nebo to je spatne nastavené. Kontaktuj prosim te AdminTeam."
+  no-available-arena: "&cNeni k dispozici zadna arena."
+
+setup:
+  arena-not-exist: "&cTato arena neexistuje, zkus to znova."
+  arena-already-exist: "&cArena s timto nazvem jiz existuje."
+  arena-created: "&aArena byla vytvorena! Pouzij pro nastaveni &b/squid editarena &e(Nazev)."
+  set-lobby: "&aNastavil jste zde lobby."
+
+events:
+  intermission:
+    title: "&b&lPauza"
+    subtitle: "&dDalsi hra zacina za %squidgame_arena_time% seconds"
+  game-start:
+    title: "&6Pokracuj!"
+    subtitle: "&aHodne stesti"
+  game-timeout:
+    title: "&cKonec!"
+    subtitle: "&ecas vyprsel"
+  game-timeout-died:
+    title: "&4Byl jsi zastrelen"
+    subtitle: "&cNedorazili jste vcas"
+  game-pass:
+    title: "&2Prosel jsi!"
+    subtitle: "&aPostupujete do dalsiho kola"
+  finish:
+    draw:
+      title: "&6&lRemiza"
+      subtitle: "&cVsichni hraci zemreli"
+    winner:
+      title: "&d&lFinale. Prelozil: jirkaooo"
+      subtitle: "&b%squidgame_arena_winner% &evyhral hru"
+
+games:
+  first:
+    name: "&cCervene svetlo&7| &aZelene svetlo"
+    tutorial:
+      "1": 
+        title: "&6&l1"
+        subtitle: "&eChcete-li vyhrat, musite dosahnout cile"
+      "2":
+        title: "&6&l2"
+        subtitle: "&ePohybovat se muzes, jen kdyz panenka rekne &aZelene svetlo"
+      "3":
+        title: "&6&l3"
+        subtitle: "&ePokud se budete hybat, kdyz bude cervene svetlo, budete zastreleni"
+      "4":
+        title: "&6&l4"
+        subtitle: "&eBudete mit jen 60 sekund, tak zaceneme."
+    green-light:
+      title: "&2&lZelene svetlo"
+      subtitle: "&aNyni se muzete pohybovat"
+    red-light:
+      title: "&4&lCervene svetlo"
+      subtitle: "&cNEHYBEJTE SE"
+  sixth:
+    name: "&bZahadna skla"
+    tutorial:
+      "2":
+        title: "&6&l1"
+        subtitle: "&eKdyz hra zacne, vygeneruji se 2 rady platforem"
+      "3": 
+        title: "&6&l2"
+        subtitle: "&eZ kazde dvojice platforem bude jedna obsahovat past"
+      "4":
+        title: "&6&l3"
+        subtitle: "&epri doslapnuti na nespravnou platformu spadnete a pad neprezijete"
+      "1":
+        title: "&6&l4"
+        subtitle: "&eChcete -li vyhrat, musite se dostat na druhou stranu areny"
+  seventh:
+    name: "&dSquid&fGame"
+    tutorial:
+      "1":
+        title: "&6&l1"
+        subtitle: "&eMusite vytlacit sve nepratele z areny"
+      "2":
+        title: "&6&l2"
+        subtitle: "&ePokud je hrac mimo, bude vyrazen"
+      "3": 
+        title: "&6&l3"
+        subtitle: "&ePokud hrac zemre, bude take vyrazen"
+      "4":
+        title: "&6&l4"
+        subtitle: "&ePosledni prezivsi vyhraje"
