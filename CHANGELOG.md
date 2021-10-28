@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Fix when game 3 ends the pvp is still on.
+- Now the arena 3 menu clarifies that it does not need configuration, to avoid confusion.
 
 ## [0.1.7] - 2021-10-23
 

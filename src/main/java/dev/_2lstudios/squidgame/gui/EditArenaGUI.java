@@ -22,7 +22,9 @@ public class EditArenaGUI extends InventoryGUI {
                 2, 2);
 
         this.addItem(2, this.createItem("§cComing soon", Material.COAL), 3, 2);
-        this.addItem(3, this.createItem("§cComing soon", Material.COAL), 4, 2);
+        this.addItem(3, this.createItem("§eThird Game", Material.DIAMOND_SWORD,
+                "§r\n§7This game does not require configuration.\n§7It uses the values from the §bintermission lobby§7.\n§r"),
+                4, 2);
         this.addItem(4, this.createItem("§cComing soon", Material.COAL), 5, 2);
         this.addItem(5, this.createItem("§cComing soon", Material.COAL), 6, 2);
 
