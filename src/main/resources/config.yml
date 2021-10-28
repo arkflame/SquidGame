@@ -1,10 +1,11 @@
 game-settings:
   allow-victory-before-completing-game: false
+  give-blindness-in-game-3: true
+  send-player-to-lobby-on-join: true
   min-players: 2
   max-players: 12
   starting-time: 30
   finishing-time: 5
-  give-blindness-in-game-3: true
   game-time:
     "1": 60
     "3": 60

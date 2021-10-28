@@ -24,5 +24,15 @@ public class PlayerJoinListener implements Listener {
         final Configuration scoreboardConfig = this.plugin.getScoreboardConfig();
 
         scoreboardHook.request(squidPlayer, scoreboardConfig.getStringList("lobby"));
+
+        if (this.plugin.getMainConfig().getBoolean("game-settings.send-player-to-lobby-on-join", true)) {
+            if (this.plugin.getMainConfig().getString("lobby.world", "").isEmpty()) {
+                squidPlayer.sendMessage(
+                        "&6&lWarning: &eWe have tried to send you to the lobby but it is not defined. Use &c/squid setlobby &eto do this or disable the \"send-player-to-lobby-on-join\" option in the config.yml file.");
+
+            } else {
+                squidPlayer.teleportToLobby();
+            }
+        }
     }
 }
