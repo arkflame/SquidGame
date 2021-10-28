@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Color;
 
 import dev._2lstudios.jelly.config.Configuration;
 import dev._2lstudios.squidgame.SquidGame;
@@ -108,6 +109,11 @@ public class ArenaHandler {
         }
 
         else if (arena.getState() == ArenaState.FINISHING_ARENA) {
+            final SquidPlayer winner = this.arena.calculateWinner();
+            if (winner != null && this.mainConfig.getBoolean("game-settings.spawn-fireworks-on-win", true)) {
+                winner.spawnFirework(1, 1, Color.RED, true);
+            }
+
             if (arena.getInternalTime() == 0) {
                 arena.resetArena();
             }

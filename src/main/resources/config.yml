@@ -2,6 +2,7 @@ game-settings:
   allow-victory-before-completing-game: false
   give-blindness-in-game-3: true
   send-player-to-lobby-on-join: true
+  spawn-fireworks-on-win: true
   min-players: 2
   max-players: 12
   starting-time: 30

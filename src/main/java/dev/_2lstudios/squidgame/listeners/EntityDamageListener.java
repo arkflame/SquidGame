@@ -36,6 +36,10 @@ public class EntityDamageListener implements Listener {
                     e.setCancelled(true);
                 }
 
+                if (e.getCause() == DamageCause.ENTITY_EXPLOSION) {
+                    e.setCancelled(true);
+                }
+
                 if (!e.isCancelled() && player.getBukkitPlayer().getHealth() - e.getDamage() <= 0
                         && !player.isSpectator()) {
                     arena.killPlayer(player);

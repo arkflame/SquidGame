@@ -16,4 +16,9 @@ public class G7SquidGame extends ArenaGameBase {
     public void onTimeUp() {
         this.getArena().killAllPlayers();
     }
+
+    @Override
+    public void onStop() {
+        this.getArena().setPvPAllowed(false);
+    }
 }
