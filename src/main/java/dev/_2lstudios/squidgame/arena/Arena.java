@@ -7,6 +7,8 @@ import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.World;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 import dev._2lstudios.jelly.config.Configuration;
 import dev._2lstudios.squidgame.SquidGame;
@@ -75,6 +77,18 @@ public class Arena {
 
     public Configuration getMainConfig() {
         return this.mainConfig;
+    }
+
+    public void broadcastPotionEffect(final PotionEffect e) {
+        for (final SquidPlayer player : this.getPlayers()) {
+            player.getBukkitPlayer().addPotionEffect(e);
+        }
+    }
+
+    public void broadcastRemovePotionEffect(final PotionEffectType e) {
+        for (final SquidPlayer player : this.getPlayers()) {
+            player.getBukkitPlayer().removePotionEffect(e);
+        }
     }
 
     public void broadcastMessage(final String message) {

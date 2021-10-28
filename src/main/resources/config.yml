@@ -4,6 +4,7 @@ game-settings:
   max-players: 12
   starting-time: 30
   finishing-time: 5
+  give-blindness-in-game-3: true
   game-time:
     "1": 60
     "3": 60
