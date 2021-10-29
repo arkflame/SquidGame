@@ -36,6 +36,7 @@
 - [Russian](https://github.com/2lstudios-mc/SquidGame/blob/main/translations/ru.yml) By d1sper
 - [Spanish](https://github.com/2lstudios-mc/SquidGame/blob/main/translations/es.yml) By Sammwy
 - [Turkish](https://github.com/2lstudios-mc/SquidGame/blob/main/translations/tr.yml) By BeautyBlood
+- [Vietnamese](https://github.com/2lstudios-mc/SquidGame/blob/main/translations/vi.yml) By Minhh2792 
 
 ### Donation
 
