@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Games are now deactivatable by setting their game time to -1
 - Added an option to send the user to the lobby when they join the server.
 - Added fireworks for the arena winner.
+- Divided chat by arena (Including lobby)
 
 ### Fixed
 
