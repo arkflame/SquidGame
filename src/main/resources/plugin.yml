@@ -5,9 +5,9 @@ main: ${mainClass}
 version: ${version}
 api-version: 1.13
 api: 1.13
-softdepends: ["PlaceholderAPI", "SwiftBoard"]
-softdepend:
+depend:
   - "PlaceholderAPI"
+softdepend:
   - "SwiftBoard"
 url: ${url}
 commands:
