@@ -5,7 +5,6 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
 import dev._2lstudios.jelly.utils.ServerUtils;
-import io.papermc.lib.PaperLib;
 
 public class PluginPlayer {
     private final Player player;
@@ -25,7 +24,7 @@ public class PluginPlayer {
     }
 
     public void teleport(final Location loc) {
-        PaperLib.teleportAsync(this.getBukkitPlayer(), loc);
+        this.getBukkitPlayer().teleport(loc);
     }
 
     public void sendTitle(final String title, final String subtitle, final int duration) {

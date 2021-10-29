@@ -2,12 +2,14 @@ package dev._2lstudios.squidgame.player;
 
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
 import dev._2lstudios.jelly.player.PluginPlayer;
 import dev._2lstudios.squidgame.SquidGame;
 import dev._2lstudios.squidgame.arena.Arena;
 import dev._2lstudios.squidgame.hooks.PlaceholderAPIHook;
+import io.papermc.lib.PaperLib;
 
 public class SquidPlayer extends PluginPlayer {
 
@@ -60,6 +62,11 @@ public class SquidPlayer extends PluginPlayer {
 
     public void teleportToLobby() {
         this.teleport(this.plugin.getMainConfig().getLocation("lobby"));
+    }
+
+    @Override
+    public void teleport(final Location loc){
+        PaperLib.teleportAsync(this.getBukkitPlayer(), loc);
     }
 
     public String getI18n(final String key) {
