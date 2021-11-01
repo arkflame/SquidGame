@@ -1,0 +1,79 @@
+arena:
+  join: "&a%squidgame_arena_joined% &eвлезе в играта &b(%squidgame_arena_players%/%squidgame_arena_maxplayers%)"
+  leave: "&c%squidgame_arena_leaved% &eизлезе от играта &b(%squidgame_arena_players%/%squidgame_arena_maxplayers%)"
+  starting: "&eИграта започва след &b%squidgame_arena_time% &eсекунди."
+  started: "&aИграта започна Късмет!"
+  death: "&c%squidgame_arena_death% &eбеше елиминиран."
+  no-enough-players: "&cНяма достатъчно играчи за да започне играта, %squidgame_arena_required% трябват."
+  already-in-game: "&cВие вече сте в игра."
+  not-in-game: "&cВие не сте в игра."
+  misconfigured-arena: "&cНяма арена или е неправилно конфигурирана. Свържете се с администратора на сървъра."
+  no-available-arena: "&cНяма налична арена."
+
+setup:
+  arena-not-exist: "&cНе съществува арена с това име."
+  arena-already-exist: "&cВече има арена с това име."
+  arena-created: "&aАрената беше създадена успешно! Използвайте &b/squid editarena &e(името на арената) &eза да я редактирате."
+  set-lobby: "&aВие сте дефинирали лобито във вашата текуща позиция."
+
+events:
+  intermission:
+    title: "&b&lМеждучасие"
+    subtitle: "&dДругата игра започва след %squidgame_arena_time% секунди"
+  game-start:
+    title: "&6Продължавай!"
+    subtitle: "&aКъсмет"
+  game-timeout:
+    title: "&cСвърши се!"
+    subtitle: "&eВремето изтече"
+  game-timeout-died:
+    title: "&4Вие сте умрял"
+    subtitle: "&cНе сте пристигнали навреме"
+  game-pass:
+    title: "&2Преминахте!"
+    subtitle: "&aВие преминавате към следващия кръг"
+  finish:
+    draw:
+      title: "&6&lРавенство"
+      subtitle: "&cВсички играчи са загинали"
+    winner:
+      title: "&d&lКрай"
+      subtitle: "&b%squidgame_arena_winner% &eспечели играта"
+
+games:
+  first:
+    name: "&cRed Light &7| &aGreen Light"
+    tutorial:
+      "1": 
+        title: "&6&l1"
+        subtitle: "&eЗа да спечелите, трябва да достигнете целта"
+      "2":
+        title: "&6&l2"
+        subtitle: "&eМожете да се движите само когато куклата каже &aЗелена светлина"
+      "3":
+        title: "&6&l3"
+        subtitle: "&eАко се движите в &cЧервена светлина&e, ще бъдете елиминирани"
+      "4":
+        title: "&6&l4"
+        subtitle: "&eЩе имат само 60 секунди, време е да започнете."
+    green-light:
+      title: "&2&lЗелена Светлина"
+      subtitle: "&aМожете да се движите"
+    red-light:
+      title: "&4&lЧервена Светлина"
+      subtitle: "&cНЕ СЕ ДВИЖЕТЕ"
+  seventh:
+    name: "&dИгра на &fкалмари"
+    tutorial:
+      "1":
+        title: "&6&l1"
+        subtitle: "&eТрябва да изтласкате враговете си от арената"
+      "2":
+        title: "&6&l2"
+        subtitle: "&eАко играч е аут, той ще бъде елиминиран"
+      "3": 
+        title: "&6&l3"
+        subtitle: "&eАко играч умре, той също ще бъде елиминиран"
+      "4":
+        title: "&6&l4"
+        subtitle: "&eЩе спечелите, ако сте последният който е останал"
