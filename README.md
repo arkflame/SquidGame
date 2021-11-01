@@ -25,6 +25,7 @@
 
 ### Translations
 
+- [Bulgarian](https://github.com/2lstudios-mc/SquidGame/blob/main/translations/bg.yml) By ItzLazerX
 - [Czech](https://github.com/2lstudios-mc/SquidGame/blob/main/translations/cs.yml) By Marekio and Jirkaooo 
 - [Dutch](https://github.com/2lstudios-mc/SquidGame/blob/main/translations/nl.yml) By Piratepie 
 - [English](https://github.com/2lstudios-mc/SquidGame/blob/main/translations/en.yml) By Sammwy
