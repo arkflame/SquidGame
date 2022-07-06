@@ -2,7 +2,7 @@ arena:
   join: "&a%squidgame_arena_joined% &etelah bergabung ke game &b(%squidgame_arena_players%/%squidgame_arena_maxplayers%)"
   leave: "&c%squidgame_arena_leaved% &etelah keluar dari game &b(%squidgame_arena_players%/%squidgame_arena_maxplayers%)"
   starting: "&ePermainan akan dimulai dalam &b%squidgame_arena_time% &edetik."
-  started: "&aPermainan telah dimulai, semoga beruntung !"
+  started: "&aPermainan telah dimulai, semoga beruntung!"
   death: "&c%squidgame_arena_death% &etelah di eliminasi."
   no-enough-players: "&cTidak cukup pemain untuk memulai, %squidgame_arena_required% pemain diperlukan."
   already-in-game: "&cAnda sudah didalam permainan."
