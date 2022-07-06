@@ -1,37 +1,37 @@
 arena:
   join: "&a%squidgame_arena_joined% &etelah bergabung ke game &b(%squidgame_arena_players%/%squidgame_arena_maxplayers%)"
   leave: "&c%squidgame_arena_leaved% &etelah keluar dari game &b(%squidgame_arena_players%/%squidgame_arena_maxplayers%)"
-  starting: "&egame akan dimulai dalam &b%squidgame_arena_time% &edetik."
-  started: "&agame telah dimulai, semoga beruntung !"
+  starting: "&ePermainan akan dimulai dalam &b%squidgame_arena_time% &edetik."
+  started: "&aPermainan telah dimulai, semoga beruntung !"
   death: "&c%squidgame_arena_death% &etelah di eliminasi."
   no-enough-players: "&cTidak cukup pemain untuk memulai, %squidgame_arena_required% pemain diperlukan."
-  already-in-game: "&cKamu sudah didalam game."
-  not-in-game: "&cKamu tidak lagi di game."
-  misconfigured-arena: "&cTidak ada arena atau kesalahan konfigurasi, silahkan laporkan ke Administrator."
+  already-in-game: "&cAnda sudah didalam permainan."
+  not-in-game: "&cAnda tidak lagi didalam permainan."
+  misconfigured-arena: "&cTidak ada arena atau kesalahan konfigurasi, silahkan laporkan ke administrator."
   no-available-arena: "&cTidak ada arena yang tersedia."
 
 setup:
   arena-not-exist: "&cTidak ada arena dengan nama ini."
   arena-already-exist: "&cSudah ada arena dengan nama ini."
-  arena-created: "&aArena sukses diciptakan, Gunakan &b/squid editarena &e(name) &euntuk melakukan editing."
+  arena-created: "&aArena sukses diciptakan, gunakan &b/squid editarena &e(nama) &euntuk melakukan perubahan."
   set-lobby: "&aAnda telah menentukan lobi di posisi Anda saat ini."
 
 events:
   intermission:
     title: "&b&lIstirahat"
-    subtitle: "&dGame berikutnya dimulai dalam %squidgame_arena_time% detik"
+    subtitle: "&dPermainan berikutnya dimulai dalam %squidgame_arena_time% detik"
   game-start:
     title: "&6Maju"
     subtitle: "&aSemoga beruntung"
   game-timeout:
-    title: "&cGame selesai"
+    title: "&cPermainan selesai"
     subtitle: "&eWaktu sudah habis"
   game-timeout-died:
-    title: "&4Kamu sudah mati"
-    subtitle: "&cKamu belum menyelesaikan game tepat waktu."
+    title: "&4Anda sudah mati"
+    subtitle: "&cAnda belum menyelesaikan game tepat waktu."
   game-pass:
-    title: "&2Kamu lulus!"
-    subtitle: "&aKamu akan naik ke game berikutnya."
+    title: "&2Anda lulus!"
+    subtitle: "&aAnda akan naik ke game berikutnya."
   finish:
     draw:
       title: "&6&lDraw"
@@ -46,10 +46,10 @@ games:
     tutorial:
       "1": 
         title: "&6&l1"
-        subtitle: "&eUntuk menang kamu harus ke garis finish"
+        subtitle: "&eUntuk menang Anda harus ke garis ahkir"
       "2":
         title: "&6&l2"
-        subtitle: "&eKamu hanya boleh bergerak jika, boneka mengatakan &aLampu Hijau"
+        subtitle: "&eAnda hanya boleh bergerak jika, boneka mengatakan &aLampu Hijau"
       "3":
         title: "&6&l3"
         subtitle: "&eJika kamu bergerak di &cLampu merah&e, kamu akan di eliminasi"
@@ -67,7 +67,7 @@ games:
     tutorial:
       "1":
         title: "&6&l1"
-        subtitle: "&eKamu harus mendorong pemain keluar dari arena"
+        subtitle: "&eAnda harus mendorong pemain keluar dari arena"
       "2":
         title: "&6&l2"
         subtitle: "&eJika seorang pemain keluar, mereka akan dieliminasi"
