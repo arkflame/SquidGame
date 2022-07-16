@@ -1,0 +1,79 @@
+arena:
+  join: "&a%squidgame_arena_joined% &e加入了游戏 &b(%squidgame_arena_players%/%squidgame_arena_maxplayers%)"
+  leave: "&c%squidgame_arena_leaved% &e离开了游戏 &b(%squidgame_arena_players%/%squidgame_arena_maxplayers%)"
+  starting: "&e游戏将在 &b%squidgame_arena_time% &e秒开始."
+  started: "&a游戏已经开始了，祝你好运!"
+  death: "&c%squidgame_arena_death% &e已被淘汰."
+  no-enough-players: "&c没有足够的玩家来开始游戏, 需要%squidgame_arena_required%名玩家."
+  already-in-game: "&c你已经在一个游戏中了."
+  not-in-game: "&c你不在游戏中."
+  misconfigured-arena: "&c没有竞技场或配置错误,联系服务器管理员."
+  no-available-arena: "&c没有可用的竞技场."
+
+setup:
+  arena-not-exist: "&c没有这个名字的竞技场."
+  arena-already-exist: "&c已经有一个以此为名的竞技场了."
+  arena-created: "&a竞技场已成功创建! 使用&b/squid editarena &e(name) &e来编辑它。."
+  set-lobby: "&a你已经在你目前的位置上定义了大厅."
+
+events:
+  intermission:
+    title: "&b&l中场休息"
+    subtitle: "&d下一场比赛将在 %squidgame_arena_time% 开始"
+  game-start:
+    title: "&6游戏开始!"
+    subtitle: "&a祝你好运"
+  game-timeout:
+    title: "&c游戏结束!"
+    subtitle: "&e时间结束"
+  game-timeout-died:
+    title: "&4你已经死了"
+    subtitle: "&c你没有在规定时间内完成"
+  game-pass:
+    title: "&2你通过了!"
+    subtitle: "&a你晋级到下一轮"
+  finish:
+    draw:
+      title: "&6&lDraw"
+      subtitle: "&c所有玩家都已死亡"
+    winner:
+      title: "&d&l结束"
+      subtitle: "&b%squidgame_arena_winner% &e已经赢得了比赛"
+
+games:
+  first:
+    name: "&c红灯 &7| &a绿灯"
+    tutorial:
+      "1": 
+        title: "&6&l1"
+        subtitle: "&e为了赢得比赛，你必须达到目标"
+      "2":
+        title: "&6&l2"
+        subtitle: "&e只有当娃娃说&a绿灯&e时，你才能移动。"
+      "3":
+        title: "&6&l3"
+        subtitle: "&e只有当娃娃说&c绿灯&e时，你才能移动。"
+      "4":
+        title: "&6&l4"
+        subtitle: "&e他们只有60秒的时间，该开始了。"
+    green-light:
+      title: "&2&l绿灯"
+      subtitle: "&a现在你可以移动"
+    red-light:
+      title: "&4&l红灯"
+      subtitle: "&c请勿移动"
+  seventh:
+    name: "&d鱿鱼&f游戏"
+    tutorial:
+      "1":
+        title: "&6&l1"
+        subtitle: "&e你必须把你的敌人赶出竞技场"
+      "2":
+        title: "&6&l2"
+        subtitle: "&e如果有玩家出局，他们将被淘汰。"
+      "3": 
+        title: "&6&l3"
+        subtitle: "&e如果有玩家死亡，他们也将被淘汰。"
+      "4":
+        title: "&6&l4"
+        subtitle: "&e如果你是最后一个站着的人，你就会胜利。"
